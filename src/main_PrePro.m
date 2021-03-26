@@ -6,7 +6,7 @@ function main_PrePro(paraPath)
     % Loading parameters
     main_ParaGen
     PARA = readstruct(paraPath);
-    pp = PrePro(PARA);
+    pp = PrePro(PARA.prepro);
     
     tic
     pp.doPrePro()

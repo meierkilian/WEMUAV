@@ -5,12 +5,12 @@
         <endTime>22-Mar-2021 14:10:00</endTime>
         <timeRes>0.05</timeRes>
         <refInput>
-            <path></path>
-            <type>default</type>
+            <path>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Anemo\2020.07.18 23.59 Adventdalen_Sec.dat</path>
+            <type>unisaws</type>
         </refInput>
         <flightInput>
-            <path>C:\Users\Kilian\Documents\EPFL\PDM\Data\topophantom1\20210322\FLY117.csv</path>
-            <type>default</type>
+            <path>C:\Users\Kilian\Documents\EPFL\PDM\Data\topophantom1\20210322\FLY117_10HZ.csv</path>
+            <type>datcon</type>
         </flightInput>
         <output>
             <path>.\dev\outData</path>
@@ -27,5 +27,42 @@
             <varOfInterest>IMU_ATTI_0_long0_D</varOfInterest>
             <varOfInterest>IMU_ATTI_0_lati0_D</varOfInterest>
         </datcon>
+        <motus>
+            <header>ID</header>
+            <header>HorizDir</header>
+            <header>HorizMag</header>
+            <header>VertWind</header>
+            <header>Unit</header>
+            <header>SoundSpeed</header>
+            <header>Temp</header>
+            <header>Date</header>
+            <header>Port</header>
+            <varOfInterest>HorizDir</varOfInterest>
+            <varOfInterest>HorizMag</varOfInterest>
+            <varOfInterest>VertWind</varOfInterest>
+            <varOfInterest>Date</varOfInterest>
+            <sampleRate>20</sampleRate>
+        </motus>
+        <unisaws>
+            <header>Timestamp</header>
+            <header>RecordNbr</header>
+            <header>ID</header>
+            <header>AirTemp1</header>
+            <header>AirTemp2</header>
+            <header>AirTemp3</header>
+            <header>AirHumidity1</header>
+            <header>AirTemp4</header>
+            <header>AirHumidity2</header>
+            <header>AtmPressure</header>
+            <header>WindSpeed2m</header>
+            <header>WindDir2m</header>
+            <header>WindSpeed10m</header>
+            <header>WindDir10</header>
+            <varOfInterest>Timestamp</varOfInterest>
+            <varOfInterest>WindSpeed2m</varOfInterest>
+            <varOfInterest>WindDir2m</varOfInterest>
+            <varOfInterest>WindSpeed10m</varOfInterest>
+            <varOfInterest>WindDir10</varOfInterest>
+        </unisaws>
     </prepro>
 </struct>

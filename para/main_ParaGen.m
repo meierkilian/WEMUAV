@@ -20,24 +20,25 @@ para.prepro.timeRes = 0.05; % 20 Hz
 % path to reference data can be a vector of paths, must match size of
 % flightInputpath
 para.prepro.refInput.path = {...
-    '' ...
+    char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Anemo","2020.07.18 23.59 Adventdalen_Sec.dat")) ...
 %     ,''
     };
 
 % type of reference (describes the file formatting), available types are:
-% {"default",...} TODO
-para.prepro.refInput.type = 'default';
+% {"motus","unisaws",...} TODO
+para.prepro.refInput.type = 'unisaws';
 
 % path to flight data, can be a vector of paths, must match size of
 % refInputpath
 para.prepro.flightInput.path = {...
-    char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","Data","topophantom1","20210322","FLY117.csv")) ...
+%     char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Phantom","2020-07-18_FLY122_profile.csv")) ...
+    char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","Data","topophantom1","20210322","FLY117_10HZ.csv")) ...
 %     ,char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","Data","topophantom1","20210322","FLY117_10HZ.csv")) ...
     };
 
 % type of reference (describes the file formatting), available types are:
-% {'default','datcon'...} TODO
-para.prepro.flightInput.type = 'default';
+% {'datcon'...} TODO
+para.prepro.flightInput.type = 'datcon';
 
 % path to output folder
 para.prepro.output.path = fullfile('.','dev','outData');
@@ -60,6 +61,23 @@ para.prepro.datcon.varOfInterest = {...
     'IMU_ATTI_0_long0_D',...
     'IMU_ATTI_0_lati0_D'...
     };
+
+% MoTUS data header 
+para.prepro.motus.header = {'ID','HorizDir','HorizMag','VertWind','Unit','SoundSpeed','Temp','Date','Port'};
+
+% MoTUS variable of interest (must be a subset of motus.header)
+para.prepro.motus.varOfInterest = {'HorizDir','HorizMag','VertWind','Date'};
+
+% MoTUS sample rate [Hz]
+para.prepro.motus.sampleRate = 20;
+
+% UNISAWS data header 
+para.prepro.unisaws.header = {'Timestamp','RecordNbr','ID','AirTemp1','AirTemp2','AirTemp3','AirHumidity1','AirTemp4','AirHumidity2','AtmPressure','WindSpeed2m','WindDir2m','WindSpeed10m','WindDir10'};
+
+% UNISAWS variable of interest (must be a subset of motus.header)
+para.prepro.unisaws.varOfInterest = {'Timestamp','WindSpeed2m','WindDir2m','WindSpeed10m','WindDir10'};
+
+
     
 
 
