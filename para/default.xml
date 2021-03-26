@@ -1,26 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struct>
     <prepro>
-        <startTime>
-            <week></week>
-            <tow></tow>
-        </startTime>
-        <endTime>
-            <week></week>
-            <tow></tow>
-        </endTime>
+        <startTime>22-Mar-2021 14:05:00</startTime>
+        <endTime>22-Mar-2021 14:10:00</endTime>
         <timeRes>0.05</timeRes>
         <refInput>
             <path></path>
             <type>default</type>
         </refInput>
         <flightInput>
-            <path>.\dev\rawData\FLY069_SHORT.csv</path>
+            <path>C:\Users\Kilian\Documents\EPFL\PDM\Data\topophantom1\20210322\FLY117.csv</path>
             <type>default</type>
         </flightInput>
         <output>
             <path>.\dev\outData</path>
             <type>default</type>
         </output>
+        <datcon>
+            <UTCyear>gps_utc_data_gps_year_D</UTCyear>
+            <UTCmonth>gps_utc_data_gps_month_D</UTCmonth>
+            <UTCday>gps_utc_data_gps_day_D</UTCday>
+            <UTChour>gps_utc_data_gps_hour_D</UTChour>
+            <UTCminute>gps_utc_data_gps_minute_D</UTCminute>
+            <UTCsec>gps_utc_data_gps_sec_D</UTCsec>
+            <timeStamp>Clock_offsetTime</timeStamp>
+            <varOfInterest>IMU_ATTI_0_long0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_lati0_D</varOfInterest>
+        </datcon>
     </prepro>
 </struct>

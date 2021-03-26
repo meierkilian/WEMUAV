@@ -4,12 +4,12 @@ function main_PrePro(paraPath)
     end
     
     % Loading parameters
+    main_ParaGen
     PARA = readstruct(paraPath);
+    pp = PrePro(PARA);
     
-    % Correcting DatCon output
-    fn = 'C:\Users\Kilian\Documents\EPFL\PDM\Data\topophantom1\20210322\FLY117.csv';
-    pp = PrePro();
-    pp.correctDatCon(fn);
-    
+    tic
+    pp.doPrePro()
+    toc
     
 end
