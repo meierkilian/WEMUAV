@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struct>
     <prepro>
-        <startTime>22-Mar-2021 14:05:00</startTime>
-        <endTime>22-Mar-2021 14:10:00</endTime>
+        <startTime>18-Jul-2020 16:00:00</startTime>
+        <endTime>18-Jul-2020 16:10:00</endTime>
         <timeRes>0.05</timeRes>
         <refInput>
             <path>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Anemo\2020.07.18 23.59 Adventdalen_Sec.dat</path>
             <type>unisaws</type>
         </refInput>
         <flightInput>
-            <path>C:\Users\Kilian\Documents\EPFL\PDM\Data\topophantom1\20210322\FLY117_10HZ.csv</path>
-            <type>datcon</type>
+            <path>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Phantom\2020-07-18_FLY122_profile.csv</path>
+            <type>datconv3</type>
         </flightInput>
         <output>
             <path>.\dev\outData</path>
             <type>default</type>
         </output>
-        <datcon>
+        <datconv4>
             <UTCyear>gps_utc_data_gps_year_D</UTCyear>
             <UTCmonth>gps_utc_data_gps_month_D</UTCmonth>
             <UTCday>gps_utc_data_gps_day_D</UTCday>
@@ -26,7 +26,13 @@
             <timeStamp>Clock_offsetTime</timeStamp>
             <varOfInterest>IMU_ATTI_0_long0_D</varOfInterest>
             <varOfInterest>IMU_ATTI_0_lati0_D</varOfInterest>
-        </datcon>
+        </datconv4>
+        <datconv3>
+            <UTCdatetimeString>GPS_dateTimeStamp</UTCdatetimeString>
+            <timeStamp>offsetTime</timeStamp>
+            <varOfInterest>IMU_ATTI_0__Longitude</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__Latitude</varOfInterest>
+        </datconv3>
         <motus>
             <header>ID</header>
             <header>HorizDir</header>

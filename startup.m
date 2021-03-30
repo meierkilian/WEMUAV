@@ -3,3 +3,4 @@
 
 addpath(fullfile('.','para'))
 addpath(fullfile('.','src'))
+addpath(fullfile('.','dev'))

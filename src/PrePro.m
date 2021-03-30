@@ -24,8 +24,10 @@ classdef PrePro
             end
             
             % Instanciates adapted preprocessor
-            if type == "datcon"
-                pp = PrePro_DatCon(obj.para.datcon);
+            if type == "datconv4"
+                pp = PrePro_DatConV4(obj.para.datconv4);
+            elseif type == "datconv3"
+                pp = PrePro_DatConV3(obj.para.datconv3);
             elseif type == "motus"
                 pp = PrePro_MoTUS(obj.para.motus);
             elseif type == "unisaws"

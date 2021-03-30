@@ -6,11 +6,13 @@
 clear para
 
 % datetime of start time, if "" (empty string) then start is set at the first data point.
-para.prepro.startTime = datetime(2021,03,22,14,05,00); 
+% para.prepro.startTime = datetime(2021,03,22,14,05,00); 
+para.prepro.startTime = datetime(2020,07,18,16,00,00); 
 % para.prepro.startTime = ""; 
 
 % datetime of end time, if "" (empty string) then end is set at the last data point.
-para.prepro.endTime = datetime(2021,03,22,14,10,00); 
+% para.prepro.endTime = datetime(2021,03,22,14,10,00); 
+para.prepro.endTime = datetime(2020,07,18,16,10,00); 
 % para.prepro.endTime = ""; 
 
 % time resolution at which the data is resampled, i.e. duration in [s]
@@ -31,14 +33,14 @@ para.prepro.refInput.type = 'unisaws';
 % path to flight data, can be a vector of paths, must match size of
 % refInputpath
 para.prepro.flightInput.path = {...
-%     char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Phantom","2020-07-18_FLY122_profile.csv")) ...
-    char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","Data","topophantom1","20210322","FLY117_10HZ.csv")) ...
+    char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Phantom","2020-07-18_FLY122_profile.csv")) ...
+%     char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","Data","topophantom1","20210322","FLY117_10HZ.csv")) ...
 %     ,char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","Data","topophantom1","20210322","FLY117_10HZ.csv")) ...
     };
 
 % type of reference (describes the file formatting), available types are:
-% {'datcon'...} TODO
-para.prepro.flightInput.type = 'datcon';
+% {'datconv3', 'datconv4'...} TODO
+para.prepro.flightInput.type = 'datconv3';
 
 % path to output folder
 para.prepro.output.path = fullfile('.','dev','outData');
@@ -47,20 +49,31 @@ para.prepro.output.path = fullfile('.','dev','outData');
 % {'default',...} TODO
 para.prepro.output.type = 'default';
 
-% DatCon date and time field name
-para.prepro.datcon.UTCyear = 'gps_utc_data_gps_year_D';
-para.prepro.datcon.UTCmonth = 'gps_utc_data_gps_month_D';
-para.prepro.datcon.UTCday = 'gps_utc_data_gps_day_D';
-para.prepro.datcon.UTChour = 'gps_utc_data_gps_hour_D';
-para.prepro.datcon.UTCminute = 'gps_utc_data_gps_minute_D';
-para.prepro.datcon.UTCsec = 'gps_utc_data_gps_sec_D';
-para.prepro.datcon.timeStamp = 'Clock_offsetTime';
+% datconv4 date and time field name
+para.prepro.datconv4.UTCyear = 'gps_utc_data_gps_year_D';
+para.prepro.datconv4.UTCmonth = 'gps_utc_data_gps_month_D';
+para.prepro.datconv4.UTCday = 'gps_utc_data_gps_day_D';
+para.prepro.datconv4.UTChour = 'gps_utc_data_gps_hour_D';
+para.prepro.datconv4.UTCminute = 'gps_utc_data_gps_minute_D';
+para.prepro.datconv4.UTCsec = 'gps_utc_data_gps_sec_D';
+para.prepro.datconv4.timeStamp = 'Clock_offsetTime';
 
-% DatCon variable of interest, i.e. that will be stored in the output file
-para.prepro.datcon.varOfInterest = {...
+% datconv4 variable of interest, i.e. that will be stored in the output file
+para.prepro.datconv4.varOfInterest = {...
     'IMU_ATTI_0_long0_D',...
     'IMU_ATTI_0_lati0_D'...
     };
+
+% datconv3 date and time field name
+para.prepro.datconv3.UTCdatetimeString = 'GPS_dateTimeStamp';
+para.prepro.datconv3.timeStamp = 'offsetTime';
+
+% datconv3 variable of interest, i.e. that will be stored in the output
+% file
+para.prepro.datconv3.varOfInterest = {...
+    'IMU_ATTI_0__Longitude',...
+    'IMU_ATTI_0__Latitude'...
+    }; 
 
 % MoTUS data header 
 para.prepro.motus.header = {'ID','HorizDir','HorizMag','VertWind','Unit','SoundSpeed','Temp','Date','Port'};
