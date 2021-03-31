@@ -19,14 +19,22 @@ classdef PrePro_UNISAWS
         end
            
         
-        % Get timetable with proper timevector
+        % Get timetable from file with proper time vector. The returned
+        % timetable has header from the desiredFields variable.
         % INPUT : 
-        %   ds : datastore
+        %   path : path to file to load
+        %   desiredFields : ordered list of standardised field names
         % OUTPUT :
         %   tt : timetable
-        function tt = getTimetable(obj, path)
+        function tt = getTimetable(obj, path, desiredFields)
+            if any(size(desiredFields) ~= size(obj.para.varOfInterest))
+                error("Size of the desiredFields and varOfInterest do not match. Use empty char array ('') has place holder if necessary.")
+            end
+
+            validFields = ~strcmp(obj.para.varOfInterest, '');
+
             ds = obj.getDatastore(path);
-            ds.SelectedVariableNames = obj.para.varOfInterest;
+            ds.SelectedVariableNames = cellstr([obj.para.timeStamp, obj.para.varOfInterest(validFields)]);
             tt = readall(ds);
         end           
     end

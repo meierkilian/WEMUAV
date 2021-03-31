@@ -30,12 +30,20 @@ classdef PrePro_DatConV4
             ds.VariableNames = header(1:end-2);            
         end
         
-        % Get timetable from DatCon datastore with proper time vector
+         % Get timetable from file with proper time vector. The returned
+        % timetable has header from the desiredFields variable.
         % INPUT : 
-        %   ds : datastore
+        %   path : path to file to load
+        %   desiredFields : ordered list of standardised field names
         % OUTPUT :
         %   tt : timetable
-        function tt = getTimetable(obj, path)
+        function tt = getTimetable(obj, path, desiredFields)
+            if any(size(desiredFields) ~= size(obj.para.varOfInterest))
+                error("Size of the desiredFields and varOfInterest do not match. Use empty char array ('') has place holder if necessary.")
+            end
+            
+            validFields = ~strcmp(obj.para.varOfInterest, '');
+
             ds = obj.getDatastore(path);
             
             ds.SelectedVariableNames = cellstr([ ...
@@ -67,7 +75,15 @@ classdef PrePro_DatConV4
                 data.(obj.para.UTCsec)(idx) + offset ...
                 );                
             
-            tt = table2timetable(data(:,cellstr(obj.para.varOfInterest)),'RowTimes',timespace);            
+            % Creating the timetable
+            tt = table2timetable(data(:,cellstr(obj.para.varOfInterest(validFields))),'RowTimes',timespace);
+
+            % Creating a map from the header names (as present in the input
+            % file) to the "standardised" desiredFields
+            headerMap = containers.Map(cellstr(obj.para.varOfInterest(validFields)), desiredFields(validFields));
+
+            % Change timetable header accordingly
+            tt.Properties.VariableNames = values(headerMap, tt.Properties.VariableNames);
         end
         
     end

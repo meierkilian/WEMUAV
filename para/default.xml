@@ -15,6 +15,28 @@
         <output>
             <path>.\dev\outData</path>
             <type>default</type>
+            <field>lati</field>
+            <field>long</field>
+            <field>alti</field>
+            <field>vx</field>
+            <field>vy</field>
+            <field>vz</field>
+            <field>ax</field>
+            <field>ay</field>
+            <field>az</field>
+            <field>roll</field>
+            <field>pitch</field>
+            <field>yaw</field>
+            <field>q1</field>
+            <field>q2</field>
+            <field>q3</field>
+            <field>q4</field>
+            <field>gyroX</field>
+            <field>gyroY</field>
+            <field>gyroZ</field>
+            <field>windHDir</field>
+            <field>windHMag</field>
+            <field>windVert</field>
         </output>
         <datconv4>
             <UTCyear>gps_utc_data_gps_year_D</UTCyear>
@@ -24,31 +46,55 @@
             <UTCminute>gps_utc_data_gps_minute_D</UTCminute>
             <UTCsec>gps_utc_data_gps_sec_D</UTCsec>
             <timeStamp>Clock_offsetTime</timeStamp>
-            <varOfInterest>IMU_ATTI_0_long0_D</varOfInterest>
             <varOfInterest>IMU_ATTI_0_lati0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_long0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_alti0_D</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>IMU_ATTI_0_ax0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_ay0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_az0_D</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>IMU_ATTI_0_qw0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_qx0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_qy0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_qz0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_wx0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_wy0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0_wz0_D</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
         </datconv4>
         <datconv3>
             <UTCdatetimeString>GPS_dateTimeStamp</UTCdatetimeString>
             <timeStamp>offsetTime</timeStamp>
-            <varOfInterest>IMU_ATTI_0__Longitude</varOfInterest>
             <varOfInterest>IMU_ATTI_0__Latitude</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__Longitude</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>IMU_ATTI_0__accel_X</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__accel_Y</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__accel_Z</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__roll</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__pitch</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__yaw</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>IMU_ATTI_0__gyro_X</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__gyro_Y</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__gyro_Z</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
         </datconv3>
-        <motus>
-            <header>ID</header>
-            <header>HorizDir</header>
-            <header>HorizMag</header>
-            <header>VertWind</header>
-            <header>Unit</header>
-            <header>SoundSpeed</header>
-            <header>Temp</header>
-            <header>Date</header>
-            <header>Port</header>
-            <varOfInterest>HorizDir</varOfInterest>
-            <varOfInterest>HorizMag</varOfInterest>
-            <varOfInterest>VertWind</varOfInterest>
-            <varOfInterest>Date</varOfInterest>
-            <sampleRate>20</sampleRate>
-        </motus>
         <unisaws>
             <header>Timestamp</header>
             <header>RecordNbr</header>
@@ -64,11 +110,33 @@
             <header>WindDir2m</header>
             <header>WindSpeed10m</header>
             <header>WindDir10</header>
-            <varOfInterest>Timestamp</varOfInterest>
-            <varOfInterest>WindSpeed2m</varOfInterest>
-            <varOfInterest>WindDir2m</varOfInterest>
-            <varOfInterest>WindSpeed10m</varOfInterest>
+            <timeStamp>Timestamp</timeStamp>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
             <varOfInterest>WindDir10</varOfInterest>
+            <varOfInterest>WindSpeed10m</varOfInterest>
+            <varOfInterest></varOfInterest>
         </unisaws>
     </prepro>
+    <estimator>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\dev\outData\2020-07-18_FLY122_profile.mat</inputPath>
+        <method>garreausimple</method>
+    </estimator>
 </struct>

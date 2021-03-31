@@ -2,5 +2,5 @@
 % Add the "para" and "src" folder to the PATH variable
 
 addpath(fullfile('.','para'))
-addpath(fullfile('.','src'))
+addpath(genpath(fullfile('.','src')))   
 addpath(fullfile('.','dev'))

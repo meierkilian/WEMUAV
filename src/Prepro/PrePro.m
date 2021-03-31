@@ -36,7 +36,7 @@ classdef PrePro
                 error("Unknown data type : " + type);
             end
             
-            tt = pp.getTimetable(path);
+            tt = pp.getTimetable(path, obj.para.output.field);
         end
         
         
