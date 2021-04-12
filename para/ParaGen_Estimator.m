@@ -1,15 +1,41 @@
 function para = ParaGen_Estimator()
 % Generating parameters relevant for estimation
 
+    % DEFINING CONSTANTS
+    % drone mass [kg]
+    para.cst.m = 1.38;
+
+    % gravitational acceleration [m/s^2]
+    para.cst.g = 9.81;
+
+    % air densisty [kg/m^3]
+    para.cst.rho = 1.225
+
+
     % Path to input data, should be a .mat file containing a timetable
     % formatted as outputted by the PrePro class.
     para.inputPath = {...
-        char(fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","WEMUAV","dev","outData","2020-07-18_FLY122_profile.mat")) ...
+        char(fullfile(".","outData","prepro","2020-07-18_FLY122_profile.mat")) ...
         };
     
     % Method to be used for estimation. Each method of this list is used on
     % each file in the inputPath. Available methods are
-    % {'garreausimple',...} TODO
+    % {'garreausimple',...}
+    % TODO : update description
     para.method = {...
         'garreausimple' ...
         };
+
+    % Path to output folder
+    para.outputPath = fullfile(".", "outData", "estimator");
+
+
+    % Including constants in the garreausimple parameters
+    para.garreausimple.cst = para.cst;
+
+    % TODO : (is a pressure, but of what on what ? Related to wind tunnel tests) [lb/m^2]
+    para.garreausimple.cst.qnasa = 0.48/0.092903;
+
+    % Path to Russel (NASA) drag data
+    para.garreausimple.dragDataPath.F = fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Drag_Russel","F.txt");
+    para.garreausimple.dragDataPath.T = fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Drag_Russel","T.txt");

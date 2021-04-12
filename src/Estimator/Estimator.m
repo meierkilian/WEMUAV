@@ -19,9 +19,10 @@ classdef Estimator
                         error("Unkown estimation method : " + obj.para.method);
                     end
                     
-                    tt = est.estimateWind(data);
+                    tt = est.estimateWind(data.totalTT);
                     
-                    summary(tt)
+                    [~, flightName, ~] = fileparts(obj.para.inputPath(i));
+                    save(fullfile(obj.para.outputPath, flightName + "_" + obj.para.method(j) + ".mat"), 'tt', '-mat')
                 end
             end
         end
