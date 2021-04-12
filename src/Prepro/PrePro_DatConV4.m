@@ -30,7 +30,7 @@ classdef PrePro_DatConV4
             ds.VariableNames = header(1:end-2);            
         end
         
-         % Get timetable from file with proper time vector. The returned
+        % Get timetable from file with proper time vector. The returned
         % timetable has header from the desiredFields variable.
         % INPUT : 
         %   path : path to file to load
@@ -65,6 +65,7 @@ classdef PrePro_DatConV4
             
             % Creating proper time space vector from GPS time and internal
             % ticks
+            % TODO : aligned with gps but uses tick as ref ? Good idea ? can do better...
             offset = data.(obj.para.timeStamp) - data.(obj.para.timeStamp)(idx);
             timespace = datetime( ...
                 data.(obj.para.UTCyear)(idx), ...
@@ -84,6 +85,9 @@ classdef PrePro_DatConV4
 
             % Change timetable header accordingly
             tt.Properties.VariableNames = values(headerMap, tt.Properties.VariableNames);
+
+            % Perform unit correction
+            tt.Variables = tt.Variables * diag(obj.para.unitConv(validFields));
         end
         
     end

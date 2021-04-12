@@ -36,6 +36,16 @@ classdef PrePro_UNISAWS
             ds = obj.getDatastore(path);
             ds.SelectedVariableNames = cellstr([obj.para.timeStamp, obj.para.varOfInterest(validFields)]);
             tt = readall(ds);
+
+            % Creating a map from the header names (as present in the input
+            % file) to the "standardised" desiredFields
+            headerMap = containers.Map(cellstr(obj.para.varOfInterest(validFields)), desiredFields(validFields));
+
+            % Change timetable header accordingly
+            tt.Properties.VariableNames = values(headerMap, tt.Properties.VariableNames);
+
+            % Perform unit correction
+            tt.Variables = tt.Variables * diag(obj.para.unitConv(validFields));
         end           
     end
 end

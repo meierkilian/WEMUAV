@@ -61,6 +61,7 @@ classdef PrePro_DatConV3
             
             % Creating proper time space vector from GPS time and internal
             % ticks
+            % TODO : aligned with gps but uses tick as ref ? Good idea ? can do better...
             offset = data.(obj.para.timeStamp) - data.(obj.para.timeStamp)(idx);
             timespace = timespace(idx) + seconds(offset);                
             
@@ -73,6 +74,9 @@ classdef PrePro_DatConV3
 
             % Change timetable header accordingly
             tt.Properties.VariableNames = values(headerMap, tt.Properties.VariableNames);
+
+            % Perform unit correction
+            tt.Variables = tt.Variables * diag(obj.para.unitConv(validFields));
         end
     end
 end

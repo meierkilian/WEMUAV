@@ -13,7 +13,7 @@
             <type>datconv3</type>
         </flightInput>
         <output>
-            <path>.\dev\outData</path>
+            <path>.\outData\prepro</path>
             <type>default</type>
             <field>lati</field>
             <field>long</field>
@@ -34,6 +34,10 @@
             <field>gyroX</field>
             <field>gyroY</field>
             <field>gyroZ</field>
+            <field>motRpm_RF</field>
+            <field>motRpm_LF</field>
+            <field>motRpm_LB</field>
+            <field>motRpm_RB</field>
             <field>windHDir</field>
             <field>windHMag</field>
             <field>windVert</field>
@@ -68,6 +72,36 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <unitConv>57.2958</unitConv>
+            <unitConv>57.2958</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
         </datconv4>
         <datconv3>
             <UTCdatetimeString>GPS_dateTimeStamp</UTCdatetimeString>
@@ -91,9 +125,39 @@
             <varOfInterest>IMU_ATTI_0__gyro_X</varOfInterest>
             <varOfInterest>IMU_ATTI_0__gyro_Y</varOfInterest>
             <varOfInterest>IMU_ATTI_0__gyro_Z</varOfInterest>
+            <varOfInterest>Motor_Speed_RFront</varOfInterest>
+            <varOfInterest>Motor_Speed_LFront</varOfInterest>
+            <varOfInterest>Motor_Speed_LBack</varOfInterest>
+            <varOfInterest>Motor_Speed_RBack</varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>0.0175</unitConv>
+            <unitConv>0.0175</unitConv>
+            <unitConv>0.0175</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
         </datconv3>
         <unisaws>
             <header>Timestamp</header>
@@ -130,13 +194,61 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
             <varOfInterest>WindDir10</varOfInterest>
             <varOfInterest>WindSpeed10m</varOfInterest>
             <varOfInterest></varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
         </unisaws>
     </prepro>
     <estimator>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\dev\outData\2020-07-18_FLY122_profile.mat</inputPath>
+        <cst>
+            <m>1.38</m>
+            <g>9.81</g>
+            <rho>1.225</rho>
+        </cst>
+        <inputPath>.\outData\prepro\2020-07-18_FLY122_profile.mat</inputPath>
         <method>garreausimple</method>
+        <outputPath>.\outData\estimator</outputPath>
+        <garreausimple>
+            <cst>
+                <m>1.38</m>
+                <g>9.81</g>
+                <rho>1.225</rho>
+                <qnasa>5.1667</qnasa>
+            </cst>
+            <dragDataPath>
+                <F>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Drag_Russel\F.txt</F>
+                <T>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Drag_Russel\T.txt</T>
+            </dragDataPath>
+        </garreausimple>
     </estimator>
 </struct>
