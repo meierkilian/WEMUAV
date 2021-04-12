@@ -11,17 +11,21 @@ classdef Estimator
         function doEstimate(obj)
             for i = 1:length(obj.para.inputPath)
                 for j = 1:length(obj.para.method)
-                    data = load(obj.para.inputPath(i));
+                    data = load(obj.para.inputPath(i)).totalTT;
 
                     if obj.para.method(j) == "garreausimple"
                         est = Est_GarreauSimple(obj.para.garreausimple);
                     else
-                        error("Unkown estimation method : " + obj.para.method);
+                        error("Unkown estimation method : " + obj.para.method(j));
                     end
                     
-                    tt = est.estimateWind(data.totalTT);
-                    
                     [~, flightName, ~] = fileparts(obj.para.inputPath(i));
+
+                    tt = est.estimateWind(data);
+                    tt = addprop(tt, {'FlightName', 'Method'}, {'table', 'table'});
+                    tt.Properties.CustomProperties.FlightName = flightName;
+                    tt.Properties.CustomProperties.Method = obj.para.method(j);
+                    
                     save(fullfile(obj.para.outputPath, flightName + "_" + obj.para.method(j) + ".mat"), 'tt', '-mat')
                 end
             end

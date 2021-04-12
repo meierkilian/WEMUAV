@@ -16,31 +16,41 @@ classdef Est_GarreauSimple
         end
         
         function [tilt, norm_p, p_dot_n] = computeTilt(~, data)
-            norm_p = sqrt((cos(data.roll).*sin(data.pitch)).^2 + (sin(data.roll).*cos(data.pitch)).^2);
-            p_dot_n = - cos(data.roll).*sin(data.pitch);
+            norm_p = sqrt((cos(data.roll).*sin(data.pitch)).^2 + (sin(data.roll).*cos(data.pitch)).^2 + (cos(data.roll).*cos(data.pitch)).^2);
+            p_dot_n = -cos(data.pitch).*cos(data.roll);
             tilt = acos(p_dot_n ./ norm_p);
         end
         
-        % calc_Dnasa(PHANTOM, tilt, PATH.DRAG_DATA)
-        function coeff = computeDragCoeff(obj, data, tilt)
-            % TODO : clean this function
-            coeff = old_calc_Dnasa(data, tilt, obj.para.dragDataPath);
-        end
+        % % calc_Dnasa(PHANTOM, tilt, PATH.DRAG_DATA)
+        % function coeff = computeDragCoeffNASA(obj, data, tilt)
+        %     % TODO : clean this function
+        %     coeff = old_calc_Dnasa(data, tilt, obj.para.dragDataPath);
+        % end
         
+        % function speed = computeWindSpeedNASA(obj, data)
+        %     [tilt, ~, ~] = obj.computeTilt(data);
+
+        %     D_simple = obj.para.cst.m * obj.para.cst.g * abs(tan(tilt));
+        %     Dnasa = obj.computeDragCoeffNASA(data, tilt);
+
+        %     windHMag_est = sqrt(2*D_simple ./ (obj.para.cst.rho*abs(Dnasa)/obj.para.cst.qnasa));
+
+        %     speed = timetable(windHMag_est, 'RowTimes', data.Time);
+        % end
+
         function speed = computeWindSpeed(obj, data)
             [tilt, ~, ~] = obj.computeTilt(data);
-
-            D_simple = obj.para.cst.m * obj.para.cst.g * abs(tan(tilt));
-            Dnasa = obj.computeDragCoeff(data, tilt);
-
-            windHMag_est = sqrt(2*D_simple ./ (obj.para.cst.rho*abs(Dnasa)/obj.para.cst.qnasa));
-
+            test = find(abs(tan(tilt)) > obj.para.reg.cut) ; 
+            windHMag_est = sqrt(obj.para.reg.alpha1 * abs(tan(tilt).^2)) ; %case alpha <= tan(gamma_crit)
+            windHMag_est(test) = sqrt(obj.para.reg.alpha2 * abs(tan(tilt(test))) + obj.para.reg.beta) ; %case alpha > tan(gamma_crit)
             speed = timetable(windHMag_est, 'RowTimes', data.Time);
         end
         
         function dir = computeWindDirection(obj, data)
             % Computing direction
-            [~, norm_p, p_dot_n] = obj.computeTilt(data);
+            % TODO : why is norm_p and p_dot_n not the same as in compute tile ?
+            norm_p = sqrt((cos(data.roll).*sin(data.pitch)).^2 + (sin(data.roll).*cos(data.pitch)).^2);
+            p_dot_n = - cos(data.roll).*sin(data.pitch);
             lambda = acos(p_dot_n ./ norm_p) * 180/pi;  % [°]
 
             % "Map" direction to [0;360]
@@ -56,7 +66,8 @@ classdef Est_GarreauSimple
         function tt = estimateWind(obj, data)
             speed = obj.computeWindSpeed(data);
             dir = obj.computeWindDirection(data);
-            tt = synchronize(speed, dir);
+            ref = timetable(data.windHMag, data.windHDir, 'RowTimes', data.Time, 'VariableNames', {'windHMag', 'windHDir'});
+            tt = synchronize(speed, dir, ref);
         end
     end
 end

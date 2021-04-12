@@ -6,7 +6,8 @@
 clear para
 
 para.prepro = ParaGen_PrePro();
-para.estimator = ParaGen_Estimator();    
+para.estimator = ParaGen_Estimator(); 
+para.eval = ParaGen_Eval();   
 
 % --------------------------------------------------------- %
 % Saving parameter

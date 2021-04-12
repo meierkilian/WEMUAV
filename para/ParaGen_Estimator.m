@@ -9,13 +9,13 @@ function para = ParaGen_Estimator()
     para.cst.g = 9.81;
 
     % air densisty [kg/m^3]
-    para.cst.rho = 1.225
+    para.cst.rho = 1.225;
 
 
     % Path to input data, should be a .mat file containing a timetable
     % formatted as outputted by the PrePro class.
     para.inputPath = {...
-        char(fullfile(".","outData","prepro","2020-07-18_FLY122_profile.mat")) ...
+        char(fullfile(".","outData","prepro","2020-06-03_FLY113.mat")) ...
         };
     
     % Method to be used for estimation. Each method of this list is used on
@@ -39,3 +39,10 @@ function para = ParaGen_Estimator()
     % Path to Russel (NASA) drag data
     para.garreausimple.dragDataPath.F = fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Drag_Russel","F.txt");
     para.garreausimple.dragDataPath.T = fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Drag_Russel","T.txt");
+
+    % garreausimple regression parameter 
+    para.garreausimple.reg.alpha1 = 1113.2;
+    para.garreausimple.reg.alpha2 = 501.2032;
+    para.garreausimple.reg.beta = -36.2747;
+    para.garreausimple.reg.cut = 0.091;
+

@@ -51,6 +51,8 @@ classdef PrePro_DatConV3
                 obj.para.timeStamp, ...
                 obj.para.varOfInterest(validFields) ...
                 ]);
+            ds.SelectedFormats{1} = '%s';
+            
             
             data = readall(ds);
             timespace = datetime(data.(obj.para.UTCdatetimeString),'InputFormat','yyyy-MM-dd''T''HH:mm:ss''Z');
