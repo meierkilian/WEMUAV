@@ -8,5 +8,6 @@ function main_Estimate(paraPath)
     PARA = readstruct(paraPath);
     eval = Eval(PARA.eval);
     
-    eval.plotValueOverFlight("2020-06-03_FLY113");
+    % TODO : remove this parameter dependence 
+    eval.plotValueOverFlight("FLY130");
 end

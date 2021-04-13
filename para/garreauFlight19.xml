@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struct>
     <prepro>
-        <startTime>31-Mar-2021 15:22:00</startTime>
-        <endTime>31-Mar-2021 15:24:00</endTime>
-        <timeRes>0.1</timeRes>
+        <startTime>03-Jun-2020 16:00:00</startTime>
+        <endTime>03-Jun-2020 16:10:00</endTime>
+        <timeRes>0.05</timeRes>
         <refInput>
-            <path>S:\ProjectMaster\2021_KilianMeier\Vufflens20213103\WeatherStation\data_127.txt</path>
-            <type>topoaws</type>
+            <path>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Anemo\2020.06.03 23.59 Adventdalen_Sec.dat</path>
+            <type>unisaws</type>
         </refInput>
         <flightInput>
-            <path>S:\ProjectMaster\2021_KilianMeier\Vufflens20213103\Mission6 - weatherStation\FLY130.csv</path>
-            <type>datconv4</type>
+            <path>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Phantom\2020-06-03_FLY113.csv</path>
+            <type>datconv3</type>
         </flightInput>
         <output>
             <path>.\outData\prepro</path>
@@ -228,79 +228,6 @@
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
         </unisaws>
-        <topoaws>
-            <header>TOW</header>
-            <header>AirTemp1</header>
-            <header>AirHumidity</header>
-            <header>AtmPressure</header>
-            <header>WindSpeed</header>
-            <header>WindDir</header>
-            <header>UnkownVar1</header>
-            <header>Lati</header>
-            <header>Long</header>
-            <header>Alti</header>
-            <header>GPSNbrSat</header>
-            <header>GPSLockFlag</header>
-            <header>UnkownVar2</header>
-            <header>UnkownVar3</header>
-            <header>UnkownVar4</header>
-            <header>UnkownVar5</header>
-            <tow>TOW</tow>
-            <gpsLock>GPSLockFlag</gpsLock>
-            <gpsWeekStart>28-Mar-2021</gpsWeekStart>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest>WindDir</varOfInterest>
-            <varOfInterest>WindSpeed</varOfInterest>
-            <varOfInterest></varOfInterest>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-        </topoaws>
     </prepro>
     <estimator>
         <cst>
@@ -308,7 +235,7 @@
             <g>9.81</g>
             <rho>1.225</rho>
         </cst>
-        <inputPath>.\outData\prepro\FLY130.mat</inputPath>
+        <inputPath>.\outData\prepro\2020-06-03_FLY113.mat</inputPath>
         <method>garreausimple</method>
         <outputPath>.\outData\estimator</outputPath>
         <garreausimple>
@@ -331,6 +258,6 @@
         </garreausimple>
     </estimator>
     <eval>
-        <inputPath>.\outData\estimator\FLY130_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\2020-06-03_FLY113_garreausimple.mat</inputPath>
     </eval>
 </struct>

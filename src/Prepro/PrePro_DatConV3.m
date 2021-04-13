@@ -51,7 +51,7 @@ classdef PrePro_DatConV3
                 obj.para.timeStamp, ...
                 obj.para.varOfInterest(validFields) ...
                 ]);
-            ds.SelectedFormats{1} = '%s';
+            ds.SelectedFormats{1} = '%s'; % Enforces to parse GPS time string as a string (useful when empty data the start)
             
             
             data = readall(ds);

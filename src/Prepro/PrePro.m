@@ -32,6 +32,8 @@ classdef PrePro
                 pp = PrePro_MoTUS(obj.para.motus);
             elseif type == "unisaws"
                 pp = PrePro_UNISAWS(obj.para.unisaws);
+            elseif type == "topoaws"
+                pp = PrePro_TOPOAWS(obj.para.topoaws);
             else
                 error("Unknown data type : " + type);
             end
@@ -70,6 +72,23 @@ classdef PrePro
             totalTT = synchronize(flightTT, refTT, timeSpace, 'linear');            
         end
         
+        % Adds roll pitch and yaw column to timetable base on quaternion column
+        % TODO : complete comments
+        function tt = addrpy(~, tt)
+            if any(ismember("roll", tt.Properties.VariableNames))
+                return
+            end
+
+            
+            eul = euler(quaternion(tt.q1, tt.q2, tt.q3, tt.q4), 'XYZ', 'point');
+            tt.roll = eul(:,1);
+            tt.pitch = eul(:,2);
+            tt.yaw = eul(:,3);
+
+%             tt.roll = atan2(2*(tt.q1.*tt.q2 + tt.q3.*tt.q4), 1 - 2*(tt.q2.^2 + tt.q3.^2));
+%             tt.pitch = asin(2*(tt.q1.*tt.q3 - tt.q4.*tt.q2));
+%             tt.yaw = atan2(2*(tt.q1.*tt.q4 + tt.q2.*tt.q3), 1 - 2*(tt.q3.^2 + tt.q4.^2));
+        end
         
         % Perform preprocessing. Load, synchronise and store reference and
         % flight data.
@@ -85,6 +104,8 @@ classdef PrePro
                 flightTT = obj.getTimetable(obj.para.flightInput.path(i), obj.para.flightInput.type);
                 refTT = obj.getTimetable(obj.para.refInput.path(i), obj.para.refInput.type);
                 totalTT = obj.synch(flightTT, refTT);
+
+                totalTT = obj.addrpy(totalTT);
             
                 if obj.para.output.type == "default"
                     [~, outName, ~] = fileparts(obj.para.flightInput.path(i));
