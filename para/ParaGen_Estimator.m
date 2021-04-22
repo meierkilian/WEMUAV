@@ -3,7 +3,7 @@ function para = ParaGen_Estimator()
 
     % DEFINING CONSTANTS
     % drone mass [kg]
-    para.cst.m = 1.38;
+    para.cst.m = 1.391;
 
     % gravitational acceleration [m/s^2]
     para.cst.g = 9.81;
@@ -15,7 +15,7 @@ function para = ParaGen_Estimator()
     % Path to input data, should be a .mat file containing a timetable
     % formatted as outputted by the PrePro class.
     para.inputPath = {...
-        char(fullfile(".","outData","prepro","FLY130.mat")) ...
+        char(fullfile(".","outData","prepro","FLY139.mat")) ...
         };
     
     % Method to be used for estimation. Each method of this list is used on
@@ -45,4 +45,9 @@ function para = ParaGen_Estimator()
     para.garreausimple.reg.alpha2 = 501.2032;
     para.garreausimple.reg.beta = -36.2747;
     para.garreausimple.reg.cut = 0.091;
+
+
+    % Including constants in the directdynamicmodel parameters
+    para.directdynamicmodel.cst = para.cst;
+
 

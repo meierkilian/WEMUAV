@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struct>
     <prepro>
-        <startTime>31-Mar-2021 15:22:00</startTime>
-        <endTime>31-Mar-2021 15:24:00</endTime>
+        <startTime>20-Apr-2021 09:31:00</startTime>
+        <endTime>20-Apr-2021 09:36:00</endTime>
         <timeRes>0.1</timeRes>
         <refInput>
-            <path>S:\ProjectMaster\2021_KilianMeier\Vufflens20213103\WeatherStation\data_127.txt</path>
-            <type>topoaws</type>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS\200421anem6_20Hz.txt</path>
+            <type>motus</type>
         </refInput>
         <flightInput>
-            <path>S:\ProjectMaster\2021_KilianMeier\Vufflens20213103\Mission6 - weatherStation\FLY130.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY139.csv</path>
             <type>datconv4</type>
         </flightInput>
         <output>
@@ -82,9 +82,9 @@
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
+            <unitConv>9.81</unitConv>
+            <unitConv>9.81</unitConv>
+            <unitConv>9.81</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -159,6 +159,70 @@
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
         </datconv3>
+        <motus>
+            <header>ID</header>
+            <header>HorizDir</header>
+            <header>HorizMag</header>
+            <header>VertWind</header>
+            <header>Unit</header>
+            <header>SoundSpeed</header>
+            <header>Temp</header>
+            <header>Date</header>
+            <header>Port</header>
+            <UTCdatetimeString>Date</UTCdatetimeString>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>HorizDir</varOfInterest>
+            <varOfInterest>HorizMag</varOfInterest>
+            <varOfInterest>VertWind</varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+        </motus>
         <unisaws>
             <header>Timestamp</header>
             <header>RecordNbr</header>
@@ -235,16 +299,16 @@
             <header>AtmPressure</header>
             <header>WindSpeed</header>
             <header>WindDir</header>
-            <header>UnkownVar1</header>
+            <header>GPSTime_Legacy</header>
             <header>Lati</header>
             <header>Long</header>
             <header>Alti</header>
             <header>GPSNbrSat</header>
             <header>GPSLockFlag</header>
-            <header>UnkownVar2</header>
-            <header>UnkownVar3</header>
-            <header>UnkownVar4</header>
-            <header>UnkownVar5</header>
+            <header>TempCPU</header>
+            <header>TempSens</header>
+            <header>BattCharge</header>
+            <header>FanOn</header>
             <tow>TOW</tow>
             <gpsLock>GPSLockFlag</gpsLock>
             <gpsWeekStart>28-Mar-2021</gpsWeekStart>
@@ -304,16 +368,16 @@
     </prepro>
     <estimator>
         <cst>
-            <m>1.38</m>
+            <m>1.391</m>
             <g>9.81</g>
             <rho>1.225</rho>
         </cst>
-        <inputPath>.\outData\prepro\FLY130.mat</inputPath>
+        <inputPath>.\outData\prepro\FLY139.mat</inputPath>
         <method>garreausimple</method>
         <outputPath>.\outData\estimator</outputPath>
         <garreausimple>
             <cst>
-                <m>1.38</m>
+                <m>1.391</m>
                 <g>9.81</g>
                 <rho>1.225</rho>
                 <qnasa>5.1667</qnasa>
@@ -329,8 +393,15 @@
                 <cut>0.091</cut>
             </reg>
         </garreausimple>
+        <directdynamicmodel>
+            <cst>
+                <m>1.391</m>
+                <g>9.81</g>
+                <rho>1.225</rho>
+            </cst>
+        </directdynamicmodel>
     </estimator>
     <eval>
-        <inputPath>.\outData\estimator\FLY130_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139_garreausimple.mat</inputPath>
     </eval>
 </struct>

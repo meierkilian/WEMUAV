@@ -15,6 +15,8 @@ classdef Estimator
 
                     if obj.para.method(j) == "garreausimple"
                         est = Est_GarreauSimple(obj.para.garreausimple);
+                    elseif obj.para.method(j) == "directdynamicmodel"
+                        est = Est_DirectDynamicModel(obj.para.directdynamicmodel);
                     else
                         error("Unkown estimation method : " + obj.para.method(j));
                     end
