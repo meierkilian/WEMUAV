@@ -66,8 +66,7 @@ classdef Est_GarreauSimple
         function tt = estimateWind(obj, data)
             speed = obj.computeWindSpeed(data);
             dir = obj.computeWindDirection(data);
-            ref = timetable(data.windHMag, data.windHDir, 'RowTimes', data.Time, 'VariableNames', {'windHMag', 'windHDir'});
-            tt = synchronize(speed, dir, ref);
+            tt = synchronize(speed, dir, data);
         end
     end
 end

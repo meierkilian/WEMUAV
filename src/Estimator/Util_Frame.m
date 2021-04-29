@@ -18,11 +18,10 @@ classdef Util_Frame
 		% 		q3 : column vector of length M, with third body quaternion component
 		% 		q4 : column vector of length M, with fourth body quaternion component
 		% OUTPUT :
-		%		out : rotated vectors, has same size as in
+		%		out : rotated vectors, has same size as in % TODO : make it a table ?
 		function out = XYZ2NED(in, q1, q2, q3, q4)
 			quat = quaternion(q1, q2, q3, q4);
 			out = rotatepoint(quat, in);
-			out(:,3) = out(:,3) + 9.81;
 		end
 
 
@@ -51,10 +50,63 @@ classdef Util_Frame
 		% OUTPUT :
 		%		windHDir : column vector of length M, meteorological wind direction (azimuth of where the wind comes from)
 		% 		windHMag : column vector of length M, wind speed
-		function [windHDir, windHMag] = getHWind(ws)
-			windHDir = atan2(-ws(:,1), -ws(:,2));
+		% 		windVert : column vector of length M, vertical wind speed
+		function [windHDir, windHMag, windVert] = getHWind(ws)
+			windHDir = atan2d(ws(:,1), ws(:,2));
+			windHDir(windHDir < 0) = windHDir(windHDir < 0) + 360;
 			windHMag = vecnorm(-ws(:,1:2), 2, 2);
+			windVert = -ws(:,3);
 		end
+
+
+		% Convert 3D vector from NED- to TxTyTz-frame (tilt frame)
+		% Inspired from Garreau
+		% TODO : use quaternion instead ?
+		% TODO : commenting
+		function out = NED2Tilt(in, roll, pitch, yaw)
+            % Computing direction
+            norm_p = sqrt((cos(roll).*sin(pitch)).^2 + (sin(roll).*cos(pitch)).^2);
+            p_dot_n = - cos(roll).*sin(pitch);
+            lambda = acos(p_dot_n ./ norm_p);
+
+            % "Map" direction to [0;360]
+            test = sin(roll).*cos(pitch) >= 0 ;  
+
+            rot = zeros(length(roll),1);
+            rot(~test) = mod(2*pi - lambda(~test) + yaw(~test),2*pi);
+            rot(test) = mod(lambda(test) + yaw(test),2*pi);
+
+            q = quaternion([zeros(size(rot,1),2), rot], 'euler', 'XYZ', 'frame');
+            out = rotatepoint(q, in);
+        end
+
+        % Convert 3D vector from TxTyTz to NED-frame 
+		% Inspired from Garreau
+		% TODO : use quaternion instead ?
+		% TODO : commenting
+		function out = Tilt2NED(in, roll, pitch, yaw)
+            % Computing direction
+            norm_p = sqrt((cos(roll).*sin(pitch)).^2 + (sin(roll).*cos(pitch)).^2);
+            p_dot_n = - cos(roll).*sin(pitch);
+            lambda = acos(p_dot_n ./ norm_p);
+
+            % "Map" direction to [0;360]
+            test = sin(roll).*cos(pitch) >= 0 ;  
+
+            rot = zeros(length(roll),1);
+            rot(~test) = mod(2*pi - lambda(~test) + yaw(~test),2*pi);
+            rot(test) = mod(lambda(test) + yaw(test),2*pi);
+
+            q = quaternion([zeros(size(rot,1),2), -rot], 'euler', 'XYZ', 'frame');
+            out = rotatepoint(q, in);
+        end
+
+        % TODO : comment 
+        function alpha = computeTilt(roll, pitch)
+            norm_p = sqrt((cos(roll).*sin(pitch)).^2 + (sin(roll).*cos(pitch)).^2 + (cos(roll).*cos(pitch)).^2);
+            p_dot_n = -cos(pitch).*cos(roll);
+            alpha = acos(p_dot_n ./ norm_p);
+        end
 	end
 end
 

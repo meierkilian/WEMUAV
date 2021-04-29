@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struct>
     <prepro>
-        <startTime>20-Apr-2021 09:31:00</startTime>
-        <endTime>20-Apr-2021 09:36:00</endTime>
+        <startTime>20-Apr-2021 09:30:00</startTime>
+        <endTime>20-Apr-2021 09:34:00</endTime>
         <timeRes>0.1</timeRes>
         <refInput>
-            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS\200421anem6_20Hz.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
             <type>motus</type>
         </refInput>
         <flightInput>
@@ -18,9 +18,9 @@
             <field>lati</field>
             <field>long</field>
             <field>alti</field>
-            <field>vx</field>
-            <field>vy</field>
-            <field>vz</field>
+            <field>vn</field>
+            <field>ve</field>
+            <field>vd</field>
             <field>ax</field>
             <field>ay</field>
             <field>az</field>
@@ -38,9 +38,28 @@
             <field>motRpm_LF</field>
             <field>motRpm_LB</field>
             <field>motRpm_RB</field>
-            <field>windHDir</field>
-            <field>windHMag</field>
-            <field>windVert</field>
+            <field>windHDir_0150cm</field>
+            <field>windHMag_0150cm</field>
+            <field>windVert_0150cm</field>
+            <field>windHDir_1140cm</field>
+            <field>windHMag_1140cm</field>
+            <field>windVert_1140cm</field>
+            <field>windHDir_1470cm</field>
+            <field>windHMag_1470cm</field>
+            <field>windVert_1470cm</field>
+            <field>windHDir_1800cm</field>
+            <field>windHMag_1800cm</field>
+            <field>windVert_1800cm</field>
+            <field>windHDir_2130cm</field>
+            <field>windHMag_2130cm</field>
+            <field>windVert_2130cm</field>
+            <field>windHDir_other</field>
+            <field>windHMag_other</field>
+            <field>windVert_other</field>
+            <field>tempAC</field>
+            <field>tempRef</field>
+            <field>pressAC</field>
+            <field>pressRef</field>
         </output>
         <datconv4>
             <UTCyear>gps_utc_data_gps_year_D</UTCyear>
@@ -50,25 +69,32 @@
             <UTCminute>gps_utc_data_gps_minute_D</UTCminute>
             <UTCsec>gps_utc_data_gps_sec_D</UTCsec>
             <timeStamp>Clock_offsetTime</timeStamp>
-            <varOfInterest>IMU_ATTI_0_lati0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_long0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_alti0_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__Latitude</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__Longitude</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__alti_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__velN</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__velE</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__velD</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__accelX</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__accelY</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__accelZ</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__roll_C</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__pitch_C</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__yaw_C</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__quatW_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__quatX_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__quatY_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__quatZ_D</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__gyroX</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__gyroY</varOfInterest>
+            <varOfInterest>IMU_ATTI_0__gyroZ</varOfInterest>
+            <varOfInterest>Motor_Speed_RFront</varOfInterest>
+            <varOfInterest>Motor_Speed_LFront</varOfInterest>
+            <varOfInterest>Motor_Speed_LBack</varOfInterest>
+            <varOfInterest>Motor_Speed_RBack</varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
-            <varOfInterest>IMU_ATTI_0_ax0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_ay0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_az0_D</varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
-            <varOfInterest>IMU_ATTI_0_qw0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_qx0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_qy0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_qz0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_wx0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_wy0_D</varOfInterest>
-            <varOfInterest>IMU_ATTI_0_wz0_D</varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
@@ -76,8 +102,20 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
-            <unitConv>57.2958</unitConv>
-            <unitConv>57.2958</unitConv>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>AirSpeed_windFromDir</varOfInterest>
+            <varOfInterest>AirSpeed_windSpeed</varOfInterest>
+            <varOfInterest>AirSpeed_comp_alti_D</varOfInterest>
+            <varOfInterest>bat_blackbox_data_temp_D</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -85,6 +123,25 @@
             <unitConv>9.81</unitConv>
             <unitConv>9.81</unitConv>
             <unitConv>9.81</unitConv>
+            <unitConv>0.017453</unitConv>
+            <unitConv>0.017453</unitConv>
+            <unitConv>0.017453</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -132,6 +189,25 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -144,6 +220,25 @@
             <unitConv>0.0175</unitConv>
             <unitConv>0.0175</unitConv>
             <unitConv>0.0175</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -160,16 +255,28 @@
             <unitConv>1</unitConv>
         </datconv3>
         <motus>
-            <header>ID</header>
-            <header>HorizDir</header>
-            <header>HorizMag</header>
-            <header>VertWind</header>
-            <header>Unit</header>
-            <header>SoundSpeed</header>
-            <header>Temp</header>
-            <header>Date</header>
-            <header>Port</header>
+            <singleSensHeader>ID</singleSensHeader>
+            <singleSensHeader>windHDir</singleSensHeader>
+            <singleSensHeader>windHMag</singleSensHeader>
+            <singleSensHeader>windVert</singleSensHeader>
+            <singleSensHeader>unit</singleSensHeader>
+            <singleSensHeader>soundSpeed</singleSensHeader>
+            <singleSensHeader>temp</singleSensHeader>
+            <singleSensHeader>Date</singleSensHeader>
+            <singleSensHeader>port</singleSensHeader>
             <UTCdatetimeString>Date</UTCdatetimeString>
+            <ports>COM11</ports>
+            <ports>COM14</ports>
+            <ports>COM15</ports>
+            <ports>COM16</ports>
+            <ports>COM17</ports>
+            <anemAlti>1.5</anemAlti>
+            <anemAlti>11.4</anemAlti>
+            <anemAlti>14.7</anemAlti>
+            <anemAlti>18</anemAlti>
+            <anemAlti>21.3</anemAlti>
+            <dataFileFormatExtension>.txt</dataFileFormatExtension>
+            <local2UTC>-2</local2UTC>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
@@ -193,9 +300,47 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
-            <varOfInterest>HorizDir</varOfInterest>
-            <varOfInterest>HorizMag</varOfInterest>
-            <varOfInterest>VertWind</varOfInterest>
+            <varOfInterest>windHDir_0150cm</varOfInterest>
+            <varOfInterest>windHMag_0150cm</varOfInterest>
+            <varOfInterest>windVert_0150cm</varOfInterest>
+            <varOfInterest>windHDir_1140cm</varOfInterest>
+            <varOfInterest>windHMag_1140cm</varOfInterest>
+            <varOfInterest>windVert_1140cm</varOfInterest>
+            <varOfInterest>windHDir_1470cm</varOfInterest>
+            <varOfInterest>windHMag_1470cm</varOfInterest>
+            <varOfInterest>windVert_1470cm</varOfInterest>
+            <varOfInterest>windHDir_1800cm</varOfInterest>
+            <varOfInterest>windHMag_1800cm</varOfInterest>
+            <varOfInterest>windVert_1800cm</varOfInterest>
+            <varOfInterest>windHDir_2130cm</varOfInterest>
+            <varOfInterest>windHMag_2130cm</varOfInterest>
+            <varOfInterest>windVert_2130cm</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -265,6 +410,44 @@
             <varOfInterest>WindDir2m</varOfInterest>
             <varOfInterest>WindSpeed2m</varOfInterest>
             <varOfInterest></varOfInterest>
+            <varOfInterest>WindDir10m</varOfInterest>
+            <varOfInterest>WindSpeed10m</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>AirTemp1</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>AtmPressure</varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -338,6 +521,44 @@
             <varOfInterest>WindDir</varOfInterest>
             <varOfInterest>WindSpeed</varOfInterest>
             <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>AirTemp1</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>AtmPressure</varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -372,7 +593,9 @@
             <g>9.81</g>
             <rho>1.225</rho>
         </cst>
-        <inputPath>.\outData\prepro\FLY139.mat</inputPath>
+        <inputPath>.\outData\prepro\FLY139__20210420_093900__20210420_094100.mat</inputPath>
+        <inputPath>.\outData\prepro\FLY139__20210420_093000__20210420_093400.mat</inputPath>
+        <method>directdynamicmodel</method>
         <method>garreausimple</method>
         <outputPath>.\outData\estimator</outputPath>
         <garreausimple>
@@ -402,6 +625,9 @@
         </directdynamicmodel>
     </estimator>
     <eval>
-        <inputPath>.\outData\estimator\FLY139_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093900__20210420_094100_directdynamicmodel.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093900__20210420_094100_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093000__20210420_093400_directdynamicmodel.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093000__20210420_093400_garreausimple.mat</inputPath>
     </eval>
 </struct>

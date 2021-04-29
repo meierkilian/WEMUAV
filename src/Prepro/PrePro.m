@@ -69,7 +69,7 @@ classdef PrePro
             end
             
             timeSpace = start:seconds(obj.para.timeRes):stop;
-            totalTT = synchronize(flightTT, refTT, timeSpace, 'linear');            
+            totalTT = synchronize(flightTT, refTT, timeSpace, 'linear', 'EndValues', NaN);            
         end
         
         % Adds roll pitch and yaw column to timetable base on quaternion column
@@ -109,6 +109,7 @@ classdef PrePro
             
                 if obj.para.output.type == "default"
                     [~, outName, ~] = fileparts(obj.para.flightInput.path(i));
+                    outName = outName + "__" + datestr(totalTT.Time(1), 'yyyymmdd_HHMMSS') + "__" + datestr(totalTT.Time(end), 'yyyymmdd_HHMMSS');
                     save(fullfile(obj.para.output.path, outName + ".mat"), 'totalTT', '-mat')
                 end
             end                
