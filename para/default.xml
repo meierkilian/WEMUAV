@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struct>
     <prepro>
-        <startTime>20-Apr-2021 09:30:00</startTime>
-        <endTime>20-Apr-2021 09:34:00</endTime>
+        <startTime>19-Apr-2021 09:32:00</startTime>
+        <startTime>19-Apr-2021 09:51:52</startTime>
+        <startTime>19-Apr-2021 09:57:16</startTime>
+        <endTime>19-Apr-2021 09:42:00</endTime>
+        <endTime>19-Apr-2021 09:53:26</endTime>
+        <endTime>19-Apr-2021 09:58:06</endTime>
         <timeRes>0.1</timeRes>
         <refInput>
-            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\2021-04-19_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\2021-04-19_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\2021-04-19_Mesures_MoTUS</path>
             <type>motus</type>
         </refInput>
         <flightInput>
-            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY139.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\FLIGHT\FLY134.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\FLIGHT\FLY135.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\FLIGHT\FLY135.csv</path>
             <type>datconv4</type>
         </flightInput>
         <output>
@@ -593,7 +601,7 @@
             <g>9.81</g>
             <rho>1.225</rho>
         </cst>
-        <inputPath>.\outData\prepro\FLY139__20210420_093900__20210420_094100.mat</inputPath>
+        <inputPath>.\outData\prepro\FLY139__20210420_093920__20210420_094000.mat</inputPath>
         <inputPath>.\outData\prepro\FLY139__20210420_093000__20210420_093400.mat</inputPath>
         <method>directdynamicmodel</method>
         <method>garreausimple</method>
@@ -625,8 +633,8 @@
         </directdynamicmodel>
     </estimator>
     <eval>
-        <inputPath>.\outData\estimator\FLY139__20210420_093900__20210420_094100_directdynamicmodel.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_093900__20210420_094100_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093920__20210420_094000_directdynamicmodel.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093920__20210420_094000_garreausimple.mat</inputPath>
         <inputPath>.\outData\estimator\FLY139__20210420_093000__20210420_093400_directdynamicmodel.mat</inputPath>
         <inputPath>.\outData\estimator\FLY139__20210420_093000__20210420_093400_garreausimple.mat</inputPath>
     </eval>

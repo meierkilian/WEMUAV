@@ -51,21 +51,17 @@ classdef PrePro
         %           no reference data is available.
         % OUTPUT :
         %   totalTT : resulting total 
-        function totalTT = synch(obj, flightTT, refTT)
-            if obj.para.startTime == "" % Check if startTime was not given, if so taking the earliest possible start time.
+        function totalTT = synch(obj, flightTT, refTT, start, stop)
+            if start == "" || isnat(start) % Check if startTime was not given, if so taking the earliest possible start time.
                 start = max(flightTT.Properties.StartTime, refTT.Properties.StartTime);
-            else
-                start = obj.para.startTime;
             end
             
-            if obj.para.endTime == "" % Check if endtime was not given, if so taking the latest possible end time.
+            if stop == ""  || isnat(stop) % Check if endtime was not given, if so taking the latest possible end time.
                 if isempty(refTT) % Check for empty reference because of min/max return empty arrays when given empty arrays.
                     stop = max(flightTT.Properties.RowTimes);
                 else
                     stop = min(max(flightTT.Properties.RowTimes), max(refTT.Properties.RowTimes));
                 end
-            else
-                stop = obj.para.endTime;
             end
             
             timeSpace = start:seconds(obj.para.timeRes):stop;
@@ -103,7 +99,7 @@ classdef PrePro
                 
                 flightTT = obj.getTimetable(obj.para.flightInput.path(i), obj.para.flightInput.type);
                 refTT = obj.getTimetable(obj.para.refInput.path(i), obj.para.refInput.type);
-                totalTT = obj.synch(flightTT, refTT);
+                totalTT = obj.synch(flightTT, refTT, obj.para.startTime(i), obj.para.endTime(i));
 
                 totalTT = obj.addrpy(totalTT);
             

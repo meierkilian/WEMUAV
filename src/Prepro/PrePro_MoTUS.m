@@ -77,10 +77,16 @@ classdef PrePro_MoTUS
                 ttTmp.Properties.VariableNames = values(headerMap, ttTmp.Properties.VariableNames);
                 
                 % Perform unit correction
-                ttTmp.Variables = ttTmp.Variables * diag(obj.para.unitConv(validFields));
+                ttTmp.Variables = ttTmp.Variables * diag(obj.para.unitConv(validFields));                
+                % Removes invalid lines, caused by motus line format
+                % changing when windHMag < 0.05 
+                [ttTmp, indicator] = rmmissing(ttTmp);
+                nbrInvalidLine = sum(indicator);
+                if nbrInvalidLine > 0
+                    warning("[PrePro_MoTUS] Removed invalid data, nbr line removed : " + num2str(nbrInvalidLine))
+                end                   
                 
                 tt = synchronize(tt, ttTmp);
-                
             end
         end           
     end
