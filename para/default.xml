@@ -1,25 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struct>
     <prepro>
-        <startTime>19-Apr-2021 09:32:00</startTime>
-        <startTime>19-Apr-2021 09:51:52</startTime>
-        <startTime>19-Apr-2021 09:57:16</startTime>
-        <endTime>19-Apr-2021 09:42:00</endTime>
-        <endTime>19-Apr-2021 09:53:26</endTime>
-        <endTime>19-Apr-2021 09:58:06</endTime>
+        <startTime>19-Apr-2021 09:31:25</startTime>
+        <startTime>19-Apr-2021 09:46:53</startTime>
+        <startTime>19-Apr-2021 09:56:43</startTime>
+        <startTime>20-Apr-2021 09:27:00</startTime>
+        <startTime>20-Apr-2021 09:29:41</startTime>
+        <startTime>20-Apr-2021 09:38:45</startTime>
+        <startTime>20-Apr-2021 09:42:17</startTime>
+        <startTime>20-Apr-2021 09:44:22</startTime>
+        <startTime>20-Apr-2021 09:46:40</startTime>
+        <startTime>20-Apr-2021 09:49:11</startTime>
+        <endTime>19-Apr-2021 09:42:10</endTime>
+        <endTime>19-Apr-2021 09:48:51</endTime>
+        <endTime>19-Apr-2021 09:57:56</endTime>
+        <endTime>20-Apr-2021 09:27:50</endTime>
+        <endTime>20-Apr-2021 09:37:11</endTime>
+        <endTime>20-Apr-2021 09:39:18</endTime>
+        <endTime>20-Apr-2021 09:43:02</endTime>
+        <endTime>20-Apr-2021 09:45:08</endTime>
+        <endTime>20-Apr-2021 09:47:34</endTime>
+        <endTime>20-Apr-2021 09:51:03</endTime>
         <timeRes>0.1</timeRes>
         <refInput>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\2021-04-19_Mesures_MoTUS</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\2021-04-19_Mesures_MoTUS</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\2021-04-19_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
             <type>motus</type>
         </refInput>
         <flightInput>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\FLIGHT\FLY134.csv</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\FLIGHT\FLY135.csv</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\FLIGHT\FLY135.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY139.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY139.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY139.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY140.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY140.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY140.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY140.csv</path>
             <type>datconv4</type>
         </flightInput>
+        <refMeteoInput>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
+            <type>topoaws</type>
+        </refMeteoInput>
         <output>
             <path>.\outData\prepro</path>
             <type>default</type>
@@ -68,6 +109,8 @@
             <field>tempRef</field>
             <field>pressAC</field>
             <field>pressRef</field>
+            <field>humidAC</field>
+            <field>humidRef</field>
         </output>
         <datconv4>
             <UTCyear>gps_utc_data_gps_year_D</UTCyear>
@@ -76,7 +119,8 @@
             <UTChour>gps_utc_data_gps_hour_D</UTChour>
             <UTCminute>gps_utc_data_gps_minute_D</UTCminute>
             <UTCsec>gps_utc_data_gps_sec_D</UTCsec>
-            <timeStamp>Clock_offsetTime</timeStamp>
+            <timeStamp>Clock_Tick_</timeStamp>
+            <clkFreq>4687453.4082</clkFreq>
             <varOfInterest>IMU_ATTI_0__Latitude</varOfInterest>
             <varOfInterest>IMU_ATTI_0__Longitude</varOfInterest>
             <varOfInterest>IMU_ATTI_0__alti_D</varOfInterest>
@@ -122,6 +166,8 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -138,7 +184,9 @@
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
-            <unitConv>1</unitConv>
+            <unitConv>0.017453</unitConv>
+            <unitConv>0.017453</unitConv>
+            <unitConv>0.017453</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -216,6 +264,8 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -228,6 +278,8 @@
             <unitConv>0.0175</unitConv>
             <unitConv>0.0175</unitConv>
             <unitConv>0.0175</unitConv>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -330,6 +382,10 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -437,6 +493,10 @@
             <varOfInterest>AirTemp1</varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest>AtmPressure</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>AirHumidity1</varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -502,7 +562,7 @@
             <header>FanOn</header>
             <tow>TOW</tow>
             <gpsLock>GPSLockFlag</gpsLock>
-            <gpsWeekStart>28-Mar-2021</gpsWeekStart>
+            <gpsWeekStart></gpsWeekStart>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
@@ -548,6 +608,10 @@
             <varOfInterest>AirTemp1</varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest>AtmPressure</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest>AirHumidity</varOfInterest>
+            <unitConv>1</unitConv>
+            <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
             <unitConv>1</unitConv>
@@ -601,8 +665,10 @@
             <g>9.81</g>
             <rho>1.225</rho>
         </cst>
-        <inputPath>.\outData\prepro\FLY139__20210420_093920__20210420_094000.mat</inputPath>
-        <inputPath>.\outData\prepro\FLY139__20210420_093000__20210420_093400.mat</inputPath>
+        <inputPath>.\outData\prepro\FLY139__20210420_093845__20210420_093918.mat</inputPath>
+        <inputPath>.\outData\prepro\FLY139__20210420_092941__20210420_093711.mat</inputPath>
+        <inputPath>.\outData\prepro\SIMULATED.mat</inputPath>
+        <method>ekf</method>
         <method>directdynamicmodel</method>
         <method>garreausimple</method>
         <outputPath>.\outData\estimator</outputPath>
@@ -631,11 +697,45 @@
                 <rho>1.225</rho>
             </cst>
         </directdynamicmodel>
+        <ekf>
+            <cst>
+                <m>1.391</m>
+                <g>9.81</g>
+                <rho>1.225</rho>
+            </cst>
+            <init>
+                <augState>
+                    <value>
+                        <b>1.1015e-05</b>
+                        <Cxx>0.455</Cxx>
+                        <Cyy>0.455</Cyy>
+                        <Czz>0.4427</Czz>
+                    </value>
+                    <std>
+                        <b>1e-07</b>
+                        <Cxx>0.01</Cxx>
+                        <Cyy>0.01</Cyy>
+                        <Czz>0.1</Czz>
+                    </std>
+                </augState>
+                <ws>
+                    <std>10</std>
+                </ws>
+                <ac>
+                    <std>10</std>
+                </ac>
+            </init>
+        </ekf>
     </estimator>
     <eval>
-        <inputPath>.\outData\estimator\FLY139__20210420_093920__20210420_094000_directdynamicmodel.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_093920__20210420_094000_garreausimple.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_093000__20210420_093400_directdynamicmodel.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_093000__20210420_093400_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093845__20210420_093918_directdynamicmodel.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093845__20210420_093918_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_093845__20210420_093918_ekf.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_092941__20210420_093711_directdynamicmodel.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_092941__20210420_093711_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\FLY139__20210420_092941__20210420_093711_ekf.mat</inputPath>
+        <inputPath>.\outData\estimator\SIMULATED_directdynamicmodel.mat</inputPath>
+        <inputPath>.\outData\estimator\SIMULATED_garreausimple.mat</inputPath>
+        <inputPath>.\outData\estimator\SIMULATED_ekf.mat</inputPath>
     </eval>
 </struct>

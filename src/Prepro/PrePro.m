@@ -51,21 +51,21 @@ classdef PrePro
         %           no reference data is available.
         % OUTPUT :
         %   totalTT : resulting total 
-        function totalTT = synch(obj, flightTT, refTT, start, stop)
+        function totalTT = synch(obj, flightTT, refTT, refMeteoTT, start, stop)
             if start == "" || isnat(start) % Check if startTime was not given, if so taking the earliest possible start time.
-                start = max(flightTT.Properties.StartTime, refTT.Properties.StartTime);
+                start = max([flightTT.Properties.StartTime, refTT.Properties.StartTime, refMeteoTT.Properties.StartTime],[],'omitnat');
             end
             
             if stop == ""  || isnat(stop) % Check if endtime was not given, if so taking the latest possible end time.
                 if isempty(refTT) % Check for empty reference because of min/max return empty arrays when given empty arrays.
                     stop = max(flightTT.Properties.RowTimes);
                 else
-                    stop = min(max(flightTT.Properties.RowTimes), max(refTT.Properties.RowTimes));
+                    stop = min(max(flightTT.Properties.RowTimes), max(refTT.Properties.RowTimes), max(refMeteoTT.Properties.RowTimes));
                 end
             end
             
             timeSpace = start:seconds(obj.para.timeRes):stop;
-            totalTT = synchronize(flightTT, refTT, timeSpace, 'linear', 'EndValues', NaN);            
+            totalTT = synchronize(flightTT, refTT, refMeteoTT, timeSpace, 'linear', 'EndValues', NaN);            
         end
         
         % Adds roll pitch and yaw column to timetable base on quaternion column
@@ -93,13 +93,33 @@ classdef PrePro
                 error("Number of flight data and reference data should be the same, if no reference is available specify '' (empty char vector)");
             end
             
+            % Stores the path of the current flight and references
+            % Avoids multiple loading of the same files
+            currFlightPath = "";
+            currRefPath = "";
+            currRefMeteoPath = "";
+            flightTT = timetable();
+            refTT = timetable();
+            refMeteoTT = timetable();
+
             % Iterating over all flight-ref data pair
             for i = 1:length(obj.para.flightInput.path)
                 disp("Processing flight " + obj.para.flightInput.path(i))
                 
-                flightTT = obj.getTimetable(obj.para.flightInput.path(i), obj.para.flightInput.type);
-                refTT = obj.getTimetable(obj.para.refInput.path(i), obj.para.refInput.type);
-                totalTT = obj.synch(flightTT, refTT, obj.para.startTime(i), obj.para.endTime(i));
+                if currRefMeteoPath ~= obj.para.refMeteoInput.path(i)
+                    currRefMeteoPath = obj.para.refMeteoInput.path(i);
+                    refMeteoTT = obj.getTimetable(obj.para.refMeteoInput.path(i), obj.para.refMeteoInput.type);
+                end
+                if currFlightPath ~= obj.para.flightInput.path(i)
+                    currFlightPath = obj.para.flightInput.path(i);
+                    flightTT = obj.getTimetable(obj.para.flightInput.path(i), obj.para.flightInput.type);
+                end
+                if currRefPath ~= obj.para.refInput.path(i)
+                    currRefPath = obj.para.refInput.path(i);
+                    refTT = obj.getTimetable(obj.para.refInput.path(i), obj.para.refInput.type);
+                end
+
+                totalTT = obj.synch(flightTT, refTT, refMeteoTT, obj.para.startTime(i), obj.para.endTime(i));
 
                 totalTT = obj.addrpy(totalTT);
             

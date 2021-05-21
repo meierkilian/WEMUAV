@@ -28,7 +28,8 @@ classdef Util_Frame
 		% Convert 3D vector from NED- to XYZ-frame using quaterinions
 		% See XYZ2NED
 		function out = NED2XYZ(in, q1, q2, q3, q4)
-			out = XYZ2NED(in, q1, -q2, -q3, -q4);
+			quat = quaternion(q1, -q2, -q3, -q4);
+			out = rotatepoint(quat, in);
 		end
 
 
@@ -52,11 +53,16 @@ classdef Util_Frame
 		% 		windHMag : column vector of length M, wind speed
 		% 		windVert : column vector of length M, vertical wind speed
 		function [windHDir, windHMag, windVert] = getHWind(ws)
-			windHDir = atan2d(ws(:,1), ws(:,2));
-			windHDir(windHDir < 0) = windHDir(windHDir < 0) + 360;
-			windHMag = vecnorm(-ws(:,1:2), 2, 2);
+			windHDir = 90 - atan2d(ws(:,1), ws(:,2)); % Direction of air flux
+			windHDir = windHDir + 180; % Direction where the wind comes from
+			windHDir = mod(windHDir, 360); % Wrapping direction space
+			windHMag = vecnorm(ws(:,1:2), 2, 2);
 			windVert = -ws(:,3);
 		end
+
+		function ws = getNEDWind(windHDir, windHMag, windVert)
+            ws =  [windHMag.*cosd(windHDir), windHMag.*sind(windHDir), -windVert];
+        end
 
 
 		% Convert 3D vector from NED- to TxTyTz-frame (tilt frame)
@@ -76,7 +82,7 @@ classdef Util_Frame
             rot(~test) = mod(2*pi - lambda(~test) + yaw(~test),2*pi);
             rot(test) = mod(lambda(test) + yaw(test),2*pi);
 
-            q = quaternion([zeros(size(rot,1),2), rot], 'euler', 'XYZ', 'frame');
+            q = quaternion([zeros(size(rot,1),2), -rot], 'euler', 'XYZ', 'frame');
             out = rotatepoint(q, in);
         end
 
@@ -97,7 +103,7 @@ classdef Util_Frame
             rot(~test) = mod(2*pi - lambda(~test) + yaw(~test),2*pi);
             rot(test) = mod(lambda(test) + yaw(test),2*pi);
 
-            q = quaternion([zeros(size(rot,1),2), -rot], 'euler', 'XYZ', 'frame');
+            q = quaternion([zeros(size(rot,1),2), rot], 'euler', 'XYZ', 'frame');
             out = rotatepoint(q, in);
         end
 

@@ -15,8 +15,9 @@ function para = ParaGen_Estimator()
     % Path to input data, should be a .mat file containing a timetable
     % formatted as outputted by the PrePro class.
     para.inputPath = {...
-        char(fullfile(".","outData","prepro","FLY139__20210420_093920__20210420_094000.mat")) ...
-        ,char(fullfile(".","outData","prepro","FLY139__20210420_093000__20210420_093400.mat")) ...
+        char(fullfile(".","outData","prepro","FLY139__20210420_093845__20210420_093918.mat")) ...
+        ,char(fullfile(".","outData","prepro","FLY139__20210420_092941__20210420_093711.mat")) ...
+        ,char(fullfile(".","outData","prepro","SIMULATED.mat")) ...
         };
     
     % Method to be used for estimation. Each method of this list is used on
@@ -24,7 +25,8 @@ function para = ParaGen_Estimator()
     % {'garreausimple',...}
     % TODO : update description
     para.method = {...
-        'directdynamicmodel' ...
+        'ekf' ...
+        ,'directdynamicmodel' ...
         ,'garreausimple' ...
         };
 
@@ -51,6 +53,25 @@ function para = ParaGen_Estimator()
 
     % Including constants in the directdynamicmodel parameters
     para.directdynamicmodel.cst = para.cst;
+
+
+    % Including constants in the directdynamicmodel parameters
+    para.ekf.cst = para.cst;
+
+    % Initial guess and covariance of values for acPara and ws
+    % para.ekf.init.augState.value.b = -1.159e-7;
+    para.ekf.init.augState.value.b = 1.965e-5/1.784;
+    para.ekf.init.augState.std.b = 1e-7;
+    para.ekf.init.augState.value.Cxx = 0.455;
+    para.ekf.init.augState.std.Cxx = 1e-2;
+    para.ekf.init.augState.value.Cyy = 0.455;
+    para.ekf.init.augState.std.Cyy = 1e-2;
+    para.ekf.init.augState.value.Czz = 0.4427;
+    para.ekf.init.augState.std.Czz = 1e-1;
+    para.ekf.init.ws.std = 10;
+    para.ekf.init.ac.std = 10;
+
+
 
     
 

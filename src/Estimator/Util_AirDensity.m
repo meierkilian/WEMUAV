@@ -49,10 +49,10 @@ classdef Util_AirDensity
 			% This model for f is valide for pressure in [60 000;110 000] [Pa]
 			% This model for f is valide for temperature in [0;30] [°C]
 			if temp < 0 || temp > 30
-				warning("[Util_AirDensity] Temperature outside of augmentation factor (f) estimation range");
+				warning("[Util_AirDensity] Temperature outside of augmentation factor (f) estimation range, temperature is : " + temp);
 			end
-			if pressure < 60000 || temp > 110000
-				warning("[Util_AirDensity] Pressure outside of augmentation factor (f) estimation range");
+			if pressure < 60000 || pressure > 110000
+				warning("[Util_AirDensity] Pressure outside of augmentation factor (f) estimation range, pressure is : " + pressure);
 			end
 			alpha = 1.00062; % []
 			beta = 3.14e-8; % [Pa^-1]
@@ -62,7 +62,7 @@ classdef Util_AirDensity
 			% Vapour staturation pressure
 			% This model for pSV is only valid for temparture in [0;27] [°C]
 			if temp < 0 || temp > 27
-				warning("[Util_AirDensity] Temperature outside of vapour saturation pressure (pSV) estimation range");
+				warning("[Util_AirDensity] Temperature outside of vapour saturation pressure (pSV) estimation range, temperature is : " + temp);
 			end
 			A = 1.2811805e-5; % [K^-2]
 			B = -1.9509874e-2; % [K^-1]
@@ -77,10 +77,10 @@ classdef Util_AirDensity
 			% This model for f is valide for pressure in [60 000;110 000] [Pa]
 			% This model for f is valide for temperature in [0;30] [°C]
 			if temp < 15 || temp > 27
-				warning("[Util_AirDensity] Temperature outside of compression factor (Z) estimation range");
+				warning("[Util_AirDensity] Temperature outside of compression factor (Z) estimation range, temperature is : " + temp);
 			end
-			if pressure < 60000 || temp > 110000
-				warning("[Util_AirDensity] Pressure outside of compression factor (Z) estimation range");
+			if pressure < 60000 || pressure > 110000
+				warning("[Util_AirDensity] Pressure outside of compression factor (Z) estimation range, pressure is : " + pressure);
 			end
 			a0 = 1.62419e-6;
 			a1 = -2.8969e-8;

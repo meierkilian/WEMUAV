@@ -4,3 +4,5 @@
 addpath(fullfile('.','para'))
 addpath(genpath(fullfile('.','src')))   
 addpath(fullfile('.','dev'))
+
+warning('off','backtrace')

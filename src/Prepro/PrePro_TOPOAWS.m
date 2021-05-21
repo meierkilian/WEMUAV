@@ -40,7 +40,13 @@ classdef PrePro_TOPOAWS
 
             % Compute time vector
             gpsLockIdx = find(data.(obj.para.gpsLock),1);
-            timespace = obj.para.gpsWeekStart + seconds(data.(obj.para.tow)(gpsLockIdx:end));
+            if obj.para.gpsWeekStart ~= ""
+                timespace = obj.para.gpsWeekStart + seconds(data.(obj.para.tow)(gpsLockIdx:end));
+            else
+                [~, fileName, ~] = fileparts(path);
+                timespace = datetime(fileName) + seconds(data.(obj.para.tow)(gpsLockIdx:end));
+            end
+
 
             % Creating the timetable
             tt = table2timetable(data(gpsLockIdx:end,cellstr(obj.para.varOfInterest(validFields))),'RowTimes',timespace);
@@ -53,12 +59,12 @@ classdef PrePro_TOPOAWS
             tt.Properties.VariableNames = values(headerMap, tt.Properties.VariableNames);
 
             % Converting wind direction from cardinal direction to angle 
-            windMap = containers.Map({'N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'},0:22.5:359);
-            tmpWindDir = zeros(size(tt.windHDir));
-            for i = 1:length(tt.windHDir) 
-                tmpWindDir(i) = windMap(char(tt.windHDir(i)));
+            windMap = containers.Map({'CIP','RC','N','NNE','NE','ENE','E','ESE','SE','SSE','S','SSW','SW','WSW','W','WNW','NW','NNW'},[0, 0, 0:22.5:359]);
+            tmpWindDir = zeros(size(tt.windHDir_0150cm));
+            for i = 1:length(tt.windHDir_0150cm) 
+                tmpWindDir(i) = windMap(char(tt.windHDir_0150cm(i)));
             end
-            tt.windHDir = tmpWindDir;
+            tt.windHDir_0150cm = tmpWindDir;
             
             % Perform unit correction
             tt.Variables = tt.Variables * diag(obj.para.unitConv(validFields));

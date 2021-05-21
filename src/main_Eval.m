@@ -8,10 +8,13 @@ function main_Estimate(paraPath)
     PARA = readstruct(paraPath);
     eval = Eval(PARA.eval);
     
-    % TODO : remove this parameter dependence 
-    eval.plotValueOverFlight("FLY139__20210420_093920__20210420_094000");
-    eval.plotErrorOverFlight("FLY139__20210420_093920__20210420_094000");
+ 
+    eval.plotValueOverFlight("FLY139__20210420_093845__20210420_093918");
+    eval.plotErrorOverFlight("FLY139__20210420_093845__20210420_093918");
     
-    eval.plotValueOverFlight("FLY139__20210420_093000__20210420_093400");
-    eval.plotErrorOverFlight("FLY139__20210420_093000__20210420_093400");
+    eval.plotValueOverFlight("FLY139__20210420_092941__20210420_093711");
+    eval.plotErrorOverFlight("FLY139__20210420_092941__20210420_093711");
+
+    eval.plotValueOverFlight("SIMULATED");
+    eval.plotErrorOverFlight("SIMULATED");
 end
