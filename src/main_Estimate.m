@@ -4,9 +4,9 @@ function main_Estimate(paraPath)
     end
     
     % Loading parameters
-    main_ParaGen
-    PARA = readstruct(paraPath);
-    est = Estimator(PARA.estimator);
+    % main_ParaGen
+    % PARA = readstruct(paraPath);
+    est = Estimator(ParaGen_Estimator());
     
     tic
     est.doEstimate()

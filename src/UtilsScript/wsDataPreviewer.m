@@ -91,3 +91,5 @@ for i = 1:length(validNames)
         
     disp(str)
 end
+
+reset(ds)

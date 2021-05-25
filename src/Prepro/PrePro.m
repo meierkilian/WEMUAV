@@ -52,11 +52,13 @@ classdef PrePro
         % OUTPUT :
         %   totalTT : resulting total 
         function totalTT = synch(obj, flightTT, refTT, refMeteoTT, start, stop)
-            if start == "" || isnat(start) % Check if startTime was not given, if so taking the earliest possible start time.
+            start = datetime(start);
+            stop = datetime(stop);
+            if isnat(start) % Check if startTime was not given, if so taking the earliest possible start time.
                 start = max([flightTT.Properties.StartTime, refTT.Properties.StartTime, refMeteoTT.Properties.StartTime],[],'omitnat');
             end
             
-            if stop == ""  || isnat(stop) % Check if endtime was not given, if so taking the latest possible end time.
+            if isnat(stop) % Check if endtime was not given, if so taking the latest possible end time.
                 if isempty(refTT) % Check for empty reference because of min/max return empty arrays when given empty arrays.
                     stop = max(flightTT.Properties.RowTimes);
                 else
@@ -122,11 +124,14 @@ classdef PrePro
                 totalTT = obj.synch(flightTT, refTT, refMeteoTT, obj.para.startTime(i), obj.para.endTime(i));
 
                 totalTT = obj.addrpy(totalTT);
+
+                totalTT = addprop(totalTT, {'ID','FlightName','FlightType'}, {'table', 'table', 'table'});
+                totalTT.Properties.CustomProperties.ID = obj.para.t.ID(obj.para.selectedIdx(i));
+                totalTT.Properties.CustomProperties.FlightName = obj.para.t.FLIGHT(obj.para.selectedIdx(i)) + "__" + datestr(obj.para.t.DataStartTimeString(obj.para.selectedIdx(i)), 'yyyymmdd_HHMMSS') + "__" + obj.para.t.FlightType(obj.para.selectedIdx(i));
+                totalTT.Properties.CustomProperties.FlightType = string(obj.para.t.FlightType{obj.para.selectedIdx(i)});
             
                 if obj.para.output.type == "default"
-                    [~, outName, ~] = fileparts(obj.para.flightInput.path(i));
-                    outName = outName + "__" + datestr(totalTT.Time(1), 'yyyymmdd_HHMMSS') + "__" + datestr(totalTT.Time(end), 'yyyymmdd_HHMMSS');
-                    save(fullfile(obj.para.output.path, outName + ".mat"), 'totalTT', '-mat')
+                    save(fullfile(obj.para.output.path, totalTT.Properties.CustomProperties.FlightName + ".mat"), 'totalTT', '-mat')
                 end
             end                
         end        

@@ -665,10 +665,17 @@
             <g>9.81</g>
             <rho>1.225</rho>
         </cst>
-        <inputPath>.\outData\prepro\FLY139__20210420_093845__20210420_093918.mat</inputPath>
-        <inputPath>.\outData\prepro\FLY139__20210420_092941__20210420_093711.mat</inputPath>
-        <inputPath>.\outData\prepro\SIMULATED.mat</inputPath>
-        <method>ekf</method>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY134__20210419_093125__20210419_094210.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY135__20210419_094653__20210419_094851.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY135__20210419_095643__20210419_095756.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_092700__20210420_092750.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_092941__20210420_093711.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_093845__20210420_093918.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094217__20210420_094302.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094422__20210420_094508.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094640__20210420_094734.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094911__20210420_095103.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\SIMULATED.mat</inputPath>
         <method>directdynamicmodel</method>
         <method>garreausimple</method>
         <outputPath>.\outData\estimator</outputPath>
@@ -728,14 +735,27 @@
         </ekf>
     </estimator>
     <eval>
-        <inputPath>.\outData\estimator\FLY139__20210420_093845__20210420_093918_directdynamicmodel.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_093845__20210420_093918_garreausimple.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_093845__20210420_093918_ekf.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_092941__20210420_093711_directdynamicmodel.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_092941__20210420_093711_garreausimple.mat</inputPath>
-        <inputPath>.\outData\estimator\FLY139__20210420_092941__20210420_093711_ekf.mat</inputPath>
-        <inputPath>.\outData\estimator\SIMULATED_directdynamicmodel.mat</inputPath>
-        <inputPath>.\outData\estimator\SIMULATED_garreausimple.mat</inputPath>
-        <inputPath>.\outData\estimator\SIMULATED_ekf.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY134__20210419_093125__20210419_094210_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY134__20210419_093125__20210419_094210_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_094653__20210419_094851_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_094653__20210419_094851_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_095643__20210419_095756_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_095643__20210419_095756_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092700__20210420_092750_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092700__20210420_092750_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092941__20210420_093711_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092941__20210420_093711_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_093845__20210420_093918_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_093845__20210420_093918_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094217__20210420_094302_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094217__20210420_094302_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094422__20210420_094508_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094422__20210420_094508_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094640__20210420_094734_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094640__20210420_094734_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094911__20210420_095103_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094911__20210420_095103_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\SIMULATED_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\SIMULATED_garreausimple.mat</inputPath>
     </eval>
 </struct>

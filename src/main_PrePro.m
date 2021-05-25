@@ -4,9 +4,9 @@ function main_PrePro(paraPath)
     end
     
     % Loading parameters
-    main_ParaGen
-    PARA = readstruct(paraPath);
-    pp = PrePro(PARA.prepro);
+    % main_ParaGen
+    % PARA = readstruct(paraPath);
+    pp = PrePro(ParaGen_PrePro());
     
     tic
     pp.doPrePro()
