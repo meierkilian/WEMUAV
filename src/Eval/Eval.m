@@ -3,17 +3,27 @@ classdef Eval < handle
 		para
 		data
 		figIdx
+		flightList
+		methodList
+		figFlightList
 	end
 	
 	methods
 		% Constructor
 		function obj = Eval(para)
 			obj.para = para;
-			obj.figIdx = 1;
+			obj.figIdx = 100;
+            obj.flightList = "";
+            obj.methodList = "";
+            obj.figFlightList = [];
 			
 			for i = 1:length(obj.para.inputPath)
 				obj.data{i} = load(obj.para.inputPath(i)).tt;
+				obj.flightList(i) = string(obj.data{i}.Properties.CustomProperties.FlightName);
+				obj.methodList(i) = string(obj.data{i}.Properties.CustomProperties.Method); 
 			end
+			obj.flightList = unique(obj.flightList);
+			obj.methodList = unique(obj.methodList);
 		end
 
 		function plotValueOverFlight(obj, flightName)
@@ -156,7 +166,23 @@ classdef Eval < handle
 			error = data - meanRef;
 			err_bias = mean(error, 'omitnan');
 			err_std = std(error, 'omitnan');
-			errorStr = sprintf(" Bias : %.2f, Std : %.2f", err_bias, err_std);
+			err_median = median(error, 'omitnan');
+			errorStr = sprintf(" Bias : %.2f, Median : %.2f, Std : %.2f", err_bias, err_median, err_std);
+		end
+
+		function dispAllMagErr(obj)
+			res = "";
+			
+			for i = 1:length(obj.data)
+				[~, ~, ~, errStr] = obj.computeError( ...
+						[obj.data{i}.windHMag_2130cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windHMag_1470cm], ...
+						obj.data{i}.windHMag_est);
+				flightIdx = obj.data{i}.Properties.CustomProperties.FlightName == obj.flightList;
+				methodIdx = obj.data{i}.Properties.CustomProperties.Method == obj.methodList;
+				res(flightIdx, methodIdx) = errStr;
+            end
+			t = array2table(res, 'VariableNames', obj.methodList, 'RowNames', obj.flightList);
+            disp(t);
 		end
 	end
 end

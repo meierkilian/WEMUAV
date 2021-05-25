@@ -28,12 +28,12 @@ classdef Est_DirectDynamicModel
 
         function ttWind = computeWind(obj, data, ttDragNED, rho)
             % Transform to Tilt frame
-            dragTilt = obj.uf.NED2Tilt(ttDragNED.dragNED, data.roll, data.pitch, data.yaw);
+            dragTilt = obj.uf.NED2Tilt(ttDragNED.dragNED, data.q1, data.q2, data.q3, data.q4);
 
             % Compute ws in the [Tx, Tz] plane
             dragMagTxTz = vecnorm([dragTilt(:,1), dragTilt(:,3)],2,2);
             dragAngleTxTz = atan2(dragTilt(:,3), dragTilt(:,1));
-            alpha = obj.uf.computeTilt(data.roll, data.pitch);
+            [alpha, ~] = obj.uf.computeTilt(data.q1, data.q2, data.q3, data.q4);
             RPM = 0.5*vecnorm([data.motRpm_RF, data.motRpm_LF, data.motRpm_LB, data.motRpm_RB],2,2);
             tasTxTz = obj.ur.getTrueAirSpeed(alpha, RPM, dragMagTxTz, rho);
 
@@ -41,7 +41,7 @@ classdef Est_DirectDynamicModel
             tasTy = sign(dragTilt(:,2)).*obj.ur.getTrueAirSpeed(zeros(size(RPM)), RPM, abs(dragTilt(:,2)), rho);
 
             % Transform back to NED frame
-            tasNED = obj.uf.Tilt2NED([tasTxTz.*cos(dragAngleTxTz), tasTy, tasTxTz.*sin(dragAngleTxTz)], data.roll, data.pitch, data.yaw);
+            tasNED = obj.uf.Tilt2NED([tasTxTz.*cos(dragAngleTxTz), tasTy, tasTxTz.*sin(dragAngleTxTz)], data.q1, data.q2, data.q3, data.q4);
 
             % Compute wind 
             ws = obj.uf.getWindSpeed(tasNED, [data.vn, data.ve, data.vd]);

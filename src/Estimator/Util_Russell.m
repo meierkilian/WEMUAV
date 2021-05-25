@@ -10,6 +10,7 @@ classdef Util_Russell
 		rhoRussell % Mean air density during Russell tests
 		tasRussell % Mean true air speed during Russell tests
 		FDragRussell % Intperpolant
+		meanDragRussel
 	end
 
 	methods
@@ -66,9 +67,12 @@ classdef Util_Russell
 		function obj = initTASEstimation(obj)
 			obj.rhoRussell = mean(obj.tDrag.AirDensity);
 			obj.tasRussell = mean(obj.tDrag.AirSpeed);
-			
-			dragRussell = obj.tDrag.Fx .* cos(obj.tDrag.Pitch) + (obj.tDrag.Fz - obj.getHoverThrust(obj.tDrag.RPM, obj.rhoRussell)) .* sin(obj.tDrag.Pitch);
-			obj.FDragRussell = scatteredInterpolant(obj.tDrag.Pitch, obj.tDrag.RPM, dragRussell, 'linear', 'nearest');
+
+			dragRussell = (obj.tDrag.Fx .* cos(-obj.tDrag.Pitch) + (obj.tDrag.Fz - obj.getHoverThrust(obj.tDrag.RPM, obj.rhoRussell)) .* sin(-obj.tDrag.Pitch));
+			% TODO : check this
+			dragRussell(dragRussell < 0) = 0;
+			obj.meanDragRussel = mean(dragRussell);
+			obj.FDragRussell = scatteredInterpolant(-obj.tDrag.Pitch, obj.tDrag.RPM, dragRussell, 'linear', 'nearest');
 		end
 
 
@@ -99,6 +103,7 @@ classdef Util_Russell
 
 
 		% Get the magnitude of the TAS
+		% Assumes air speed coming from above or below (negative or positive tilt)
 		% INTPUT :
 		% 		alpha : wind incidence angle [rad]
 		%		RPM : rotor speed [RPM] averaged over all rotor
@@ -107,7 +112,9 @@ classdef Util_Russell
 		% OUTPUT :
 		%		tas : magnitude of true air speed
 		function tas = getTrueAirSpeed(obj, alpha, RPM, drag, rho)
-			tas = sqrt(obj.rhoRussell*obj.tasRussell^2/rho .* drag ./ obj.FDragRussell(alpha, RPM));
+			tas = sqrt(0.5*obj.rhoRussell*obj.tasRussell^2/rho .* drag ./ obj.FDragRussell(abs(alpha), RPM));
+
+% 			tas = sqrt(obj.rhoRussell*obj.tasRussell^2/rho .* drag ./ 0.6*obj.meanDragRussel);
 		end
 	end
 end
