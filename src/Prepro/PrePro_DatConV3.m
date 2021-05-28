@@ -6,6 +6,7 @@ classdef PrePro_DatConV3
     methods
         function obj = PrePro_DatConV3(para)
             obj.para = para;
+            warning("[PrePro DatConV3] Some parameters where not validate for datconV3 use with caution. In particular check clkFreq and data unitConv!")
         end
         
         % Get datastore with proper header. Takes care of the fact that
@@ -63,7 +64,6 @@ classdef PrePro_DatConV3
             
             % Creating proper time space vector from GPS time and internal
             % ticks
-            % TODO : aligned with gps but uses tick as ref ? Good idea ? can do better...
             offset = data.(obj.para.timeStamp) - data.(obj.para.timeStamp)(idx);
             timespace = timespace(idx) + seconds(offset);                
             

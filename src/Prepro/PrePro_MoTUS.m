@@ -54,7 +54,7 @@ classdef PrePro_MoTUS
                 validFields = ismember(obj.para.varOfInterest, ds.VariableNames);
                 
                 ds.SelectedVariableNames = cellstr([obj.para.varOfInterest(validFields), obj.para.UTCdatetimeString + suffix]);
-                ttTmp = readall(ds); % TODO : this is a bit slow, change such that load only time of interest ? 
+                ttTmp = readall(ds);
                 
                 % Correcting time vector
                 [count, ~] = groupcounts(ttTmp.(obj.para.UTCdatetimeString + suffix));

@@ -5,10 +5,13 @@ classdef PrePro
     
     methods
         % Constructor
+        % INPUT : 
+        %   para : parameter set as a structure
+        % OUTPUT : 
+        %   obj : constructed object
         function obj = PrePro(para)
             obj.para = para;
         end
-        
         
         % Get timetable from a file with given type
         % INPUT :
@@ -18,7 +21,7 @@ classdef PrePro
         %   tt : timetable, if path is empty then tt is an empty timetable
         function tt = getTimetable(obj, path, type)
             % Checks for empty path
-            if isempty(char(path))
+            if ~isfile(path) && ~isfolder(path)
                 tt = timetable();
                 return
             end
@@ -40,8 +43,7 @@ classdef PrePro
             
             tt = pp.getTimetable(path, obj.para.output.field);
         end
-        
-        
+          
         % Synchronise and select desired timespan in flight and ref data.
         % Timespan and sample rate is defined by parameters. Interpolation
         % is linear. 
@@ -62,7 +64,7 @@ classdef PrePro
                 if isempty(refTT) % Check for empty reference because of min/max return empty arrays when given empty arrays.
                     stop = max(flightTT.Properties.RowTimes);
                 else
-                    stop = min(max(flightTT.Properties.RowTimes), max(refTT.Properties.RowTimes), max(refMeteoTT.Properties.RowTimes));
+                    stop = min([max(flightTT.Properties.RowTimes), max(refTT.Properties.RowTimes), max(refMeteoTT.Properties.RowTimes)]);
                 end
             end
             
@@ -70,25 +72,24 @@ classdef PrePro
             totalTT = synchronize(flightTT, refTT, refMeteoTT, timeSpace, 'linear', 'EndValues', NaN);            
         end
         
-        % Adds roll pitch and yaw column to timetable base on quaternion column
-        % TODO : complete comments
+        % Adds roll pitch and yaw column to timetable base on quaternion columns
+        % INPUT :
+        %   tt : timetable containing quaternion columns q1, q2, q3 and q4
+        % OUPUT :
+        %   tt : same timetable as input with added roll, pitch and yaw columns
         function tt = addrpy(~, tt)
             if any(ismember("roll", tt.Properties.VariableNames))
+                warning("[PrePro] Data seems to already have euleur angle data. Aborting computing from quaternion.")
                 return
             end
 
-            
             eul = euler(quaternion(tt.q1, tt.q2, tt.q3, tt.q4), 'XYZ', 'point');
             tt.roll = eul(:,1);
             tt.pitch = eul(:,2);
             tt.yaw = eul(:,3);
-
-%             tt.roll = atan2(2*(tt.q1.*tt.q2 + tt.q3.*tt.q4), 1 - 2*(tt.q2.^2 + tt.q3.^2));
-%             tt.pitch = asin(2*(tt.q1.*tt.q3 - tt.q4.*tt.q2));
-%             tt.yaw = atan2(2*(tt.q1.*tt.q4 + tt.q2.*tt.q3), 1 - 2*(tt.q3.^2 + tt.q4.^2));
         end
         
-        % Perform preprocessing. Load, synchronise and store reference and
+        % Performs preprocessing. Load, synchronise and store reference and
         % flight data.
         function doPrePro(obj)
             if any(size(obj.para.flightInput.path) ~= size(obj.para.refInput.path))
@@ -127,12 +128,10 @@ classdef PrePro
 
                 totalTT = addprop(totalTT, {'ID','FlightName','FlightType'}, {'table', 'table', 'table'});
                 totalTT.Properties.CustomProperties.ID = obj.para.t.ID(obj.para.selectedIdx(i));
-                totalTT.Properties.CustomProperties.FlightName = obj.para.t.FLIGHT(obj.para.selectedIdx(i)) + "__" + datestr(obj.para.t.DataStartTimeString(obj.para.selectedIdx(i)), 'yyyymmdd_HHMMSS') + "__" + obj.para.t.FlightType(obj.para.selectedIdx(i));
+                totalTT.Properties.CustomProperties.FlightName = obj.para.t.FLIGHT(obj.para.selectedIdx(i)) + "__" + datestr(totalTT.Time(1), 'yyyymmdd_HHMMSS') + "__" + obj.para.t.FlightType(obj.para.selectedIdx(i));
                 totalTT.Properties.CustomProperties.FlightType = string(obj.para.t.FlightType{obj.para.selectedIdx(i)});
             
-                if obj.para.output.type == "default"
-                    save(fullfile(obj.para.output.path, totalTT.Properties.CustomProperties.FlightName + ".mat"), 'totalTT', '-mat')
-                end
+                save(fullfile(obj.para.output.path, totalTT.Properties.CustomProperties.FlightName + ".mat"), 'totalTT', '-mat')
             end                
         end        
     end

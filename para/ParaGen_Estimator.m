@@ -1,7 +1,7 @@
 function para = ParaGen_Estimator()
 % Generating parameters relevant for estimation
 
-    % DEFINING CONSTANTS
+    %%%%%%%%%%%%%%%%% DEFINING CONSTANTS %%%%%%%%%%%%%%%%%
     % drone mass [kg]
     para.cst.m = 1.391;
 
@@ -12,14 +12,14 @@ function para = ParaGen_Estimator()
     para.cst.rho = 1.225;
 
 
-    % Path to input data, should be a .mat file containing a timetable
+    %%%%%%%%%%%%%%%%% GENERAL PARAMETERS %%%%%%%%%%%%%%%%%
+    % Path to input data, should be a cell array of .mat file containing a timetable
     % formatted as outputted by the PrePro class.
     % para.inputPath = {...
     %     char(fullfile(".","outData","prepro","FLY139__20210420_093845__20210420_093918.mat")) ...
     %     ,char(fullfile(".","outData","prepro","FLY139__20210420_092941__20210420_093711.mat")) ...
     %     ,char(fullfile(".","outData","prepro","SIMULATED.mat")) ...
     %     };
-
     t = dir(fullfile(".","outData","prepro","*.mat"));
     for i = 1:length(t)
         para.inputPath(i) = string(fullfile(t(i).folder,t(i).name));
@@ -29,7 +29,7 @@ function para = ParaGen_Estimator()
     
     % Method to be used for estimation. Each method of this list is used on
     % each file in the inputPath. Available methods are
-    % {'garreausimple',...}
+    % {'garreausimple', 'directdynmaicmodel', ...}
     % TODO : update description
     para.method = {...
         % 'ekf' ...
@@ -41,15 +41,9 @@ function para = ParaGen_Estimator()
     para.outputPath = fullfile(".", "outData", "estimator");
 
 
+    %%%%%%%%%%%%%%%%% METHOD SPECIFIC PARAMETERS : GARREAUSIMPLE %%%%%%%%%%%%%%%%%
     % Including constants in the garreausimple parameters
     para.garreausimple.cst = para.cst;
-
-    % TODO : (is a pressure, but of what on what ? Related to wind tunnel tests) [lb/m^2]
-    para.garreausimple.cst.qnasa = 0.48/0.092903;
-
-    % Path to Russel (NASA) drag data
-    para.garreausimple.dragDataPath.F = fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Drag_Russel","F.txt");
-    para.garreausimple.dragDataPath.T = fullfile("C:","Users","Kilian","Documents","EPFL","PDM","SW","EstArthurGarreau","1_DATA","Drag_Russel","T.txt");
 
     % garreausimple regression parameter 
     para.garreausimple.reg.alpha1 = 1113.2;
@@ -58,10 +52,13 @@ function para = ParaGen_Estimator()
     para.garreausimple.reg.cut = 0.091;
 
 
+    %%%%%%%%%%%%%%%%% METHOD SPECIFIC PARAMETERS : DIRECDYNAMICMODEL %%%%%%%%%%%%%%%%%
     % Including constants in the directdynamicmodel parameters
     para.directdynamicmodel.cst = para.cst;
 
 
+    %%%%%%%%%%%%%%%%% METHOD SPECIFIC PARAMETERS : EKF %%%%%%%%%%%%%%%%%
+    % TODO : remove this ? 
     % Including constants in the directdynamicmodel parameters
     para.ekf.cst = para.cst;
 

@@ -102,7 +102,6 @@ classdef PrePro_DatConV4
             % Perform unit correction
             tt.Variables = tt.Variables * diag(obj.para.unitConv(validFields));
             
-            % TODO : cleaner ?  
             tt.windHDir_other = mod(tt.windHDir_other + 180, 360);
         end
         

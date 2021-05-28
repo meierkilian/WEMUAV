@@ -10,8 +10,8 @@ function main_Estimate(paraPath)
     
     eval.dispAllMagErr();
  
-    eval.plotValueOverFlight("FLY139__20210420_092700__Vertical");
-    eval.plotErrorOverFlight("FLY139__20210420_092700__Vertical");
+    eval.plotValueOverFlight("FLY167__20210503_141451__Hover");
+    eval.plotErrorOverFlight("FLY167__20210503_141451__Hover");
 
     % eval.plotValueOverFlight("FLY139__20210420_093845__20210420_093918");
     % eval.plotErrorOverFlight("FLY139__20210420_093845__20210420_093918");

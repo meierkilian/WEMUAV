@@ -1,3 +1,4 @@
+% TODO : comment
 classdef Eval < handle
 	properties
 		para
@@ -167,7 +168,7 @@ classdef Eval < handle
 			err_bias = mean(error, 'omitnan');
 			err_std = std(error, 'omitnan');
 			err_median = median(error, 'omitnan');
-			errorStr = sprintf(" Bias : %.2f, Median : %.2f, Std : %.2f", err_bias, err_median, err_std);
+			errorStr = sprintf(" Bias : %.2f, Median : %.2f, Std : %.2f, MeanRef : %.2f", err_bias, err_median, err_std, mean(meanRef));
 		end
 
 		function dispAllMagErr(obj)

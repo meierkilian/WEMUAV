@@ -1,57 +1,60 @@
 function para = ParaGen_PrePro()
 % Generating parameters relevant for preprocessing
+
+    %%%%%%%%%%%%%%%%% GENERAL PARAMETERS %%%%%%%%%%%%%%%%%
+    
+    % Path to table containing the dataset overview, it is 
+    % assumed that the table has at least the following columns :
+    %  - DataStartTimeString : flight start time as a datetime string "dd-MMM-yyy hh:mm:ss"
+    %  - DataEndTimeString : flight end time as a datetime string "dd-MMM-yyy hh:mm:ss"
+    %  - ID : flight ID as an interger
+    %  - FOLDER : path to flight folder which is expected to contain a "FLIGH\" and "WEATHER\" subfolder
+    %  - FLIGHT : name of the flight CSV file as exported by DatCon
+    %  - REF : path to the wind reference file, expected to be in "WEATHER\"
+    %  - REFMETEO : path to the meteo reference file, expected to be in "WEATHER\
+    %  - FlightType : string containing flight type
     para.datasetOverviewPath = fullfile("S:","ProjectMaster","2021_KilianMeier","datasetOverview.xlsx");
+    
+    % Dataset overview table
     para.t = readtable(para.datasetOverviewPath);
 
-    % para.selectedIdx = [1];
+    % ID of slected flight for preprocessing 
     para.selectedIdx = para.t.ID;
     
-    % TODO : update comment
-    % datetime of start time, if "" (empty string) then start is set at the first data point.
+    % Datetime of start time, if "" (empty string) then start is set at the first data point.
     para.startTime = string(para.t.DataStartTimeString(ismember(para.t.ID,para.selectedIdx)));
 
-    % TODO : update comment
-    % datetime of end time, if "" (empty string) then end is set at the last data point.
+    % Datetime of end time, if "" (empty string) then end is set at the last data point.
     para.endTime = string(para.t.DataEndTimeString(ismember(para.t.ID,para.selectedIdx)));
 
-    % time resolution at which the data is resampled, i.e. duration in [s]
+    % Time resolution at which the data is resampled, i.e. duration in [s]
     % between two samples.
     para.timeRes = 0.1; % 10 Hz
 
-    % path to reference data can be a vector of paths, must match size of
-    % flightInputpath
-    % TODO : if MOTUS then folder...
+    % Path to reference data, can be a vector of paths, must match size of flightInputpath
+    % If the reference is of type "motus", then a folder is expected containing the different anemometer data.
     para.refInput.path = string(fullfile(para.t.FOLDER(ismember(para.t.ID,para.selectedIdx)), "WEATHER", para.t.REF(ismember(para.t.ID,para.selectedIdx))));
 
-
-    % type of reference (describes the file formatting), available types are:
-    % {"motus","unisaws",...}
-    % TODO : update description
+    % Type of reference (describes the file formatting), available types are:
+    % {'motus', 'unisaws', 'topoaws'}
     para.refInput.type = 'motus';
 
-    % path to flight data, can be a vector of paths, must match size of
-    % refInputpath
+    % Path to flight data, can be a vector of paths, must match size of refInputpath
     para.flightInput.path = string(fullfile(para.t.FOLDER(ismember(para.t.ID,para.selectedIdx)), "FLIGHT", para.t.FLIGHT(ismember(para.t.ID,para.selectedIdx)) + ".csv"));
 
-
-    % type of reference (describes the file formatting), available types are:
-    % {'datconv3', 'datconv4'...}
-    % TODO : update description
+    % Type of reference (describes the file formatting), available types are:
+    % {'datconv3', 'datconv4'}
     para.flightInput.type = 'datconv4';
 
-    % TODO : comment
+    % Path to meteo reference data (secondary reference), can be a vector of paths, must match size of flightInputpath
     para.refMeteoInput.path = string(fullfile(para.t.FOLDER(ismember(para.t.ID,para.selectedIdx)), "WEATHER", para.t.REFMETEO(ismember(para.t.ID,para.selectedIdx)) + ".txt"));
 
-    % TODO : comment
+    % Type of reference (describes the file formatting), available types are:
+    % {'motus', 'unisaws', 'topoaws'}
     para.refMeteoInput.type = 'topoaws';
 
-    % path to output folder
+    % Path to output folder
     para.output.path = fullfile('.','outData','prepro');
-
-    % type of output (describes the file formatting), available types are:
-    % {'default',...}
-    % TODO : update description
-    para.output.type = 'default';
     
     % field present in the output data (XYZ is the body fram and NED is considered as the local inertial frame)
     para.output.field = {...
@@ -96,7 +99,7 @@ function para = ParaGen_PrePro()
         'windHDir_other', ... % [deg]
         'windHMag_other', ... % [m/s]
         'windVert_other', ... % [m/s]
-        'tempAC', ... % [°C]
+        'tempMotus', ... % [°C]
         'tempRef', ... % [°C]
         'pressAC', ... % [hPa]
         'pressRef', ... % [hPa]
@@ -104,6 +107,8 @@ function para = ParaGen_PrePro()
         'humidRef' ... % [%]
         };
 
+
+    %%%%%%%%%%%%%%%%% DATA SOURCE SPECIFIC PARAMETERS : DATCONV4 %%%%%%%%%%%%%%%%%
     % datconv4 date and time field name
     para.datconv4.UTCyear = 'gps_utc_data_gps_year_D';
     para.datconv4.UTCmonth = 'gps_utc_data_gps_month_D';
@@ -163,8 +168,8 @@ function para = ParaGen_PrePro()
         '', ... % [m/s]
         'AirSpeed_windFromDir', ... % [deg]
         'AirSpeed_windSpeed', ... % [m/s]
-        'AirSpeed_comp_alti_D', ... % [m/s] % TODO : not sure about that one
-        'bat_blackbox_data_temp_D', ... % [°C]
+        'AirSpeed_comp_alti_D', ... % [m/s] 
+        '', ... % [°C]
         '', ... % [°C]
         '', ... % [hPa]
         '', ... % [hPa]
@@ -175,7 +180,6 @@ function para = ParaGen_PrePro()
     % datconv4 unit conversion, list of factor to be applied to a given field 
     % to convert it to desired unit. This cell array must have the same size and
     % shape and must be ordered as in the para.output.field parameter.
-    % TODO : check unit conversion 
     para.datconv4.unitConv = [ ...
         1, ...
         1, ...
@@ -226,6 +230,8 @@ function para = ParaGen_PrePro()
         1 ...
         ];
 
+
+    %%%%%%%%%%%%%%%%% DATA SOURCE SPECIFIC PARAMETERS : DATCONV3 %%%%%%%%%%%%%%%%%
     % datconv3 date and time field name
     para.datconv3.UTCdatetimeString = 'GPS_dateTimeStamp';
     para.datconv3.timeStamp = 'offsetTime';
@@ -289,7 +295,6 @@ function para = ParaGen_PrePro()
     % datconv3 unit conversion, list of factor to be applied to a given field 
     % to convert it to desired unit. This cell array must have the same size and
     % shape and must be ordered as in the para.output.field parameter.
-    % TODO : check unit conversion 
     para.datconv3.unitConv = [ ...
             1, ...
             1, ...
@@ -341,6 +346,7 @@ function para = ParaGen_PrePro()
             ];        
     
 
+    %%%%%%%%%%%%%%%%% DATA SOURCE SPECIFIC PARAMETERS : MOTUS %%%%%%%%%%%%%%%%%
     % MoTUS single sensor data header 
     para.motus.singleSensHeader = {'ID','windHDir','windHMag','windVert','unit','soundSpeed','temp','Date','port'};
 
@@ -415,7 +421,7 @@ function para = ParaGen_PrePro()
         '', ... % [deg]
         '', ... % [m/s]
         '', ... % [m/s]
-        '', ... % [°C]
+        'temp_2130cm', ... % [°C]
         '', ... % [°C]
         '', ... % [hPa]
         '', ... % [hPa]
@@ -426,7 +432,6 @@ function para = ParaGen_PrePro()
     % motus unit conversion, list of factor to be applied to a given field 
     % to convert it to desired unit. This cell array must have the same size and
     % shape and must be ordered as in the para.output.field parameter.
-    % TODO : check unit conversion 
     para.motus.unitConv = [ ...
         1, ...
         1, ...
@@ -477,6 +482,8 @@ function para = ParaGen_PrePro()
         1 ...
         ];       
 
+
+    %%%%%%%%%%%%%%%%% DATA SOURCE SPECIFIC PARAMETERS : UNISAWS %%%%%%%%%%%%%%%%%
     % UNISAWS data header 
     para.unisaws.header = {'Timestamp','RecordNbr','ID','AirTemp1','AirTemp2','AirTemp3','AirHumidity1','AirTemp4','AirHumidity2','AtmPressure','WindSpeed2m','WindDir2m','WindSpeed10m','WindDir10m'};
 
@@ -532,13 +539,12 @@ function para = ParaGen_PrePro()
         '', ... % [hPa]
         'AtmPressure' ... % [hPa]
         '', ... % [%]
-        'AirHumidity1' % TODO : check units of this
+        'AirHumidity1' % [%]
         };
 
     % unisaws unit conversion, list of factor to be applied to a given field 
     % to convert it to desired unit. This cell array must have the same size and
     % shape and must be ordered as in the para.output.field parameter.
-    % TODO : check unit conversion 
     para.unisaws.unitConv = [ ...
         1, ...
         1, ...
@@ -590,6 +596,7 @@ function para = ParaGen_PrePro()
         ];        
 
 
+    %%%%%%%%%%%%%%%%% DATA SOURCE SPECIFIC PARAMETERS : TOPOAWS %%%%%%%%%%%%%%%%%
     % topoaws data header 
     para.topoaws.header = {'TOW','AirTemp1','AirHumidity','AtmPressure','WindSpeed','WindDir','GPSTime_Legacy','Lati','Long','Alti','GPSNbrSat','GPSLockFlag','TempCPU','TempSens','BattCharge','FanOn'};
 
@@ -658,7 +665,6 @@ function para = ParaGen_PrePro()
     % topoaws unit conversion, list of factor to be applied to a given field 
     % to convert it to desired unit. This cell array must have the same size and
     % shape and must be ordered as in the para.output.field parameter.
-    % TODO : check unit conversion 
     para.topoaws.unitConv = [ ...
         1, ...
         1, ...
