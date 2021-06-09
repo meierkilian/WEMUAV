@@ -14,9 +14,9 @@ classdef Eval < handle
 		function obj = Eval(para)
 			obj.para = para;
 			obj.figIdx = 100;
-            obj.flightList = "";
-            obj.methodList = "";
-            obj.figFlightList = [];
+			obj.flightList = "";
+			obj.methodList = "";
+			obj.figFlightList = [];
 			
 			for i = 1:length(obj.para.inputPath)
 				obj.data{i} = load(obj.para.inputPath(i)).tt;
@@ -175,15 +175,19 @@ classdef Eval < handle
 			res = "";
 			
 			for i = 1:length(obj.data)
-				[~, ~, ~, errStr] = obj.computeError( ...
-						[obj.data{i}.windHMag_2130cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windHMag_1470cm], ...
-						obj.data{i}.windHMag_est);
+				if ~ismember('windHMag_2130cm', obj.data{i}.Properties.VariableNames)
+					errStr = ""; % skipping flights which do not have a ref yet 
+				else
+					[~, ~, ~, errStr] = obj.computeError( ...
+							[obj.data{i}.windHMag_2130cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windHMag_1470cm], ...
+							obj.data{i}.windHMag_est);
+				end
 				flightIdx = obj.data{i}.Properties.CustomProperties.FlightName == obj.flightList;
 				methodIdx = obj.data{i}.Properties.CustomProperties.Method == obj.methodList;
 				res(flightIdx, methodIdx) = errStr;
-            end
+			end
 			t = array2table(res, 'VariableNames', obj.methodList, 'RowNames', obj.flightList);
-            disp(t);
+			disp(t);
 		end
 	end
 end

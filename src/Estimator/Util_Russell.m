@@ -67,7 +67,7 @@ classdef Util_Russell
 
 			% TODO : check this, sign problem ? 
             dragRussell = (obj.tDrag.Fx .* cos(obj.tDrag.Pitch) + (obj.tDrag.Fz - obj.getHoverThrust(obj.tDrag.RPM, obj.rhoRussell)) .* sin(obj.tDrag.Pitch));
-			
+            
 			obj.meanDragRussel = mean(dragRussell);
 			obj.FDragRussell = scatteredInterpolant(-obj.tDrag.Pitch, obj.tDrag.RPM, dragRussell, 'linear', 'nearest');
 		end

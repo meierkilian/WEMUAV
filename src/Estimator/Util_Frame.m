@@ -48,22 +48,20 @@ classdef Util_Frame
 		% 		windHMag : column vector of length M, wind speed
 		% 		windVert : column vector of length M, vertical wind speed
 		function [windHDir, windHMag, windVert] = getHWind(~, ws)
-			windHDir = 90 - atan2d(ws(:,1), ws(:,2)); % Direction of air flux
-			windHDir = windHDir + 180; % Direction where the wind comes from
-			windHDir = mod(windHDir, 360); % Wrapping direction space
+			windHDir = mod(atan2d(-ws(:,2), -ws(:,1)),360);
 			windHMag = vecnorm(ws(:,1:2), 2, 2);
 			windVert = -ws(:,3);
 		end
 
 		% Computes NED wind speed vector from horizontal wind
 		% INPUT :
-		%		windHDir : column vector of length M, meteorological wind direction (azimuth of where the wind comes from)
+		%		windHDir : column vector of length M, meteorological wind direction (azimuth of where the wind comes from) [deg]
 		% 		windHMag : column vector of length M, wind speed
 		% 		windVert : column vector of length M, vertical wind speed
 		% OUTPUT :
 		% 		ws : Mx3 matrix, where each line contains a 3D wind speed vector in the NED frame
 		function ws = getNEDWind(~, windHDir, windHMag, windVert)
-            ws =  [windHMag.*cosd(windHDir), windHMag.*sind(windHDir), -windVert];
+            ws =  [-windHMag.*cosd(windHDir), -windHMag.*sind(windHDir), -windVert];
         end
 
 		% Convert 3D vector from Tilt- to NED-frame using quaterinions
