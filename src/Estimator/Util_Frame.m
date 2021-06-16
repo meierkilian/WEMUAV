@@ -76,7 +76,7 @@ classdef Util_Frame
 		% OUTPUT :
 		%		out : rotated vectors, has same size as in 
 		function out = Tilt2NED(obj, in, q1, q2, q3, q4)
-            [~, lambda] = obj.computeTilt(q1, q2, q3, q4);
+            [~, lambda, yaw] = obj.computeTilt(q1, q2, q3, q4);
             q_tilt2XYZ = quaternion([-(yaw-lambda), zeros(size(lambda,1),2)], 'euler', 'ZYX', 'frame');
             out = obj.XYZ2NED(rotatepoint(q_tilt2XYZ, in), q1, q2, q3, q4);
         end
@@ -84,7 +84,7 @@ classdef Util_Frame
 		% Convert 3D vector from NED- to Tilt-frame using quaterinions
         % See Tilt2NED
 		function out = NED2Tilt(obj, in, q1, q2, q3, q4)            
-            [~, lambda] = obj.computeTilt(q1, q2, q3, q4);
+            [~, lambda, yaw] = obj.computeTilt(q1, q2, q3, q4);
             q_XYZ2tilt = quaternion([yaw-lambda, zeros(size(lambda,1),2)], 'euler', 'ZYX', 'frame');
             out = rotatepoint(q_XYZ2tilt, obj.NED2XYZ(in, q1, q2, q3, q4));
         end
@@ -99,10 +99,11 @@ classdef Util_Frame
 		% 		alpaha : tilt angle [rad], tilt is always positive, if tilt is zero 
 		%				 then drone is horizontal in the local frame
 		% 		lambda : tilt direction [rad] (azimuth)
-        function [alpha, lambda] = computeTilt(obj, q1, q2, q3, q4)
+        function [alpha, lambda, yaw] = computeTilt(obj, q1, q2, q3, q4)
         	zNED = obj.XYZ2NED([0 0 -1], q1, q2, q3, q4);
         	xNED = obj.XYZ2NED([1 0 0], q1, q2, q3, q4);
         	alpha = acos(-zNED(:,3));
+			yaw = mod(atan2(xNED(:,2), xNED(:,1)), 2*pi); 
 			lambda = mod(atan2(zNED(:,2), zNED(:,1)), 2*pi);
         end
 	end
