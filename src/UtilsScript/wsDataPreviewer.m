@@ -1,7 +1,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % WEATHER STATION DATA PREVIEWER
 %
-% DATE : 2021.04.21
+% DATE : 2021.06.12
 %
 % AUTHOR : Kilian Meier
 %
@@ -17,45 +17,50 @@
 
 
 % PARAMETERS
-weatherStationFolder = "F:"; % Mounting point of the SD card
+weatherStationFolder = "C:\Users\Kilian\Documents\EPFL\PDM\SW\WSSensorCharacterisation\data\"; % Mounting point of the SD card
+% weatherStationFolder = "F:"; % Mounting point of the SD card
 localTimeToUTC = 2; % Hours of difference to UTC (i.e. summer in Switzerland is +2)
 
 % CONSTANTS
 dataFileFormatExtension = ".txt";
-fileHeader = {'TOW','AirTemp1','AirHumidity','AtmPressure','WindSpeed','WindDir','GPSTime_Legacy','Lati','Long','Alti','GPSNbrSat','GPSLockFlag','TempCPU','TempSens','BattCharge','FanOn'};
-textscanFormats = {'%f','%*f','%*f','%*f','%*f','%*s','%*f','%*f','%*f','%*f','%*f','%f','%*f','%*f','%*f','%*f'};
+header = {'date','GPStime','temp','humidtiy','pression','windSpeed','windDir','lat','lng','alt','nbtSat','isValid','tCpu','tSens','battery','fan'};
 
 %-------------------------------------------------------------------------%
 % Searching for data in SD card
 D = dir(weatherStationFolder + "*" + dataFileFormatExtension);
+if isempty(D)
+    disp("Empty folder")
+    return
+end
 
 % Variable size varible declaration
 validNames = [""];
 towStart = [];
 towEnd = [];
+date = [];
 idx = 1;
 
 % Iterating over all data files found
 for i = 1:length(D)
     % Creating a datastore for efficent access to data 
-    ds = tabularTextDatastore(string(D(i).folder) + string(D(i).name), ...
-        'NumHeaderLines', 0, ...
-        'OutputType', 'table', ...
-        'TextscanFormats', textscanFormats, ...
-        'ReadVariableNames', false);
-    ds.VariableNames = fileHeader;
-    ds.SelectedVariableNames = {'TOW', 'GPSLockFlag'};
+    ds = tabularTextDatastore(fullfile(D(i).folder, D(i).name), ...
+        'NumHeaderLines', 1, ...
+        'VariableNames',header ...
+        );
+    
+    ds.SelectedVariableNames = {'date', 'GPStime', 'isValid'};
     
     % Loading the vriable of interst in memory
     data = readall(ds);
-    gpsLockIdx = find(data.GPSLockFlag,1);
+    gpsLockIdx = find(data.isValid,1);
     
     % If GPS lock occured then the data is considered as valid and the
     % start and end time of week is stored
     if ~isempty(gpsLockIdx)
         validNames(idx) = string(D(i).name);
-        towStart(idx) = data.TOW(gpsLockIdx);
-        towEnd(idx) = data.TOW(end);
+        towStart(idx) = data.GPStime(gpsLockIdx);
+        towEnd(idx) = data.GPStime(end);
+        date(idx) = data.date(gpsLockIdx);
         idx = idx + 1;
     end
 end
@@ -64,12 +69,13 @@ end
 validNames = validNames';
 towStart = towStart';
 towEnd = towEnd';
+date = date';
 
-% Using datetime structure to convert the tow seconds to day of week, hours
-% minutes and duration. 2021-04-18 00:00:00 was arbitrarely chosen and
-% could be any Sunday morning at 00:00:00 (start of GPS week)
-dateStart = datetime(2021,04,18,0,0,0) + seconds(towStart) + hours(localTimeToUTC);
-dateEnd = datetime(2021,04,18,0,0,0) + seconds(towEnd) + hours(localTimeToUTC);
+% Using datetime structure to convert the date and tow seconds to day of week, hours
+% minutes and duration.
+SEC_PER_DAY = seconds(days(1));
+dateStart = datetime(string(date),'InputFormat','ddMMyy') + seconds(mod(towStart, SEC_PER_DAY)) + hours(localTimeToUTC);
+dateEnd = datetime(string(date),'InputFormat','ddMMyy') + seconds(mod(towEnd, SEC_PER_DAY)) + hours(localTimeToUTC);
 duration = dateEnd-dateStart;
 
 % Sorting data with respect to start time of the acquisition
@@ -79,15 +85,12 @@ results = sortrows(results, 'dateStart');
 % Displays the results. Keep in mind since the week nbr is not given it can
 % be a given day in any week.
 for i = 1:length(validNames)
-    str = sprintf("%s  \tSTART : %s %02.0f:%02.0f\tEND %s %02.0f:%02.0f \t DURATION : %s", ...
+    str = sprintf("%s  \tSTART : %s\tEND %s\t DURATION : %s", ...
         results.validNames(i), ...
-        string(day(results.dateStart(i), 'shortname')),...
-        hour(results.dateStart(i)), ...
-        minute(results.dateStart(i)), ...
-        string(day(results.dateEnd(i), 'shortname')),...
-        hour(results.dateEnd(i)), ...
-        minute(results.dateEnd(i)), ...
-        string(results.duration(i)));
+        datestr(results.dateStart(i)), ...
+        datestr(results.dateEnd(i)), ...
+        string(results.duration(i)) ...
+    );
         
     disp(str)
 end

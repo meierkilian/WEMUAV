@@ -37,7 +37,7 @@ classdef Util_AirDensity
 			
 			% Molar mass of dry air
 			if isnan(xCO2)
-				Ma = 28.9635e-3; % [kg mol^-1]
+				Ma = 28.9635e-3*ones(size(temp)); % [kg mol^-1]
 			else
 				Ma = 28.9635e-3 + 12.011e-3 * (xCO2 - 0.0004);  % [kg mol^-1]
 			end
@@ -48,11 +48,11 @@ classdef Util_AirDensity
 			% Augmentation factor
 			% This model for f is valide for pressure in [60 000;110 000] [Pa]
 			% This model for f is valide for temperature in [0;30] [°C]
-			if temp < 0 || temp > 30
-				warning("[Util_AirDensity] Temperature outside of augmentation factor (f) estimation range, temperature is : " + temp);
+			if any(temp < 0) || any(temp > 30)
+				warning("[Util_AirDensity] Temperature outside of augmentation factor (f) estimation range, temperature is : " + mean(temp));
 			end
-			if pressure < 60000 || pressure > 110000
-				warning("[Util_AirDensity] Pressure outside of augmentation factor (f) estimation range, pressure is : " + pressure);
+			if any(pressure < 60000) || any(pressure > 110000)
+				warning("[Util_AirDensity] Pressure outside of augmentation factor (f) estimation range, pressure is : " + mean(pressure));
 			end
 			alpha = 1.00062; % []
 			beta = 3.14e-8; % [Pa^-1]
@@ -61,8 +61,8 @@ classdef Util_AirDensity
 
 			% Vapour staturation pressure
 			% This model for pSV is only valid for temparture in [0;27] [°C]
-			if temp < 0 || temp > 27
-				warning("[Util_AirDensity] Temperature outside of vapour saturation pressure (pSV) estimation range, temperature is : " + temp);
+			if any(temp < 0) || any(temp > 27)
+				warning("[Util_AirDensity] Temperature outside of vapour saturation pressure (pSV) estimation range, temperature is : " + mean(temp));
 			end
 			A = 1.2811805e-5; % [K^-2]
 			B = -1.9509874e-2; % [K^-1]
@@ -76,11 +76,11 @@ classdef Util_AirDensity
 			% Compression factor
 			% This model for f is valide for pressure in [60 000;110 000] [Pa]
 			% This model for f is valide for temperature in [0;30] [°C]
-			if temp < 15 || temp > 27
-				warning("[Util_AirDensity] Temperature outside of compression factor (Z) estimation range, temperature is : " + temp);
+			if any(temp < 15) || any(temp > 27)
+				warning("[Util_AirDensity] Temperature outside of compression factor (Z) estimation range, temperature is : " + mean(temp));
 			end
-			if pressure < 60000 || pressure > 110000
-				warning("[Util_AirDensity] Pressure outside of compression factor (Z) estimation range, pressure is : " + pressure);
+			if any(pressure < 60000) || any(pressure > 110000)
+				warning("[Util_AirDensity] Pressure outside of compression factor (Z) estimation range, pressure is : " + mean(pressure));
 			end
 			a0 = 1.62419e-6;
 			a1 = -2.8969e-8;

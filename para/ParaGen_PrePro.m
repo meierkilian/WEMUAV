@@ -19,7 +19,9 @@ function para = ParaGen_PrePro()
     para.t = readtable(para.datasetOverviewPath);
 
     % ID of slected flight for preprocessing 
-    para.selectedIdx = para.t.ID;
+    para.selectedIdx = 35;
+    % para.selectedIdx = para.t.ID;
+    disp("[ParaGen_Prepro] Selected idx : " + num2str(para.selectedIdx))
     
     % Datetime of start time, if "" (empty string) then start is set at the first data point.
     para.startTime = string(para.t.DataStartTimeString(ismember(para.t.ID,para.selectedIdx)));

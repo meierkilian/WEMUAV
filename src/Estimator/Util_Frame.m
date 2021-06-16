@@ -29,14 +29,14 @@ classdef Util_Frame
 			out = obj.XYZ2NED(in, q1, -q2, -q3, -q4);
 		end
 
-		% Infers windspeed from TAS and air craft velocity using wind triangle theory.
+		% Infers windspeed from air speed (AS) and air craft velocity using wind triangle theory.
 		% INPUT :
-		% 		TAS : Mx3 matrix, where each line contains a 3D TAS vector in the NED frame
+		% 		AS : Mx3 matrix, where each line contains a 3D AS vector in the NED frame
 		%		v : Mx3 matrix, where each line contains a 3D air craft velocity vector in the NED frame
 		% OUTPUT :
 		% 		ws : Mx3 matrix, where each line contains a 3D wind speed vector in the NED frame
-		function ws = getWindSpeed(~, TAS, v)
-			ws = v - TAS;
+		function ws = getWindSpeed(~, AS, v)
+			ws = v + AS;
 		end
 
 
@@ -77,16 +77,16 @@ classdef Util_Frame
 		%		out : rotated vectors, has same size as in 
 		function out = Tilt2NED(obj, in, q1, q2, q3, q4)
             [~, lambda] = obj.computeTilt(q1, q2, q3, q4);
-            q = quaternion([zeros(size(lambda,1),2), lambda], 'euler', 'XYZ', 'frame');
-            out = rotatepoint(q, in);
+            q_tilt2XYZ = quaternion([-(yaw-lambda), zeros(size(lambda,1),2)], 'euler', 'ZYX', 'frame');
+            out = obj.XYZ2NED(rotatepoint(q_tilt2XYZ, in), q1, q2, q3, q4);
         end
 
 		% Convert 3D vector from NED- to Tilt-frame using quaterinions
         % See Tilt2NED
-		function out = NED2Tilt(obj, in, q1, q2, q3, q4)
+		function out = NED2Tilt(obj, in, q1, q2, q3, q4)            
             [~, lambda] = obj.computeTilt(q1, q2, q3, q4);
-            q = quaternion([zeros(size(lambda,1),2), -lambda], 'euler', 'XYZ', 'frame');
-            out = rotatepoint(q, in);
+            q_XYZ2tilt = quaternion([yaw-lambda, zeros(size(lambda,1),2)], 'euler', 'ZYX', 'frame');
+            out = rotatepoint(q_XYZ2tilt, obj.NED2XYZ(in, q1, q2, q3, q4));
         end
 
         % Compute tilt angle and direction
@@ -101,8 +101,9 @@ classdef Util_Frame
 		% 		lambda : tilt direction [rad] (azimuth)
         function [alpha, lambda] = computeTilt(obj, q1, q2, q3, q4)
         	zNED = obj.XYZ2NED([0 0 -1], q1, q2, q3, q4);
+        	xNED = obj.XYZ2NED([1 0 0], q1, q2, q3, q4);
         	alpha = acos(-zNED(:,3));
-			lambda = mod(atan2(zNED(:,2), zNED(:,1)), 2*pi); 
+			lambda = mod(atan2(zNED(:,2), zNED(:,1)), 2*pi);
         end
 	end
 end

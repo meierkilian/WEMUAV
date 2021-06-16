@@ -1,0 +1,1 @@
+delete(fullfile('.','outData','estimator','*.mat'))

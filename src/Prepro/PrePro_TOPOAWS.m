@@ -68,7 +68,10 @@ classdef PrePro_TOPOAWS
             
             % Perform unit correction
             tt.Variables = tt.Variables * diag(obj.para.unitConv(validFields));
-
+            
+            % Remove duplicate times
+            uniqueTimes = unique(tt.Time);
+            tt = retime(tt,uniqueTimes,'lastvalue');
         end           
     end
 end

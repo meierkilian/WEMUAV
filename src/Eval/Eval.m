@@ -168,7 +168,10 @@ classdef Eval < handle
 			err_bias = mean(error, 'omitnan');
 			err_std = std(error, 'omitnan');
 			err_median = median(error, 'omitnan');
-			errorStr = sprintf(" Bias : %.2f, Median : %.2f, Std : %.2f, MeanRef : %.2f", err_bias, err_median, err_std, mean(meanRef));
+			[c,l] = xcorr(data, meanRef, 30/0.1 );
+			[~, i] = max(c);
+
+			errorStr = sprintf(" Bias : %.2f, Median : %.2f, Std : %.2f, MeanRef : %.2f, xcorr : %.2f", err_bias, err_median, err_std, mean(meanRef), l(i)*0.1);
 		end
 
 		function dispAllMagErr(obj)
@@ -184,7 +187,10 @@ classdef Eval < handle
 				end
 				flightIdx = obj.data{i}.Properties.CustomProperties.FlightName == obj.flightList;
 				methodIdx = obj.data{i}.Properties.CustomProperties.Method == obj.methodList;
-				res(flightIdx, methodIdx) = errStr;
+				res(flightIdx, methodIdx) = errStr; 
+				if ismember('rho', obj.data{i}.Properties.VariableNames)
+					res(flightIdx, methodIdx) = res(flightIdx, methodIdx) + " rho : " + num2str(obj.data{i}.rho(1), 4);
+				end
 			end
 			t = array2table(res, 'VariableNames', obj.methodList, 'RowNames', obj.flightList);
 			disp(t);

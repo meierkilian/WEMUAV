@@ -34,6 +34,7 @@ function para = ParaGen_Estimator()
     para.method = {...
         % 'ekf' ...
         'directdynamicmodel' ...
+        ,'directdynamicmodel_noVertDrag' ...
         ,'garreausimple' ...
         };
 
@@ -46,36 +47,12 @@ function para = ParaGen_Estimator()
     para.garreausimple.cst = para.cst;
 
     % garreausimple regression parameter 
-    para.garreausimple.reg.alpha1 = 1113.2;
-    para.garreausimple.reg.alpha2 = 501.2032;
-    para.garreausimple.reg.beta = -36.2747;
+    para.garreausimple.reg.a0 = 1113.2;
+    para.garreausimple.reg.a1 = 501.2032;
+    para.garreausimple.reg.a2 = -36.2747;
     para.garreausimple.reg.cut = 0.091;
 
 
     %%%%%%%%%%%%%%%%% METHOD SPECIFIC PARAMETERS : DIRECDYNAMICMODEL %%%%%%%%%%%%%%%%%
     % Including constants in the directdynamicmodel parameters
     para.directdynamicmodel.cst = para.cst;
-
-
-    %%%%%%%%%%%%%%%%% METHOD SPECIFIC PARAMETERS : EKF %%%%%%%%%%%%%%%%%
-    % TODO : remove this ? 
-    % Including constants in the directdynamicmodel parameters
-    para.ekf.cst = para.cst;
-
-    % Initial guess and covariance of values for acPara and ws
-    % para.ekf.init.augState.value.b = -1.159e-7;
-    para.ekf.init.augState.value.b = 1.965e-5/1.784;
-    para.ekf.init.augState.std.b = 1e-7;
-    para.ekf.init.augState.value.Cxx = 0.455;
-    para.ekf.init.augState.std.Cxx = 1e-2;
-    para.ekf.init.augState.value.Cyy = 0.455;
-    para.ekf.init.augState.std.Cyy = 1e-2;
-    para.ekf.init.augState.value.Czz = 0.4427;
-    para.ekf.init.augState.std.Czz = 1e-1;
-    para.ekf.init.ws.std = 10;
-    para.ekf.init.ac.std = 10;
-
-
-
-    
-

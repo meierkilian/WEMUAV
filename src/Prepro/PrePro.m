@@ -83,10 +83,10 @@ classdef PrePro
                 return
             end
 
-            eul = euler(quaternion(tt.q1, tt.q2, tt.q3, tt.q4), 'XYZ', 'point');
-            tt.roll = eul(:,1);
+            eul = euler(quaternion(tt.q1, tt.q2, tt.q3, tt.q4), 'ZYX', 'frame');
+            tt.roll = eul(:,3);
             tt.pitch = eul(:,2);
-            tt.yaw = eul(:,3);
+            tt.yaw = eul(:,1);
         end
         
         % Performs preprocessing. Load, synchronise and store reference and

@@ -29,8 +29,8 @@ classdef Est_GarreauSimple
             [tilt, ~] = obj.uf.computeTilt(data.q1, data.q2, data.q3, data.q4);
             
             test = find(abs(tan(tilt)) > obj.para.reg.cut) ; 
-            windHMag_est = sqrt(obj.para.reg.alpha1 * abs(tan(tilt).^2)) ; %case alpha <= tan(gamma_crit)
-            windHMag_est(test) = sqrt(obj.para.reg.alpha2 * abs(tan(tilt(test))) + obj.para.reg.beta) ; %case alpha > tan(gamma_crit)
+            windHMag_est = sqrt(obj.para.reg.a0 * abs(tan(tilt).^2)) ; %case alpha <= tan(gamma_crit)
+            windHMag_est(test) = sqrt(obj.para.reg.a1 * abs(tan(tilt(test))) + obj.para.reg.a2) ; %case alpha > tan(gamma_crit)
             speed = timetable(windHMag_est, 'RowTimes', data.Time);
         end
         
