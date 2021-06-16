@@ -1,4 +1,5 @@
 classdef Util_AirDensity
+	% Utility class implementing air density estimations
 	properties
 	end
 
@@ -8,14 +9,15 @@ classdef Util_AirDensity
 	end
 
 	methods(Static = true)
-		% Computing air density
-		% Based on the BIPM-81/8
-		% https://www.bipm.org/documents/20126/28119786/bipm%20publication-ID-167/7a402bf8-90d1-e293-17ae-558bbdf807c3
-		% INPUT
-		%	temp : air temparture [°C]
-		%	pressure : athmospheric pressure [hPa]
-		%	rh : relative humidity [%]
 		function rho = getAirDensity(temp, pressure, rh, xCO2)
+			% Computing air density
+			% Based on the BIPM-81/8
+			% https://www.bipm.org/documents/20126/28119786/bipm%20publication-ID-167/7a402bf8-90d1-e293-17ae-558bbdf807c3
+			% INPUT
+			%	temp : air temparture [°C]
+			%	pressure : athmospheric pressure [hPa]
+			%	rh : relative humidity [%]
+			
 			arguments 
 				temp
 				pressure

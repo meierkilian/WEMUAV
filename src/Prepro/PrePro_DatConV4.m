@@ -1,20 +1,23 @@
 classdef PrePro_DatConV4
+    % DatConV4 Preprocessing
     properties
-        para
+        para % preprocessing parameters
     end
     
     methods
         function obj = PrePro_DatConV4(para)
+            % Constructor
             obj.para = para;
         end
         
-        % Get datastore with proper header. Takes care of the fact that
-        % the DatCon csv is not rectangular.
-        % INPUT :
-        %   filename : path (including file extension) to the file to load
-        % OUTPUT :
-        %   ds : datastore
         function ds = getDatastore(~, filename)
+            % Get datastore with proper header. Takes care of the fact that
+            % the DatCon csv is not rectangular.
+            % INPUT :
+            %   filename : path (including file extension) to the file to load
+            % OUTPUT :
+            %   ds : datastore
+
             % Manually getting the header line
             file = fopen(filename,'r');
             headerLine = fgetl(file);
@@ -30,14 +33,15 @@ classdef PrePro_DatConV4
             ds.VariableNames = header(1:end-2);            
         end
         
-        % Get timetable from file with proper time vector. The returned
-        % timetable has header from the desiredFields variable.
-        % INPUT : 
-        %   path : path to file to load
-        %   desiredFields : ordered list of standardised field names
-        % OUTPUT :
-        %   tt : timetable
         function tt = getTimetable(obj, path, desiredFields)
+            % Get timetable from file with proper time vector. The returned
+            % timetable has header from the desiredFields variable.
+            % INPUT : 
+            %   path : path to file to load
+            %   desiredFields : ordered list of standardised field names
+            % OUTPUT :
+            %   tt : timetable
+            
             if any(size(desiredFields) ~= size(obj.para.varOfInterest))
                 error("Size of the desiredFields and varOfInterest do not match. Use empty char array ('') has place holder if necessary.")
             end

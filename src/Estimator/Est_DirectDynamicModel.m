@@ -1,19 +1,20 @@
 classdef Est_DirectDynamicModel
+    % Implementation of the Dynamic Model based estimation
     properties
-        para
-        mode
+        para % estimation parameters
+        mode % estimation mode 
         uf % Frame transformation utility
         ur % Russell data utility
         uad % Airdensity utility  
     end
     
     methods
-        % Constructor. Initializes utilities.
-        % INPUT : 
-        %   para : parameter set as a structure
-        % OUTPUT : 
-        %   obj : constructed object
         function obj = Est_DirectDynamicModel(para, mode)
+            % Constructor. Initializes utilities.
+            % INPUT : 
+            %   para : parameter set as a structure
+            % OUTPUT : 
+            %   obj : constructed object
             obj.para = para;
             obj.mode = mode;
             obj.uf = Util_Frame();
@@ -21,14 +22,14 @@ classdef Est_DirectDynamicModel
             obj.uad = Util_AirDensity();
         end
         
-        % Computes drag forces
-        % INPUT :
-        %   data : timetable as outputed by preprocessing
-        %   rho : air density [kg/m^3]
-        % OUTPUT :
-        %   ttDragNED : timetable containing drag estimate in NED frame. Time vector is the same as in data.
-        %               (thrust and acceleration in NED are also present for debugging)
         function ttDragNED = computeDrag(obj, data, rho)
+            % Computes drag forces
+            % INPUT :
+            %   data : timetable as outputed by preprocessing
+            %   rho : air density [kg/m^3]
+            % OUTPUT :
+            %   ttDragNED : timetable containing drag estimate in NED frame. Time vector is the same as in data.
+            %               (thrust and acceleration in NED are also present for debugging)
             thrust = obj.ur.getHoverThrust(0.5*vecnorm([data.motRpm_RF, data.motRpm_LF, data.motRpm_LB, data.motRpm_RB],2,2), rho);
             thrustNED = obj.uf.XYZ2NED([zeros(size(thrust,1),2), -thrust], data.q1, data.q2, data.q3, data.q4);
             
@@ -39,6 +40,7 @@ classdef Est_DirectDynamicModel
         end
 
         function ttDragNED = computeDragNoVert(obj, data)
+            % TODO : comment
             fb = [data.ax, data.ay, data.az];
             Cbl = rotmat(quaternion(data.q1, data.q2, data.q3, data.q4), 'point');
 
@@ -58,15 +60,16 @@ classdef Est_DirectDynamicModel
             ttDragNED = timetable(dragNED, thrustNED, 'RowTimes', data.Time);
         end
 
-        % Computes wind estimation 
-        % INPUT : 
-        %   data : timetable as outputed by preprocessing
-        %   ttDragNED : timetable with same time vector as data and containing a "dragNED" column
-        %   rho : air density [kg/m^3]
-        % OUTPUT :
-        %   ttWind : timetable containing wind estimate (windHDir_est, windHMag_est, windVert_est).
-        %            Time vector is the same as in data. (ws, dragTilt, asTxTz, asTy are also present for debugging).
         function ttWind = computeWind(obj, data, ttDragNED, rho)
+            % Computes wind estimation 
+            % INPUT : 
+            %   data : timetable as outputed by preprocessing
+            %   ttDragNED : timetable with same time vector as data and containing a "dragNED" column
+            %   rho : air density [kg/m^3]
+            % OUTPUT :
+            %   ttWind : timetable containing wind estimate (windHDir_est, windHMag_est, windVert_est).
+            %            Time vector is the same as in data. (ws, dragTilt, asTxTz, asTy are also present for debugging).
+            
             % Transform to Tilt frame
             dragTilt = obj.uf.NED2Tilt(ttDragNED.dragNED, data.q1, data.q2, data.q3, data.q4);
 
@@ -93,14 +96,13 @@ classdef Est_DirectDynamicModel
             ttWind = timetable(windHDir_est, windHMag_est, windVert_est, ws, dragTilt, asTxTz, asTy, 'RowTimes', ttDragNED.Time);
         end
         
-        % Performes wind estimate
-        % Performs wind estimation
-        % INPUT :
-        %   data : timetable of data as outputed by the preprocessing
-        % OUTPUT :
-        %   dir : timetable containing the input data as well as the 
-        %         wind speed and direction estimation (windHMag_est, windHDir_est, wdinVert_est) (and some debugging data)
         function tt = estimateWind(obj, data)
+            % Performes wind estimate
+            % INPUT :
+            %   data : timetable of data as outputed by the preprocessing
+            % OUTPUT :
+            %   dir : timetable containing the input data as well as the 
+            %         wind speed and direction estimation (windHMag_est, windHDir_est, wdinVert_est) (and some debugging data)
             if any(ismember("tempMotus", data.Properties.VariableNames)) ...
                     && any(ismember("pressRef", data.Properties.VariableNames)) ...
                     && any(ismember("humidRef", data.Properties.VariableNames))

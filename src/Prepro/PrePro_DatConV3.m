@@ -1,21 +1,25 @@
 classdef PrePro_DatConV3
+    % DatConV3 preprocessing
     properties
-        para
+        para % preprocessing parameters
     end
     
     methods
         function obj = PrePro_DatConV3(para)
+            % Constructor
+
             obj.para = para;
             warning("[PrePro DatConV3] Some parameters where not validate for datconV3 use with caution. In particular check clkFreq and data unitConv!")
         end
         
-        % Get datastore with proper header. Takes care of the fact that
-        % the DatCon csv is not rectangular.
-        % INPUT :
-        %   filename : path (including file extension) to the file to load
-        % OUTPUT :
-        %   ds : datastore
         function ds = getDatastore(~, filename)
+            % Get datastore with proper header. Takes care of the fact that
+            % the DatCon csv is not rectangular.
+            % INPUT :
+            %   filename : path (including file extension) to the file to load
+            % OUTPUT :
+            %   ds : datastore
+
             % Manually getting the header line
             file = fopen(filename,'r');
             headerLine = fgetl(file);
@@ -31,14 +35,15 @@ classdef PrePro_DatConV3
             ds.VariableNames = header(1:end-2);            
         end
         
-        % Get timetable from file with proper time vector. The returned
-        % timetable has header from the desiredFields variable.
-        % INPUT : 
-        %   path : path to file to load
-        %   desiredFields : ordered list of standardised field names
-        % OUTPUT :
-        %   tt : timetable
         function tt = getTimetable(obj, path, desiredFields)
+            % Get timetable from file with proper time vector. The returned
+            % timetable has header from the desiredFields variable.
+            % INPUT : 
+            %   path : path to file to load
+            %   desiredFields : ordered list of standardised field names
+            % OUTPUT :
+            %   tt : timetable
+            
             if any(size(desiredFields) ~= size(obj.para.varOfInterest))
                 error("Size of the desiredFields and varOfInterest do not match. Use empty char array ('') has place holder if necessary.")
             end

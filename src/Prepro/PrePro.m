@@ -1,25 +1,28 @@
 classdef PrePro
+    % Main preprocessing class, serves as a switch between the different prerpocessing types
     properties
-        para
+        para % preprocessing parameters
     end
     
     methods
-        % Constructor
-        % INPUT : 
-        %   para : parameter set as a structure
-        % OUTPUT : 
-        %   obj : constructed object
         function obj = PrePro(para)
+            % Constructor
+            % INPUT : 
+            %   para : parameter set as a structure
+            % OUTPUT : 
+            %   obj : constructed object
+
             obj.para = para;
         end
         
-        % Get timetable from a file with given type
-        % INPUT :
-        %   path : path to data
-        %   type : type of data contained in file
-        % OUTPUT : 
-        %   tt : timetable, if path is empty then tt is an empty timetable
         function tt = getTimetable(obj, path, type)
+            % Get timetable from a file with given type
+            % INPUT :
+            %   path : path to data
+            %   type : type of data contained in file
+            % OUTPUT : 
+            %   tt : timetable, if path is empty then tt is an empty timetable
+
             % Checks for empty path
             if ~isfile(path) && ~isfolder(path)
                 tt = timetable();
@@ -44,16 +47,17 @@ classdef PrePro
             tt = pp.getTimetable(path, obj.para.output.field);
         end
           
-        % Synchronise and select desired timespan in flight and ref data.
-        % Timespan and sample rate is defined by parameters. Interpolation
-        % is linear. 
-        % INPUT :
-        %   flightTT : flight data timetable
-        %   refTT : reference data timetable, can be an empty timetable if
-        %           no reference data is available.
-        % OUTPUT :
-        %   totalTT : resulting total 
         function totalTT = synch(obj, flightTT, refTT, refMeteoTT, start, stop)
+            % Synchronise and select desired timespan in flight and ref data.
+            % Timespan and sample rate is defined by parameters. Interpolation
+            % is linear. 
+            % INPUT :
+            %   flightTT : flight data timetable
+            %   refTT : reference data timetable, can be an empty timetable if
+            %           no reference data is available.
+            % OUTPUT :
+            %   totalTT : resulting total 
+
             start = datetime(start);
             stop = datetime(stop);
             if isnat(start) % Check if startTime was not given, if so taking the earliest possible start time.
@@ -72,12 +76,13 @@ classdef PrePro
             totalTT = synchronize(flightTT, refTT, refMeteoTT, timeSpace, 'linear', 'EndValues', NaN);            
         end
         
-        % Adds roll pitch and yaw column to timetable base on quaternion columns
-        % INPUT :
-        %   tt : timetable containing quaternion columns q1, q2, q3 and q4
-        % OUPUT :
-        %   tt : same timetable as input with added roll, pitch and yaw columns
         function tt = addrpy(~, tt)
+            % Adds roll pitch and yaw column to timetable base on quaternion columns
+            % INPUT :
+            %   tt : timetable containing quaternion columns q1, q2, q3 and q4
+            % OUPUT :
+            %   tt : same timetable as input with added roll, pitch and yaw columns
+
             if any(ismember("roll", tt.Properties.VariableNames))
                 warning("[PrePro] Data seems to already have euleur angle data. Aborting computing from quaternion.")
                 return
@@ -89,9 +94,10 @@ classdef PrePro
             tt.yaw = eul(:,1);
         end
         
-        % Performs preprocessing. Load, synchronise and store reference and
-        % flight data.
         function doPrePro(obj)
+            % Performs preprocessing. Load, synchronise and store reference and
+            % flight data.
+            
             if any(size(obj.para.flightInput.path) ~= size(obj.para.refInput.path))
                 error("Number of flight data and reference data should be the same, if no reference is available specify '' (empty char vector)");
             end
