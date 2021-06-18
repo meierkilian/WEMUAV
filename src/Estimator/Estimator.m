@@ -1,4 +1,5 @@
 classdef Estimator
+    % Main estimator class, serving as switch to the different estimation methods. Only doEstimate() needs to be called
     properties 
         para
     end
@@ -20,8 +21,6 @@ classdef Estimator
                         est = Est_DirectDynamicModel(obj.para.directdynamicmodel, 'normal');
                     elseif obj.para.method(j) == "directdynamicmodel_noVertDrag"
                         est = Est_DirectDynamicModel(obj.para.directdynamicmodel, 'noVertDrag');
-                    elseif obj.para.method(j) == "ekf"
-                        est = Est_EKF(obj.para.ekf);
                     else
                         error("Unkown estimation method : " + obj.para.method(j));
                     end
