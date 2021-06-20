@@ -1,26 +1,175 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <struct>
     <prepro>
-        <startTime>19-Apr-2021 09:31:25</startTime>
-        <startTime>19-Apr-2021 09:46:53</startTime>
-        <startTime>19-Apr-2021 09:56:43</startTime>
-        <startTime>20-Apr-2021 09:27:00</startTime>
-        <startTime>20-Apr-2021 09:29:41</startTime>
-        <startTime>20-Apr-2021 09:38:45</startTime>
-        <startTime>20-Apr-2021 09:42:17</startTime>
-        <startTime>20-Apr-2021 09:44:22</startTime>
-        <startTime>20-Apr-2021 09:46:40</startTime>
-        <startTime>20-Apr-2021 09:49:11</startTime>
-        <endTime>19-Apr-2021 09:42:10</endTime>
-        <endTime>19-Apr-2021 09:48:51</endTime>
-        <endTime>19-Apr-2021 09:57:56</endTime>
-        <endTime>20-Apr-2021 09:27:50</endTime>
-        <endTime>20-Apr-2021 09:37:11</endTime>
-        <endTime>20-Apr-2021 09:39:18</endTime>
-        <endTime>20-Apr-2021 09:43:02</endTime>
-        <endTime>20-Apr-2021 09:45:08</endTime>
-        <endTime>20-Apr-2021 09:47:34</endTime>
-        <endTime>20-Apr-2021 09:51:03</endTime>
+        <datasetOverviewPath>S:\ProjectMaster\2021_KilianMeier\datasetOverview.xlsx</datasetOverviewPath>
+        <selectedIdx>1</selectedIdx>
+        <selectedIdx>2</selectedIdx>
+        <selectedIdx>3</selectedIdx>
+        <selectedIdx>4</selectedIdx>
+        <selectedIdx>5</selectedIdx>
+        <selectedIdx>6</selectedIdx>
+        <selectedIdx>7</selectedIdx>
+        <selectedIdx>8</selectedIdx>
+        <selectedIdx>9</selectedIdx>
+        <selectedIdx>10</selectedIdx>
+        <selectedIdx>11</selectedIdx>
+        <selectedIdx>12</selectedIdx>
+        <selectedIdx>13</selectedIdx>
+        <selectedIdx>14</selectedIdx>
+        <selectedIdx>15</selectedIdx>
+        <selectedIdx>16</selectedIdx>
+        <selectedIdx>17</selectedIdx>
+        <selectedIdx>18</selectedIdx>
+        <selectedIdx>19</selectedIdx>
+        <selectedIdx>20</selectedIdx>
+        <selectedIdx>21</selectedIdx>
+        <selectedIdx>22</selectedIdx>
+        <selectedIdx>23</selectedIdx>
+        <selectedIdx>24</selectedIdx>
+        <selectedIdx>25</selectedIdx>
+        <selectedIdx>26</selectedIdx>
+        <selectedIdx>27</selectedIdx>
+        <selectedIdx>28</selectedIdx>
+        <selectedIdx>29</selectedIdx>
+        <selectedIdx>30</selectedIdx>
+        <selectedIdx>31</selectedIdx>
+        <selectedIdx>32</selectedIdx>
+        <selectedIdx>33</selectedIdx>
+        <selectedIdx>34</selectedIdx>
+        <selectedIdx>35</selectedIdx>
+        <selectedIdx>36</selectedIdx>
+        <selectedIdx>37</selectedIdx>
+        <selectedIdx>38</selectedIdx>
+        <selectedIdx>39</selectedIdx>
+        <selectedIdx>40</selectedIdx>
+        <selectedIdx>41</selectedIdx>
+        <selectedIdx>42</selectedIdx>
+        <selectedIdx>43</selectedIdx>
+        <selectedIdx>44</selectedIdx>
+        <selectedIdx>45</selectedIdx>
+        <selectedIdx>46</selectedIdx>
+        <selectedIdx>47</selectedIdx>
+        <selectedIdx>48</selectedIdx>
+        <selectedIdx>49</selectedIdx>
+        <selectedIdx>50</selectedIdx>
+        <selectedIdx>51</selectedIdx>
+        <selectedIdx>52</selectedIdx>
+        <selectedIdx>53</selectedIdx>
+        <selectedIdx>54</selectedIdx>
+        <selectedIdx>55</selectedIdx>
+        <selectedIdx>56</selectedIdx>
+        <startTime>19-Apr-2021 09:31:07</startTime>
+        <startTime>19-Apr-2021 09:46:35</startTime>
+        <startTime>19-Apr-2021 09:56:25</startTime>
+        <startTime>20-Apr-2021 09:26:42</startTime>
+        <startTime>20-Apr-2021 09:29:26</startTime>
+        <startTime>20-Apr-2021 09:38:27</startTime>
+        <startTime>20-Apr-2021 09:41:59</startTime>
+        <startTime>20-Apr-2021 09:44:04</startTime>
+        <startTime>20-Apr-2021 09:46:22</startTime>
+        <startTime>20-Apr-2021 09:48:53</startTime>
+        <startTime>03-May-2021 14:14:33</startTime>
+        <startTime>03-May-2021 14:23:44</startTime>
+        <startTime>03-May-2021 14:25:42</startTime>
+        <startTime>03-May-2021 14:29:27</startTime>
+        <startTime>03-May-2021 14:31:39</startTime>
+        <startTime>03-May-2021 14:33:54</startTime>
+        <startTime>03-May-2021 14:36:44</startTime>
+        <startTime>03-May-2021 14:39:09</startTime>
+        <startTime>03-May-2021 14:41:27</startTime>
+        <startTime>03-May-2021 14:43:48</startTime>
+        <startTime>03-May-2021 14:45:59</startTime>
+        <startTime>25-May-2021 11:18:35</startTime>
+        <startTime>25-May-2021 11:28:48</startTime>
+        <startTime>25-May-2021 11:31:19</startTime>
+        <startTime>25-May-2021 11:35:00</startTime>
+        <startTime>25-May-2021 11:37:15</startTime>
+        <startTime>25-May-2021 11:41:07</startTime>
+        <startTime>25-May-2021 11:43:23</startTime>
+        <startTime>25-May-2021 11:45:38</startTime>
+        <startTime>25-May-2021 11:49:01</startTime>
+        <startTime>25-May-2021 11:51:18</startTime>
+        <startTime>25-May-2021 11:53:28</startTime>
+        <startTime>25-May-2021 11:55:44</startTime>
+        <startTime>25-May-2021 11:57:48</startTime>
+        <startTime>03-Jun-2021 06:11:55</startTime>
+        <startTime>03-Jun-2021 06:24:23</startTime>
+        <startTime>03-Jun-2021 06:26:20</startTime>
+        <startTime>03-Jun-2021 06:29:53</startTime>
+        <startTime>03-Jun-2021 06:33:04</startTime>
+        <startTime>03-Jun-2021 06:35:15</startTime>
+        <startTime>03-Jun-2021 06:37:19</startTime>
+        <startTime>03-Jun-2021 06:39:43</startTime>
+        <startTime>03-Jun-2021 06:41:55</startTime>
+        <startTime>03-Jun-2021 06:43:59</startTime>
+        <startTime>03-Jun-2021 06:46:05</startTime>
+        <startTime>07-Jun-2021 12:53:56</startTime>
+        <startTime>07-Jun-2021 13:00:52</startTime>
+        <startTime>07-Jun-2021 13:02:56</startTime>
+        <startTime>07-Jun-2021 13:06:23</startTime>
+        <startTime>07-Jun-2021 13:08:48</startTime>
+        <startTime>07-Jun-2021 13:12:15</startTime>
+        <startTime>07-Jun-2021 13:14:13</startTime>
+        <startTime>07-Jun-2021 13:16:32</startTime>
+        <startTime>07-Jun-2021 13:18:54</startTime>
+        <startTime>07-Jun-2021 13:21:39</startTime>
+        <startTime>07-Jun-2021 13:23:45</startTime>
+        <endTime>19-Apr-2021 09:41:52</endTime>
+        <endTime>19-Apr-2021 09:48:33</endTime>
+        <endTime>19-Apr-2021 09:57:38</endTime>
+        <endTime>20-Apr-2021 09:27:32</endTime>
+        <endTime>20-Apr-2021 09:36:53</endTime>
+        <endTime>20-Apr-2021 09:39:00</endTime>
+        <endTime>20-Apr-2021 09:42:44</endTime>
+        <endTime>20-Apr-2021 09:44:50</endTime>
+        <endTime>20-Apr-2021 09:47:16</endTime>
+        <endTime>20-Apr-2021 09:50:45</endTime>
+        <endTime>03-May-2021 14:21:54</endTime>
+        <endTime>03-May-2021 14:24:15</endTime>
+        <endTime>03-May-2021 14:27:43</endTime>
+        <endTime>03-May-2021 14:30:21</endTime>
+        <endTime>03-May-2021 14:32:29</endTime>
+        <endTime>03-May-2021 14:34:38</endTime>
+        <endTime>03-May-2021 14:37:47</endTime>
+        <endTime>03-May-2021 14:40:00</endTime>
+        <endTime>03-May-2021 14:42:16</endTime>
+        <endTime>03-May-2021 14:44:35</endTime>
+        <endTime>03-May-2021 14:46:30</endTime>
+        <endTime>25-May-2021 11:26:46</endTime>
+        <endTime>25-May-2021 11:29:20</endTime>
+        <endTime>25-May-2021 11:33:13</endTime>
+        <endTime>25-May-2021 11:35:56</endTime>
+        <endTime>25-May-2021 11:38:04</endTime>
+        <endTime>25-May-2021 11:41:56</endTime>
+        <endTime>25-May-2021 11:44:10</endTime>
+        <endTime>25-May-2021 11:46:42</endTime>
+        <endTime>25-May-2021 11:49:54</endTime>
+        <endTime>25-May-2021 11:52:08</endTime>
+        <endTime>25-May-2021 11:54:16</endTime>
+        <endTime>25-May-2021 11:56:19</endTime>
+        <endTime>25-May-2021 11:58:22</endTime>
+        <endTime>03-Jun-2021 06:21:01</endTime>
+        <endTime>03-Jun-2021 06:24:56</endTime>
+        <endTime>03-Jun-2021 06:28:14</endTime>
+        <endTime>03-Jun-2021 06:30:48</endTime>
+        <endTime>03-Jun-2021 06:33:50</endTime>
+        <endTime>03-Jun-2021 06:36:01</endTime>
+        <endTime>03-Jun-2021 06:38:24</endTime>
+        <endTime>03-Jun-2021 06:40:35</endTime>
+        <endTime>03-Jun-2021 06:42:45</endTime>
+        <endTime>03-Jun-2021 06:44:46</endTime>
+        <endTime>03-Jun-2021 06:46:39</endTime>
+        <endTime>07-Jun-2021 12:58:35</endTime>
+        <endTime>07-Jun-2021 13:01:24</endTime>
+        <endTime>07-Jun-2021 13:04:50</endTime>
+        <endTime>07-Jun-2021 13:07:17</endTime>
+        <endTime>07-Jun-2021 13:09:34</endTime>
+        <endTime>07-Jun-2021 13:12:59</endTime>
+        <endTime>07-Jun-2021 13:15:17</endTime>
+        <endTime>07-Jun-2021 13:17:23</endTime>
+        <endTime>07-Jun-2021 13:19:40</endTime>
+        <endTime>07-Jun-2021 13:22:28</endTime>
+        <endTime>07-Jun-2021 13:24:18</endTime>
         <timeRes>0.1</timeRes>
         <refInput>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210419\WEATHER\2021-04-19_Mesures_MoTUS</path>
@@ -33,6 +182,52 @@
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\2021-04-20_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\2021-05-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\2021-05-25_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\2021-06-03_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\2021-06-07_Mesures_MoTUS</path>
             <type>motus</type>
         </refInput>
         <flightInput>
@@ -46,6 +241,52 @@
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY140.csv</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY140.csv</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\FLIGHT\FLY140.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY167.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY167.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY167.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY167.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY167.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY167.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY168.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY168.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY168.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY168.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\FLIGHT\FLY168.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY172.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY172.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY172.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY172.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY172.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY173.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY173.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY173.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY173.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY173.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY173.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY173.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\FLIGHT\FLY173.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY178.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY178.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY178.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY178.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY179.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY179.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY179.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY179.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY179.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY179.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\FLIGHT\FLY179.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY181.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY181.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY181.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY181.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY181.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY182.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY182.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY182.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY182.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY182.csv</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\FLIGHT\FLY182.csv</path>
             <type>datconv4</type>
         </flightInput>
         <refMeteoInput>
@@ -59,11 +300,56 @@
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
             <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210420\WEATHER\18-Apr-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210503\WEATHER\02-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210525\WEATHER\23-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210603\WEATHER\30-May-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
+            <path>S:\ProjectMaster\2021_KilianMeier\EPFL20210607\WEATHER\06-Jun-2021.txt</path>
             <type>topoaws</type>
         </refMeteoInput>
         <output>
             <path>.\outData\prepro</path>
-            <type>default</type>
             <field>lati</field>
             <field>long</field>
             <field>alti</field>
@@ -105,7 +391,7 @@
             <field>windHDir_other</field>
             <field>windHMag_other</field>
             <field>windVert_other</field>
-            <field>tempAC</field>
+            <field>tempMotus</field>
             <field>tempRef</field>
             <field>pressAC</field>
             <field>pressRef</field>
@@ -121,6 +407,7 @@
             <UTCsec>gps_utc_data_gps_sec_D</UTCsec>
             <timeStamp>Clock_Tick_</timeStamp>
             <clkFreq>4687453.4082</clkFreq>
+            <leapSec>18</leapSec>
             <varOfInterest>IMU_ATTI_0__Latitude</varOfInterest>
             <varOfInterest>IMU_ATTI_0__Longitude</varOfInterest>
             <varOfInterest>IMU_ATTI_0__alti_D</varOfInterest>
@@ -130,9 +417,9 @@
             <varOfInterest>IMU_ATTI_0__accelX</varOfInterest>
             <varOfInterest>IMU_ATTI_0__accelY</varOfInterest>
             <varOfInterest>IMU_ATTI_0__accelZ</varOfInterest>
-            <varOfInterest>IMU_ATTI_0__roll_C</varOfInterest>
-            <varOfInterest>IMU_ATTI_0__pitch_C</varOfInterest>
-            <varOfInterest>IMU_ATTI_0__yaw_C</varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
+            <varOfInterest></varOfInterest>
             <varOfInterest>IMU_ATTI_0__quatW_D</varOfInterest>
             <varOfInterest>IMU_ATTI_0__quatX_D</varOfInterest>
             <varOfInterest>IMU_ATTI_0__quatY_D</varOfInterest>
@@ -162,7 +449,7 @@
             <varOfInterest>AirSpeed_windFromDir</varOfInterest>
             <varOfInterest>AirSpeed_windSpeed</varOfInterest>
             <varOfInterest>AirSpeed_comp_alti_D</varOfInterest>
-            <varOfInterest>bat_blackbox_data_temp_D</varOfInterest>
+            <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
@@ -378,7 +665,7 @@
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
-            <varOfInterest></varOfInterest>
+            <varOfInterest>temp_2130cm</varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
             <varOfInterest></varOfInterest>
@@ -665,18 +952,67 @@
             <g>9.81</g>
             <rho>1.225</rho>
         </cst>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY134__20210419_093125__20210419_094210.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY135__20210419_094653__20210419_094851.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY135__20210419_095643__20210419_095756.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_092700__20210420_092750.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_092941__20210420_093711.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_093845__20210420_093918.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094217__20210420_094302.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094422__20210420_094508.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094640__20210420_094734.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094911__20210420_095103.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY134__20210419_093107__Hover.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY135__20210419_094635__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY135__20210419_095625__CstSpeed13ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_092642__Vertical.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_092926__Hover.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY139__20210420_093827__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094159__CstSpeed13ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094404__CstSpeed10ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094622__CstSpeed6ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY140__20210420_094853__CstSpeed2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY167__20210503_141433__Hover.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY167__20210503_142344__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY167__20210503_142542__CstSpeed2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY167__20210503_142927__CstSpeed6ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY167__20210503_143139__CstSpeed10ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY167__20210503_143354__CstSpeed13ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY168__20210503_143644__Vertical2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY168__20210503_143909__Vertical3ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY168__20210503_144127__Vertical4ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY168__20210503_144348__Vertical5ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY168__20210503_144559__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY172__20210525_111835__Hover.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY172__20210525_112848__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY172__20210525_113119__CstSpeed2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY172__20210525_113500__CstSpeed6ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY172__20210525_113715__CstSpeed10ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY173__20210525_114107__CstSpeed10ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY173__20210525_114323__CstSpeed13ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY173__20210525_114538__Vertical2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY173__20210525_114901__Vertical3ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY173__20210525_115118__Vertical4ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY173__20210525_115328__Vertical5ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY173__20210525_115544__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY173__20210525_115748__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_061155__Hover.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_061155__Hover_wls.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_061155__Hover_wols.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_062423__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_062620__CstSpeed2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_062953__CstSpeed6ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY179__20210603_063304__CstSpeed10ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY179__20210603_063515__CstSpeed13ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY179__20210603_063719__Vertical2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY179__20210603_063943__Vertical3ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY179__20210603_064155__Vertical4ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY179__20210603_064359__Vertical5ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY179__20210603_064605__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY181__20210607_125356__Hover.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY181__20210607_130052__Square.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY181__20210607_130256__CstSpeed2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY181__20210607_130623__CstSpeed6ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY181__20210607_130848__CstSpeed10ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY182__20210607_131215__CstSpeed13ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY182__20210607_131413__Vertical2ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY182__20210607_131632__Vertical3ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY182__20210607_131854__Vertical4ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY182__20210607_132139__Vertical5ms.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY182__20210607_132345__Square.mat</inputPath>
         <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\SIMULATED.mat</inputPath>
         <method>directdynamicmodel</method>
+        <method>directdynamicmodel_noVertDrag</method>
         <method>garreausimple</method>
         <outputPath>.\outData\estimator</outputPath>
         <garreausimple>
@@ -684,16 +1020,11 @@
                 <m>1.391</m>
                 <g>9.81</g>
                 <rho>1.225</rho>
-                <qnasa>5.1667</qnasa>
             </cst>
-            <dragDataPath>
-                <F>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Drag_Russel\F.txt</F>
-                <T>C:\Users\Kilian\Documents\EPFL\PDM\SW\EstArthurGarreau\1_DATA\Drag_Russel\T.txt</T>
-            </dragDataPath>
             <reg>
-                <alpha1>1113.2</alpha1>
-                <alpha2>501.2032</alpha2>
-                <beta>-36.2747</beta>
+                <a0>1113.2</a0>
+                <a1>501.2032</a1>
+                <a2>-36.2747</a2>
                 <cut>0.091</cut>
             </reg>
         </garreausimple>
@@ -704,58 +1035,184 @@
                 <rho>1.225</rho>
             </cst>
         </directdynamicmodel>
-        <ekf>
-            <cst>
-                <m>1.391</m>
-                <g>9.81</g>
-                <rho>1.225</rho>
-            </cst>
-            <init>
-                <augState>
-                    <value>
-                        <b>1.1015e-05</b>
-                        <Cxx>0.455</Cxx>
-                        <Cyy>0.455</Cyy>
-                        <Czz>0.4427</Czz>
-                    </value>
-                    <std>
-                        <b>1e-07</b>
-                        <Cxx>0.01</Cxx>
-                        <Cyy>0.01</Cyy>
-                        <Czz>0.1</Czz>
-                    </std>
-                </augState>
-                <ws>
-                    <std>10</std>
-                </ws>
-                <ac>
-                    <std>10</std>
-                </ac>
-            </init>
-        </ekf>
     </estimator>
     <eval>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY134__20210419_093125__20210419_094210_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY134__20210419_093125__20210419_094210_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_094653__20210419_094851_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_094653__20210419_094851_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_095643__20210419_095756_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_095643__20210419_095756_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092700__20210420_092750_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092700__20210420_092750_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092941__20210420_093711_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092941__20210420_093711_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_093845__20210420_093918_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_093845__20210420_093918_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094217__20210420_094302_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094217__20210420_094302_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094422__20210420_094508_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094422__20210420_094508_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094640__20210420_094734_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094640__20210420_094734_garreausimple.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094911__20210420_095103_directdynamicmodel.mat</inputPath>
-        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094911__20210420_095103_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY134__20210419_093107__Hover_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY134__20210419_093107__Hover_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY134__20210419_093107__Hover_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_094635__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_094635__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_094635__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_095625__CstSpeed13ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_095625__CstSpeed13ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY135__20210419_095625__CstSpeed13ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092642__Vertical_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092642__Vertical_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092642__Vertical_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092926__Hover_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092926__Hover_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_092926__Hover_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_093827__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_093827__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY139__20210420_093827__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094159__CstSpeed13ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094159__CstSpeed13ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094159__CstSpeed13ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094404__CstSpeed10ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094404__CstSpeed10ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094404__CstSpeed10ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094622__CstSpeed6ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094622__CstSpeed6ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094622__CstSpeed6ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094853__CstSpeed2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094853__CstSpeed2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY140__20210420_094853__CstSpeed2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_141433__Hover_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_141433__Hover_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_141433__Hover_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142344__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142344__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142344__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142542__CstSpeed2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142542__CstSpeed2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142542__CstSpeed2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142927__CstSpeed6ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142927__CstSpeed6ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_142927__CstSpeed6ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_143139__CstSpeed10ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_143139__CstSpeed10ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_143139__CstSpeed10ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_143354__CstSpeed13ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_143354__CstSpeed13ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY167__20210503_143354__CstSpeed13ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_143644__Vertical2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_143644__Vertical2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_143644__Vertical2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_143909__Vertical3ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_143909__Vertical3ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_143909__Vertical3ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144127__Vertical4ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144127__Vertical4ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144127__Vertical4ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144348__Vertical5ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144348__Vertical5ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144348__Vertical5ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144559__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144559__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY168__20210503_144559__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_111835__Hover_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_111835__Hover_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_111835__Hover_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_112848__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_112848__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_112848__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113119__CstSpeed2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113119__CstSpeed2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113119__CstSpeed2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113500__CstSpeed6ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113500__CstSpeed6ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113500__CstSpeed6ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113715__CstSpeed10ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113715__CstSpeed10ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY172__20210525_113715__CstSpeed10ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114107__CstSpeed10ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114107__CstSpeed10ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114107__CstSpeed10ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114323__CstSpeed13ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114323__CstSpeed13ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114323__CstSpeed13ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114538__Vertical2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114538__Vertical2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114538__Vertical2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114901__Vertical3ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114901__Vertical3ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_114901__Vertical3ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115118__Vertical4ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115118__Vertical4ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115118__Vertical4ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115328__Vertical5ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115328__Vertical5ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115328__Vertical5ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115544__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115544__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115544__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115748__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115748__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY173__20210525_115748__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_wls_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_wls_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_wls_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_wols_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_wols_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_061155__Hover_wols_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062423__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062423__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062423__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062620__CstSpeed2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062620__CstSpeed2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062620__CstSpeed2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062953__CstSpeed6ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062953__CstSpeed6ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY178__20210603_062953__CstSpeed6ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063304__CstSpeed10ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063304__CstSpeed10ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063304__CstSpeed10ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063515__CstSpeed13ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063515__CstSpeed13ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063515__CstSpeed13ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063719__Vertical2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063719__Vertical2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063719__Vertical2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063943__Vertical3ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063943__Vertical3ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_063943__Vertical3ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064155__Vertical4ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064155__Vertical4ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064155__Vertical4ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064359__Vertical5ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064359__Vertical5ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064359__Vertical5ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064605__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064605__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY179__20210603_064605__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_125356__Hover_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_125356__Hover_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_125356__Hover_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130052__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130052__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130052__Square_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130256__CstSpeed2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130256__CstSpeed2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130256__CstSpeed2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130623__CstSpeed6ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130623__CstSpeed6ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130623__CstSpeed6ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130848__CstSpeed10ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130848__CstSpeed10ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY181__20210607_130848__CstSpeed10ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131215__CstSpeed13ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131215__CstSpeed13ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131215__CstSpeed13ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131413__Vertical2ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131413__Vertical2ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131413__Vertical2ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131632__Vertical3ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131632__Vertical3ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131632__Vertical3ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131854__Vertical4ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131854__Vertical4ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_131854__Vertical4ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_132139__Vertical5ms_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_132139__Vertical5ms_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_132139__Vertical5ms_garreausimple.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_132345__Square_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_132345__Square_directdynamicmodel_noVertDrag.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\FLY182__20210607_132345__Square_garreausimple.mat</inputPath>
         <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\SIMULATED_directdynamicmodel.mat</inputPath>
+        <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\SIMULATED_directdynamicmodel_noVertDrag.mat</inputPath>
         <inputPath>C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\estimator\SIMULATED_garreausimple.mat</inputPath>
     </eval>
 </struct>

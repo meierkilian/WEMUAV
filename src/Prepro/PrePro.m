@@ -2,6 +2,7 @@ classdef PrePro
     % Main preprocessing class, serves as a switch between the different prerpocessing types
     properties
         para % preprocessing parameters
+        t % dataset oveview table
     end
     
     methods
@@ -13,6 +14,7 @@ classdef PrePro
             %   obj : constructed object
 
             obj.para = para;
+            obj.t = readtable(para.datasetOverviewPath);
         end
         
         function tt = getTimetable(obj, path, type)
@@ -133,9 +135,9 @@ classdef PrePro
                 totalTT = obj.addrpy(totalTT);
 
                 totalTT = addprop(totalTT, {'ID','FlightName','FlightType'}, {'table', 'table', 'table'});
-                totalTT.Properties.CustomProperties.ID = obj.para.t.ID(obj.para.selectedIdx(i));
-                totalTT.Properties.CustomProperties.FlightName = obj.para.t.FLIGHT(obj.para.selectedIdx(i)) + "__" + datestr(totalTT.Time(1), 'yyyymmdd_HHMMSS') + "__" + obj.para.t.FlightType(obj.para.selectedIdx(i));
-                totalTT.Properties.CustomProperties.FlightType = string(obj.para.t.FlightType{obj.para.selectedIdx(i)});
+                totalTT.Properties.CustomProperties.ID = obj.t.ID(obj.para.selectedIdx(i));
+                totalTT.Properties.CustomProperties.FlightName = obj.t.FLIGHT(obj.para.selectedIdx(i)) + "__" + datestr(totalTT.Time(1), 'yyyymmdd_HHMMSS') + "__" + obj.t.FlightType(obj.para.selectedIdx(i));
+                totalTT.Properties.CustomProperties.FlightType = string(obj.t.FlightType{obj.para.selectedIdx(i)});
             
                 save(fullfile(obj.para.output.path, totalTT.Properties.CustomProperties.FlightName + ".mat"), 'totalTT', '-mat')
             end                
