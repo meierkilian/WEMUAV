@@ -62,7 +62,21 @@ classdef Util_Russell
 			obj.hoverThrust = @(RPM, rho) sum(RPM.^2, 2) * bHover;
 			% obj.hoverThrust = @(RPM, rho) rho ./ meanAirDensity .* sum(RPM.^2, 2) * bHover;
 
-			% Rsq = 1 - sum((obj.tHover.Fz - obj.hoverThrust(obj.tHover.RPM, meanAirDensity)).^2)/sum((obj.tHover.Fz - mean(obj.tHover.Fz)).^2);
+			Rsq = 1 - sum((obj.tHover.Fz - obj.hoverThrust(obj.tHover.RPM, meanAirDensity)).^2)/sum((obj.tHover.Fz - mean(obj.tHover.Fz)).^2);
+            
+            xlim = [min(obj.tHover.RPM), max(obj.tHover.RPM)];
+            xspace = linspace(xlim(1),xlim(2),100);
+            
+            figure(1)
+            clf
+            hold on
+            plot(xspace.^2, obj.hoverThrust(xspace', nan))
+            plot(obj.tHover.RPM.^2, obj.tHover.Fz, 'o')
+            grid on
+            title("Thrust model")
+            ylabel("$F_{T,-z}$ [N]", 'Interpreter','latex')
+            xlabel("$\bar{\eta}^2$ [RPM$^2$]", 'Interpreter','latex')
+            legend("Model : $F_{T,-z} = " + num2str(bHover,2) + "\cdot\bar{\eta}^2,\ R^2 = " + num2str(Rsq,4) + "$", "Samples", 'Interpreter','latex','location','best')
 			% disp("[Util_Russell] Hover Thrust goodness of fit : R^2 = " + num2str(Rsq))
 		end
 
@@ -76,6 +90,18 @@ classdef Util_Russell
             
 			obj.meanDragRussel = mean(dragRussell);
 			obj.FDragRussell = scatteredInterpolant(-obj.tDrag.Pitch, obj.tDrag.RPM, dragRussell, 'linear', 'linear');
+            
+%             xSpace = unique(-obj.tDrag.Pitch);
+%             ySpace = unique(obj.tDrag.RPM);
+%             
+%             figure(1)
+%             clf
+%             [xMesh, yMesh] = meshgrid(xSpace, ySpace);
+%             mesh(xMesh,yMesh,obj.FDragRussell(xMesh,yMesh),'FaceColor','interp', 'FaceAlpha',0.5)
+%             xlabel("$\gamma$ [rad]", 'Interpreter','latex')
+%             ylabel("$\bar{\eta}$ [RPM]", 'Interpreter','latex')
+%             zlabel("$D_R$ [N]", 'Interpreter','latex')
+%             title("Wind tunnel drag model")
 		end
 
 		function thrust = getMotorThrust(obj, RPM, rho)
