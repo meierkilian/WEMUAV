@@ -70,7 +70,7 @@ classdef PrePro_DatConV3
             % Creating proper time space vector from GPS time and internal
             % ticks
             offset = data.(obj.para.timeStamp) - data.(obj.para.timeStamp)(idx);
-            timespace = timespace(idx) + seconds(offset);                
+            timespace = timespace(idx) + seconds(offset) - seconds(obj.para.leapSec);                
             
             % Creating the timetable
             tt = table2timetable(data(:,cellstr(obj.para.varOfInterest(validFields))),'RowTimes',timespace);
@@ -83,7 +83,7 @@ classdef PrePro_DatConV3
             tt.Properties.VariableNames = values(headerMap, tt.Properties.VariableNames);
 
             % Perform unit correction
-            tt.Variables = tt.Variables * diag(obj.para.unitConv(validFields));
+            tt.Variables = tt.Variables .* obj.para.unitConv(validFields);
         end
     end
 end

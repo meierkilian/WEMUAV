@@ -58,7 +58,9 @@ classdef Est_GarreauSimple
             
             speed = obj.computeWindSpeed(data);
             dir = obj.computeWindDirection(data);
-            tt = synchronize(speed, dir, data);
+            ws = obj.uf.getNEDWind(dir.windHDir_est, speed.windHMag_est, zeros(size(speed.windHMag_est)));
+            ttws = timetable(ws, 'RowTimes', data.Time);
+            tt = synchronize(speed, dir, ttws, data);
         end
     end
 end

@@ -43,4 +43,4 @@ surf(x,y,z,'EdgeColor','none','FaceColor','black','FaceAlpha','0.5')
 legend([hd, hW(1), hgamma, hx(1), hy, hz(1)], {'Drone','Air Flow','\gamma','u_{Wx}', 'u_{Wy}','u_{Wz}'},'location','northeastoutside')
 
 
-exportgraphics(gcf,"C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\windTunnelSetup.eps")
+exportgraphics(gcf,"C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\windTunnelSetup.pdf",'ContentType','vector')

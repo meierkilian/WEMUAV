@@ -42,4 +42,4 @@ hA = plot(x,y,'m','LineWidth',2);
 legend([hd, hG(1), hT(1), hD(1), hW(1), hA], {'Drone','F_G','F_T','F_D','Air Flow', '\alpha'},'location','northeastoutside')
 
 
-exportgraphics(gcf,"C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\hoverForces.eps")
+exportgraphics(gcf,"C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\hoverForces.pdf",'ContentType','vector')

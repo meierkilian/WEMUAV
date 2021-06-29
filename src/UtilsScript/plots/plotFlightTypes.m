@@ -13,7 +13,7 @@ plotFlightType("Square", square, 2,6)
 plotFlightType("CstSpeed", horiz, 3,7)
 plotFlightType("Vertical", vert, 4,8)
 
-exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\flightType.eps")
+exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\flightType.pdf",'ContentType','vector')
 
 
 

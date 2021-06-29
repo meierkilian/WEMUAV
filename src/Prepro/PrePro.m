@@ -95,6 +95,25 @@ classdef PrePro
             tt.pitch = eul(:,2);
             tt.yaw = eul(:,1);
         end
+
+        function tt = addquat(~, tt)
+            % Adds q1, q2, q3 and q4 column to timetable base on euler angle columns
+            % INPUT :
+            %   tt : timetable containing quaternion columns roll, pitch and yaw
+            % OUPUT :
+            %   tt : same timetable as input with added quaternion columns
+
+            if any(ismember("q1", tt.Properties.VariableNames))
+                warning("[PrePro] Data seems to already have quaternion angle data. Aborting computing from euler angles.")
+                return
+            end
+
+            q = compact(quaternion([tt.pitch, tt.roll, tt.yaw], 'euler', 'YXZ', 'point'));
+            tt.q1 = q(:,1);
+            tt.q2 = q(:,2);
+            tt.q3 = q(:,3);
+            tt.q4 = q(:,4);
+        end
         
         function doPrePro(obj)
             % Performs preprocessing. Load, synchronise and store reference and
@@ -119,24 +138,26 @@ classdef PrePro
                 
                 if currRefMeteoPath ~= obj.para.refMeteoInput.path(i)
                     currRefMeteoPath = obj.para.refMeteoInput.path(i);
-                    refMeteoTT = obj.getTimetable(obj.para.refMeteoInput.path(i), obj.para.refMeteoInput.type);
+                    refMeteoTT = obj.getTimetable(obj.para.refMeteoInput.path(i), obj.para.refMeteoInput.type(i));
                 end
                 if currFlightPath ~= obj.para.flightInput.path(i)
                     currFlightPath = obj.para.flightInput.path(i);
-                    flightTT = obj.getTimetable(obj.para.flightInput.path(i), obj.para.flightInput.type);
+                    flightTT = obj.getTimetable(obj.para.flightInput.path(i), obj.para.flightInput.type(i));
                 end
                 if currRefPath ~= obj.para.refInput.path(i)
                     currRefPath = obj.para.refInput.path(i);
-                    refTT = obj.getTimetable(obj.para.refInput.path(i), obj.para.refInput.type);
+                    refTT = obj.getTimetable(obj.para.refInput.path(i), obj.para.refInput.type(i));
                 end
 
                 totalTT = obj.synch(flightTT, refTT, refMeteoTT, obj.para.startTime(i), obj.para.endTime(i));
 
                 totalTT = obj.addrpy(totalTT);
+                totalTT = obj.addquat(totalTT);
 
                 totalTT = addprop(totalTT, {'ID','FlightName','FlightType'}, {'table', 'table', 'table'});
                 totalTT.Properties.CustomProperties.ID = obj.t.ID(obj.para.selectedIdx(i));
-                totalTT.Properties.CustomProperties.FlightName = obj.t.FLIGHT(obj.para.selectedIdx(i)) + "__" + datestr(totalTT.Time(1), 'yyyymmdd_HHMMSS') + "__" + obj.t.FlightType(obj.para.selectedIdx(i));
+                [~, name, ~] = fileparts(obj.t.FLIGHT(obj.para.selectedIdx(i)));
+                totalTT.Properties.CustomProperties.FlightName = name + "__" + datestr(totalTT.Time(1), 'yyyymmdd_HHMMSS') + "__" + obj.t.FlightType(obj.para.selectedIdx(i));
                 totalTT.Properties.CustomProperties.FlightType = string(obj.t.FlightType{obj.para.selectedIdx(i)});
             
                 save(fullfile(obj.para.output.path, totalTT.Properties.CustomProperties.FlightName + ".mat"), 'totalTT', '-mat')

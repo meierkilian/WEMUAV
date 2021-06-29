@@ -1,13 +1,24 @@
 % Parameters
-outFilename = "squareFlight_short.gif";
-load('C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_062423__Square.mat')
-% timeRange = 100;
-timeRange = 1:3:length(totalTT.q1);
+outGifFilename = ".\src\UtilsScript\plots\svalbard.gif";
+outImgFilename = "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\tiltFrame.pdf";
+outType = "Gif"; % Can be either "Img" or "Gif"
+% load('C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_062423__Square.mat')
+load('C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\2020-07-18_FLY121_profile__20200718_154000__Hover.mat')
 frameDelay = 0.3;
-latLim = [46.52105, 46.52172];
-longLim = [6.56695, 6.56781];
+% latLim = [46.52105, 46.52172];
+% longLim = [6.56695, 6.56781];
+
+if outType == "Img"
+    timeRange = 100;
+elseif outType == "Gif"
+    timeRange = 1:3:length(totalTT.q1);
+else
+    error("Unkown outType")
+end
+
 
 uf = Util_Frame();
+
 
 
 % Drone mesh
@@ -99,28 +110,33 @@ for idx = timeRange
     C = (drone(:,:,3)- min(min(min(drone(:,:,3)))))*1.3;
     surf(drone(:,:,1),drone(:,:,2),drone(:,:,3), C,'EdgeColor','none','FaceColor','interp','FaceAlpha',0.8)
 
-    legend(ha(1,:),"u_n","u_e","u_d","u_x","u_y","u_z","u_{Tx}","u_{Ty}","u_{Tz}")
+    legend(ha(1,:),["u_n","u_e","u_d","u_x","u_y","u_z","u_{Tx}","u_{Ty}","u_{Tz}"],'location','northeast')
     
     % Geoplot
     subplot(1,2,2)
     geoplot(totalTT.lati(1:idx), totalTT.long(1:idx),'r','LineWidth',2.5)
-    geolimits(latLim, longLim)
+%     geolimits(latLim, longLim)
     geobasemap satellite
     title("Flight path")
     hold on
     geoplot(totalTT.lati(idx), totalTT.long(idx), 'og','LineWidth',2.5)
 
-
-    % Capture the plot as an image 
-    frame = getframe(h); 
-    im = frame2im(frame); 
-%     [imind,cm] = rgb2ind(im,256); 
-    [imind,cm] = rgb2ind(im,128); 
-    % Write to the GIF File 
-    if idx == 1 
-      imwrite(imind,cm,outFilename,'gif', 'DelayTime', frameDelay, 'Loopcount',inf); 
-    else 
-      imwrite(imind,cm,outFilename,'gif','DelayTime', frameDelay, 'WriteMode','append'); 
-    end 
-
+    
+    if outType == "Img"
+        exportgraphics(gcf, outImgFilename,'ContentType','vector');
+    elseif outType == "Gif"
+         % Capture the plot as an image 
+        frame = getframe(h); 
+        im = frame2im(frame); 
+        [imind,cm] = rgb2ind(im,256); 
+%         [imind,cm] = rgb2ind(im,128); 
+        % Write to the GIF File 
+        if idx == 1 
+          imwrite(imind,cm,outGifFilename,'gif', 'DelayTime', frameDelay, 'Loopcount',inf); 
+        else 
+          imwrite(imind,cm,outGifFilename,'gif','DelayTime', frameDelay, 'WriteMode','append'); 
+        end 
+    else
+        error("Unkown outType")
+    end
 end

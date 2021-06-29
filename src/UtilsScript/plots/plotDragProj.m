@@ -158,4 +158,4 @@ arrow3([0 0], uz([2 3]), ':t');
 % Drag vector
 arrow3([0 0], dTy([2 3]), '-.e');
 
-exportgraphics(gcf,"C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\dragProjection.eps");
+exportgraphics(gcf,"C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\dragProjection.pdf",'ContentType','vector');

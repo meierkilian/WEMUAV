@@ -19,8 +19,8 @@ function para = ParaGen_PrePro()
     t = readtable(para.datasetOverviewPath);
 
     % ID of slected flight for preprocessing 
-    % para.selectedIdx = 35;
-    para.selectedIdx = t.ID;
+    para.selectedIdx = 1:6;
+    % para.selectedIdx = 1:56;
     if all(size(para.selectedIdx) == size(t.ID))
         disp("[ParaGen_Prepro] Selected ALL available files in dataset overview.")
     else
@@ -43,21 +43,21 @@ function para = ParaGen_PrePro()
 
     % Type of reference (describes the file formatting), available types are:
     % {'motus', 'unisaws', 'topoaws'}
-    para.refInput.type = 'motus';
+    para.refInput.type = string(t.REFDATATYPE(ismember(t.ID,para.selectedIdx)));
 
     % Path to flight data, can be a vector of paths, must match size of refInputpath
-    para.flightInput.path = string(fullfile(t.FOLDER(ismember(t.ID,para.selectedIdx)), "FLIGHT", t.FLIGHT(ismember(t.ID,para.selectedIdx)) + ".csv"));
+    para.flightInput.path = string(fullfile(t.FOLDER(ismember(t.ID,para.selectedIdx)), "FLIGHT", t.FLIGHT(ismember(t.ID,para.selectedIdx))));
 
     % Type of reference (describes the file formatting), available types are:
     % {'datconv3', 'datconv4'}
-    para.flightInput.type = 'datconv4';
+    para.flightInput.type = string(t.FLIGHTDATATYPE(ismember(t.ID,para.selectedIdx)));;
 
     % Path to meteo reference data (secondary reference), can be a vector of paths, must match size of flightInputpath
-    para.refMeteoInput.path = string(fullfile(t.FOLDER(ismember(t.ID,para.selectedIdx)), "WEATHER", t.REFMETEO(ismember(t.ID,para.selectedIdx)) + ".txt"));
+    para.refMeteoInput.path = string(fullfile(t.FOLDER(ismember(t.ID,para.selectedIdx)), "WEATHER", t.REFMETEO(ismember(t.ID,para.selectedIdx))));
 
     % Type of reference (describes the file formatting), available types are:
     % {'motus', 'unisaws', 'topoaws'}
-    para.refMeteoInput.type = 'topoaws';
+    para.refMeteoInput.type = string(t.REFMETEODATATYPE(ismember(t.ID,para.selectedIdx)));;
 
     % Path to output folder
     para.output.path = fullfile('.','outData','prepro');
@@ -245,6 +245,9 @@ function para = ParaGen_PrePro()
     para.datconv3.UTCdatetimeString = 'GPS_dateTimeStamp';
     para.datconv3.timeStamp = 'offsetTime';
 
+    % datcon3 nbr of leap seconds to UTC 
+    para.datconv3.leapSec = 0;
+
     % datconv3 name of desired field, this is used to create a map from the
     % header of the file to the variable names as defined in
     % para.outout.field. Hence, this cell array must have the same size and
@@ -255,9 +258,9 @@ function para = ParaGen_PrePro()
         'IMU_ATTI_0__Latitude', ...
         'IMU_ATTI_0__Longitude', ...
         '', ...
-        '', ...
-        '', ...
-        '', ...
+        'IMU_ATTI_0__velN', ...
+        'IMU_ATTI_0__velE', ...
+        'IMU_ATTI_0__velD', ...
         'IMU_ATTI_0__accel_X', ...
         'IMU_ATTI_0__accel_Y', ...
         'IMU_ATTI_0__accel_Z', ...
@@ -311,9 +314,9 @@ function para = ParaGen_PrePro()
             1, ...
             1, ...
             1, ...
-            1, ...
-            1, ...
-            1, ...
+            9.81, ...
+            9.81, ...
+            9.81, ...
             0.0175, ...
             0.0175, ...
             0.0175, ...
@@ -430,8 +433,8 @@ function para = ParaGen_PrePro()
         '', ... % [deg]
         '', ... % [m/s]
         '', ... % [m/s]
-        'temp_2130cm', ... % [°C]
         '', ... % [°C]
+        'temp_2130cm', ... % [°C]
         '', ... % [hPa]
         '', ... % [hPa]
         '', ... % [%]
@@ -664,7 +667,7 @@ function para = ParaGen_PrePro()
         '', ... % [m/s]
         '', ... % [m/s]
         '', ... % [°C]
-        'AirTemp1', ... % [°C]
+        '', ... % [°C]
         '', ... % [hPa]
         'AtmPressure' ... % [hPa]
         '', ... % [%]

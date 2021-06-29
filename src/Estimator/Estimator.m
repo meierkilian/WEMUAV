@@ -17,10 +17,14 @@ classdef Estimator
 
                     if obj.para.method(j) == "garreausimple"
                         est = Est_GarreauSimple(obj.para.garreausimple);
-                    elseif obj.para.method(j) == "directdynamicmodel"
-                        est = Est_DirectDynamicModel(obj.para.directdynamicmodel, 'normal');
-                    elseif obj.para.method(j) == "directdynamicmodel_noVertDrag"
-                        est = Est_DirectDynamicModel(obj.para.directdynamicmodel, 'noVertDrag');
+                    elseif obj.para.method(j) == "directdynamicmodel_linVert"
+                        est = Est_DirectDynamicModel(obj.para.directdynamicmodel, "linear,vertDrag");
+                    elseif obj.para.method(j) == "directdynamicmodel_linNoVert"
+                        est = Est_DirectDynamicModel(obj.para.directdynamicmodel, "linear,noVertDrag");
+                    elseif obj.para.method(j) == "directdynamicmodel_quadVert"
+                        est = Est_DirectDynamicModel(obj.para.directdynamicmodel, "quadratic,vertDrag");
+                    elseif obj.para.method(j) == "directdynamicmodel_quadNoVert"
+                        est = Est_DirectDynamicModel(obj.para.directdynamicmodel, "quadratic,noVertDrag");
                     else
                         error("Unkown estimation method : " + obj.para.method(j));
                     end

@@ -60,12 +60,14 @@ classdef Est_DirectDynamicModel
             ttDragNED = timetable(dragNED, thrustNED, 'RowTimes', data.Time);
         end
 
-        function ttWind = computeWind(obj, data, ttDragNED, rho)
+        function ttWind = computeWind(obj, data, ttDragNED, rho, verticalDrag, model)
             % Computes wind estimation 
             % INPUT : 
             %   data : timetable as outputed by preprocessing
             %   ttDragNED : timetable with same time vector as data and containing a "dragNED" column
             %   rho : air density [kg/m^3]
+            %   verticalDrag : boolean indicating whether vertical was computed (true) or is set to zero (false)
+            %   model : drag model to be used, can be either "linear" or "quadratic"
             % OUTPUT :
             %   ttWind : timetable containing wind estimate (windHDir_est, windHMag_est, windVert_est).
             %            Time vector is the same as in data. (ws, dragTilt, asTxTz, asTy are also present for debugging).
@@ -77,18 +79,18 @@ classdef Est_DirectDynamicModel
             dragMagTxTz = vecnorm([dragTilt(:,1), dragTilt(:,3)],2,2);
             dragAngleTxTz = atan2(dragTilt(:,3), dragTilt(:,1));
             RPM = 0.5*vecnorm([data.motRpm_RF, data.motRpm_LF, data.motRpm_LB, data.motRpm_RB],2,2);
-            asTxTz = obj.ur.getTrueAirSpeed(pi - dragAngleTxTz, RPM, dragMagTxTz, rho, 'laminar');
+            asTxTz = obj.ur.getTrueAirSpeed(pi - dragAngleTxTz, RPM, dragMagTxTz, rho, model);
 
             % Compute ws along [Ty]
-            asTy = sign(dragTilt(:,2)).*obj.ur.getTrueAirSpeed(zeros(size(RPM)), RPM, abs(dragTilt(:,2)), rho, 'laminar');
+            asTy = sign(dragTilt(:,2)).*obj.ur.getTrueAirSpeed(zeros(size(RPM)), RPM, abs(dragTilt(:,2)), rho, model);
 
             % Transform back to NED frame
             asNED = obj.uf.Tilt2NED([asTxTz.*cos(dragAngleTxTz), asTy, asTxTz.*sin(dragAngleTxTz)], data.q1, data.q2, data.q3, data.q4);
 
             % Compute wind 
-            if obj.mode == "normal"
+            if verticalDrag
                 ws = obj.uf.getWindSpeed(asNED, [data.vn, data.ve, data.vd]);
-            elseif obj.mode == "noVertDrag"
+            else
                 ws = obj.uf.getWindSpeed(asNED, [data.vn, data.ve, zeros(size(data.vd))]);
             end
             
@@ -103,24 +105,31 @@ classdef Est_DirectDynamicModel
             % OUTPUT :
             %   dir : timetable containing the input data as well as the 
             %         wind speed and direction estimation (windHMag_est, windHDir_est, wdinVert_est) (and some debugging data)
-            if any(ismember("tempMotus", data.Properties.VariableNames)) ...
+            if any(ismember("tempRef", data.Properties.VariableNames)) ...
                     && any(ismember("pressRef", data.Properties.VariableNames)) ...
                     && any(ismember("humidRef", data.Properties.VariableNames))
-                rho = obj.uad.getAirDensity(data.tempMotus, data.pressRef, data.humidRef);
+                rho = obj.uad.getAirDensity(data.tempRef, data.pressRef, data.humidRef);
             else
                 rho = 1.221*ones(size(data,1),1);
                 warning("[Est_DirectDynamicModel] Using default air density of " + num2str(rho(1)))
             end
 
-            if obj.mode == "normal"
+            if obj.mode == "linear,vertDrag"
                 drag = obj.computeDrag(data, rho);
-            elseif obj.mode == "noVertDrag"
+                wind = obj.computeWind(data, drag, rho, true, "linear");
+            elseif obj.mode == "linear,noVertDrag"
                 drag = obj.computeDragNoVert(data);
+                wind = obj.computeWind(data, drag, rho, false, "linear");
+            elseif obj.mode == "quadratic,vertDrag"
+                drag = obj.computeDrag(data, rho);
+                wind = obj.computeWind(data, drag, rho, true, "quadratic");
+            elseif obj.mode == "quadratic,noVertDrag"
+                drag = obj.computeDragNoVert(data);
+                wind = obj.computeWind(data, drag, rho, false, "quadratic");            
             else
                 error("[Est_DirectDynamicModel] Unkown mode : " + obj.mode);
             end
 
-            wind = obj.computeWind(data, drag, rho);
             rhoTT = timetable(rho, 'RowTimes', data.Time);
             tt = synchronize(wind, data, drag, rhoTT);
         end

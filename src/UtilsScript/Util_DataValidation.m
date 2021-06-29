@@ -34,6 +34,10 @@ classdef Util_DataValidation < handle
 
 
 		function validatePosition(obj, data)
+            if ~ismember("alti",data.Properties.VariableNames)
+                data.alti = zeros(size(data.Time));
+            end
+            
 			dt = seconds(data.Properties.TimeStep);
 			posNED = lla2ned([data.lati, data.long, data.alti], [data.lati(end), data.long(end), data.alti(end)], 'ellipsoid');
 			velNED = [data.vn, data.ve, data.vd];
@@ -93,10 +97,10 @@ classdef Util_DataValidation < handle
 			subplot(3,1,3), hold on, plot(data.Time, accNED(:,3)), title("Acc D"), ylabel("Acc [m/s^2]"), xlabel("Time")
 
 			uad = Util_AirDensity();
-			rho = uad.getAirDensity(mean(data.tempMotus), mean(data.pressRef), mean(data.humidRef));
+			rho = uad.getAirDensity(mean(data.tempRef), mean(data.pressRef), mean(data.humidRef))
 			ur = Util_Russell();
 			thrust = ur.getHoverThrust(0.5*vecnorm([data.motRpm_RF, data.motRpm_LF, data.motRpm_LB, data.motRpm_RB],2,2), rho);
-			subplot(3,1,3), hold on, plot(data.Time, -thrust/1.409)
+			subplot(3,1,3), hold on, plot(data.Time, -thrust/1.37)
 
 			legend("Pos Diff Diff", "Vel Diff", "Acc", "-Thrust")
 		end
@@ -200,11 +204,11 @@ classdef Util_DataValidation < handle
 			hold on
 			title("Temperature"), xlabel("Time"), ylabel("Temperature [°C]")
 			plot(data.Time, data.tempRef)
-			plot(data.Time, data.tempMotus)
+% 			plot(data.Time, data.tempMotus)
 
 			uad = Util_AirDensity();
 			rhoRef = uad.getAirDensity(mean(data.tempRef), mean(data.pressRef), mean(data.humidRef));
-			rhoMotus = uad.getAirDensity(mean(data.tempMotus), mean(data.pressRef), mean(data.humidRef));
+% 			rhoMotus = uad.getAirDensity(mean(data.tempMotus), mean(data.pressRef), mean(data.humidRef));
 
 			legend("TempRef, \rho : " + num2str(rhoRef), "TempMotus, \rho : " + num2str(rhoMotus))
 		

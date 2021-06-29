@@ -59,24 +59,25 @@ classdef Util_Russell
 			
 			bHover =  obj.tHover.RPM.^2 \ obj.tHover.Fz;
 			meanAirDensity = mean(obj.tHover.AirDensity);
-			obj.hoverThrust = @(RPM, rho) sum(RPM.^2, 2) * bHover;
-			% obj.hoverThrust = @(RPM, rho) rho ./ meanAirDensity .* sum(RPM.^2, 2) * bHover;
+			% obj.hoverThrust = @(RPM, rho) sum(RPM.^2, 2) * bHover;
+			obj.hoverThrust = @(RPM, rho) rho ./ meanAirDensity .* sum(RPM.^2, 2) * bHover;
 
-			Rsq = 1 - sum((obj.tHover.Fz - obj.hoverThrust(obj.tHover.RPM, meanAirDensity)).^2)/sum((obj.tHover.Fz - mean(obj.tHover.Fz)).^2);
+% 			Rsq = 1 - sum((obj.tHover.Fz - obj.hoverThrust(obj.tHover.RPM, meanAirDensity)).^2)/sum((obj.tHover.Fz - mean(obj.tHover.Fz)).^2);
             
-            xlim = [min(obj.tHover.RPM), max(obj.tHover.RPM)];
-            xspace = linspace(xlim(1),xlim(2),100);
+%             xlim = [min(obj.tHover.RPM), max(obj.tHover.RPM)];
+%             xspace = linspace(xlim(1),xlim(2),100);
             
-            figure(1)
-            clf
-            hold on
-            plot(xspace.^2, obj.hoverThrust(xspace', nan))
-            plot(obj.tHover.RPM.^2, obj.tHover.Fz, 'o')
-            grid on
-            title("Thrust model")
-            ylabel("$F_{T,-z}$ [N]", 'Interpreter','latex')
-            xlabel("$\bar{\eta}^2$ [RPM$^2$]", 'Interpreter','latex')
-            legend("Model : $F_{T,-z} = " + num2str(bHover,2) + "\cdot\bar{\eta}^2,\ R^2 = " + num2str(Rsq,4) + "$", "Samples", 'Interpreter','latex','location','best')
+%             figure(1)
+%             clf
+%             hold on
+%             plot(xspace.^2, obj.hoverThrust(xspace', nan))
+%             plot(obj.tHover.RPM.^2, obj.tHover.Fz, 'o')
+%             grid on
+%             title("Thrust model")
+%             ylabel("$F_{T,-z}$ [N]", 'Interpreter','latex')
+%             xlabel("$\bar{\eta}^2$ [RPM$^2$]", 'Interpreter','latex')
+%             legend("Model : $F_{T,-z} = " + num2str(bHover,2) + "\cdot\bar{\eta}^2,\ R^2 = " + num2str(Rsq,4) + "$", "Samples", 'Interpreter','latex','location','best')
+%             exportgraphics(gcf, 'C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\thurstModel.pdf','ContentType','vector');
 			% disp("[Util_Russell] Hover Thrust goodness of fit : R^2 = " + num2str(Rsq))
 		end
 
@@ -93,7 +94,7 @@ classdef Util_Russell
             
 %             xSpace = unique(-obj.tDrag.Pitch);
 %             ySpace = unique(obj.tDrag.RPM);
-%             
+% %             
 %             figure(1)
 %             clf
 %             [xMesh, yMesh] = meshgrid(xSpace, ySpace);
@@ -102,6 +103,7 @@ classdef Util_Russell
 %             ylabel("$\bar{\eta}$ [RPM]", 'Interpreter','latex')
 %             zlabel("$D_R$ [N]", 'Interpreter','latex')
 %             title("Wind tunnel drag model")
+%             exportgraphics(gcf, 'C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\windTunnelModel.pdf','ContentType','vector');
 		end
 
 		function thrust = getMotorThrust(obj, RPM, rho)
@@ -130,7 +132,7 @@ classdef Util_Russell
             thrust = obj.hoverThrust(RPM_bar, rho);
 		end
 
-		function tas = getTrueAirSpeed(obj, gamma, RPM, drag, rho, flow)
+		function tas = getTrueAirSpeed(obj, gamma, RPM, drag, rho, model)
 			% Get the magnitude of the TAS
 			% Assumes air speed coming from above or below (negative or positive tilt)
 			% INTPUT :
@@ -138,6 +140,7 @@ classdef Util_Russell
 			%		RPM : rotor speed [RPM] averaged over all rotor
 			%		drag : drag force the air craft is experiencing [N]
 			% 		rho : air density [kh/m^3]. Util_AirDensity can be used to compute it.
+			%		model : drag model to be used, can be either "linear" or "quadratic"
 			% OUTPUT :
 			%		tas : magnitude of true air speed
 			
@@ -149,12 +152,12 @@ classdef Util_Russell
 			RPM(RPM > 6400) = 6400;
 			RPM(RPM < 4200) = 4200;
 
-			if flow == "laminar"
+			if model == "linear"
 				tas = obj.rhoRussell*obj.tasRussell./rho .* drag ./ obj.FDragRussell(gamma, RPM);
-			elseif flow == "turbulent"
+			elseif model == "quadratic"
 				tas = sqrt(obj.rhoRussell*obj.tasRussell^2./rho .* drag ./ obj.FDragRussell(gamma, RPM));
 			else
-				error("[Util_Russell] Unkown flow type : " + flow)
+				error("[Util_Russell] Unkown model type : " + model)
 			end
 		end
 	end
