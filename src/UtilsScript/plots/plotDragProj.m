@@ -101,7 +101,7 @@ hgamma = plot3(gammaArcNED(:,1), gammaArcNED(:,2), gammaArcNED(:,3),'m', 'LineWi
 C = (drone(:,:,3)- min(min(min(drone(:,:,3)))))*1.3;
 surf(drone(:,:,1),drone(:,:,2),drone(:,:,3), C,'EdgeColor','none','FaceColor','interp','FaceAlpha',0.8)
 
-legend([ha(1,:), hgamma],{"u_{Tx}","u_{Ty}","u_{Tz}","F_D","F_{D,TxTz}","F_{D,Ty}","\gamma"},'location','northwest','orientation','horizontal')
+legend([ha(1,:), hgamma],{"u_{Tx}","u_{Ty}","u_{Tz}","F_D","F_{D,TxTz}","F_{D,Ty}","\gamma_{txtz}"},'location','northwest','orientation','horizontal')
 
 %% TxTz view
 subplot(1,3,2)

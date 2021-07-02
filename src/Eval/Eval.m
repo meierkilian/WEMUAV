@@ -277,6 +277,10 @@ classdef Eval < handle
 			windVertNoFiltStd = [];
 			windVertFiltBias = [];
 			windVertFiltStd = [];
+			refErrBias = [];
+			refErrStd = [];
+            refErrBiasVert = [];
+			refErrStdVert = [];
 			methods = [];
 			uf = Util_Frame();
 			d = designfilt('lowpassfir','FilterOrder',50,'CutoffFrequency',0.1,'SampleRate',10); % TODO: magic number here !
@@ -295,7 +299,11 @@ classdef Eval < handle
                     meanRefMag = mean([obj.data{i}.windHMag_2130cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windHMag_1470cm],2);
                     meanRefVert = mean([obj.data{i}.windVert_2130cm, obj.data{i}.windVert_1800cm, obj.data{i}.windVert_1470cm],2);
                 end
+				refNED_2130 = uf.getNEDWind(obj.data{i}.windHDir_2130cm, obj.data{i}.windHMag_2130cm, obj.data{i}.windVert_2130cm);
+				refNED_1800 = uf.getNEDWind(obj.data{i}.windHDir_1800cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windVert_1800cm);
+				refNED_1470 = uf.getNEDWind(obj.data{i}.windHDir_1470cm, obj.data{i}.windHMag_1470cm, obj.data{i}.windVert_1470cm);
 				refNED = uf.getNEDWind(meanRefDir, meanRefMag, meanRefVert);
+
 				errorNED = refNED - obj.data{i}.ws;
 				biasAzi = mean(errorNED(:,1:2),1);
 				biasVert = mean(errorNED(:,3));
@@ -320,6 +328,13 @@ classdef Eval < handle
 				windAziFiltStd 		= [windAziFiltStd; stdAziFilt];
 				windVertFiltBias 		= [windVertFiltBias; norm(biasVertFilt)];
 				windVertFiltStd 		= [windVertFiltStd; stdVertFilt];
+
+				errRefNED = refNED_2130 - refNED_1470;
+
+				refErrBias = [refErrBias; norm(mean(errRefNED(:,1:2), 1))];
+				refErrStd = [refErrStd; norm([std(errRefNED(:,1)), std(errRefNED(:,2))])];
+				refErrBiasVert = [refErrBiasVert; norm(mean(errRefNED(:,3), 1))];
+				refErrStdVert = [refErrStdVert; std(errRefNED(:,3))];
 			end
 
 			Tperf = table(windAziNoFiltBias, ...
@@ -330,6 +345,10 @@ classdef Eval < handle
 						  windVertNoFiltStd, ...
 						  windVertFiltBias, ...
 						  windVertFiltStd, ...
+						  refErrBias, ...
+						  refErrStd, ...
+						  refErrBiasVert, ...
+						  refErrStdVert, ...
 						  'RowNames', methods ...
 						  );
 			
@@ -385,6 +404,9 @@ classdef Eval < handle
 				std = nan(length(obj.flightList),1);
 				biasFilt = nan(length(obj.flightList),1);
 				stdFilt = nan(length(obj.flightList),1);
+				refErrBias = nan(length(obj.flightList),1);
+				refErrStd = nan(length(obj.flightList),1);
+
 
 				for j = 1:length(obj.flightList)
 					if ~ismember(obj.perf{j}.Properties.CustomProperties.FlightType, flightType)
@@ -396,15 +418,18 @@ classdef Eval < handle
 					biasFilt(j) = tmp{method(i), "windAziFiltBias"};
 					stdFilt(j) = tmp{method(i), "windAziFiltStd"};				
 					w(j) = tmp.Properties.CustomProperties.meanWindHMag;
+					
 				end
 				
 				bias = rmmissing(bias);
 				std = rmmissing(std);
 				biasFilt = rmmissing(biasFilt);
 				stdFilt = rmmissing(stdFilt);
+				refErrBias = rmmissing(refErrBias);
+				refErrStd = rmmissing(refErrStd);
 				w = rmmissing(w);
 
-				t = table(w, bias, std, biasFilt, stdFilt);
+				t = table(w, bias, std, biasFilt, stdFilt,refErrBias,refErrStd);
 				t = sortrows(t);
 
 				leg = values(obj.legMap, cellstr(method));
@@ -414,6 +439,7 @@ classdef Eval < handle
 						plot(t.w, t.biasFilt + t.stdFilt, '--', 'Color', '#0072BD')
 						plot(t.w, t.biasFilt - t.stdFilt, '--', 'Color', '#0072BD')
 						patch([t.w; flip(t.w)], [t.biasFilt + t.stdFilt; flip(t.biasFilt - t.stdFilt)],[0 0.4470 0.7410],'FaceAlpha',0.2, 'EdgeColor','none' )
+
 						leg = [leg "1\sigma deviation"];
 					else	
 						plot(t.w, t.biasFilt,'-o')
@@ -438,8 +464,7 @@ classdef Eval < handle
 				for i = 1:length(obj.flightList)
 					obj.perf{i} = obj.singleFlightPerf(obj.flightList(i));
 				end
-			end
-
+            end
 
 
 			figure(obj.figIdx)
@@ -460,7 +485,9 @@ classdef Eval < handle
 				w = nan(length(obj.flightList),1);
 				bias = nan(length(obj.flightList),1);
 				std = nan(length(obj.flightList),1);
-
+                refErrBias = nan(length(obj.flightList),1);
+                refErrStd = nan(length(obj.flightList),1);
+                
 				for j = 1:length(obj.flightList)
 					if ~ismember(obj.perf{j}.Properties.CustomProperties.FlightType, flightType)
 						continue
@@ -469,33 +496,46 @@ classdef Eval < handle
 					bias(j) = tmp{obj.methodList(i), "windAziNoFiltBias"};
 					std(j) = tmp{obj.methodList(i), "windAziNoFiltStd"};
 					w(j) = tmp.Properties.CustomProperties.meanWindHMag;
+					refErrBias(j) = tmp{obj.methodList(i), 'refErrBias'};
+					refErrStd(j) = tmp{obj.methodList(i), 'refErrStd'};
 				end
 				
 				bias = rmmissing(bias);
 				std = rmmissing(std);
 				w = rmmissing(w);
+				refErrBias = rmmissing(refErrBias);
+				refErrStd = rmmissing(refErrStd);
 
-				t = table(w, bias, std);
+				t = table(w, bias, std,refErrBias,refErrStd);
 				t = sortrows(t);
 
-				
+				disp(obj.methodList(i))
+                disp("Max bias : " + num2str(max(bias)))
+                disp("Mean bias : " + num2str(mean(bias)))
+                disp("Max std : " + num2str(max(std)))
+                disp("Mean std : " + num2str(mean(std)))
 
 				ax = [ax, nexttile];
 				hold on
 				title(obj.legMap(obj.methodList(i)))
-				xlabel("Mean wind speed [m/s]")
+				xlabel("Ref Mean wind speed [m/s]")
 				ylabel("Wind speed [m/s]")
 				grid on
 
-				plot(t.w, t.bias,'-o','Color', '#0072BD')
-				plot(t.w, t.bias + t.std, '--', 'Color', '#0072BD')
+				hb = plot(t.w, t.bias,'-o','Color', '#0072BD')
+				hstd = plot(t.w, t.bias + t.std, '--', 'Color', '#0072BD')
 				plot(t.w, t.bias - t.std, '--', 'Color', '#0072BD')
 				patch([t.w; flip(t.w)], [t.bias + t.std; flip(t.bias - t.std)],[0 0.4470 0.7410],'FaceAlpha',0.2, 'EdgeColor','none' )
+
+				hrb = plot(t.w, t.refErrBias,'-o','Color', '#D95319')
+				hrstd = plot(t.w, t.refErrBias + t.refErrStd, '--', 'Color', '#D95319')
+				plot(t.w, t.refErrBias - t.refErrStd, '--', 'Color', '#D95319')
+				patch([t.w; flip(t.w)], [t.refErrBias + t.refErrStd; flip(t.refErrBias - t.refErrStd)],[0.8500 0.3250 0.0980],'FaceAlpha',0.2, 'EdgeColor','none' )
 		
 				
 			end
 			linkaxes(ax,'xy')
-			lgd = legend(["Norm of bias", "1\sigma deviation"], 'location', 'layout');
+			lgd = legend([hb, hstd, hrb, hrstd],["Est. Norm of bias", "Est. 1\sigma deviation","Ref. Norm of bias", "Ref. 1\sigma deviation"], 'location', 'layout');
             lgd.Layout.Tile = 6;
             sgtitle(["Horizontal performance over wind speed", "Flight type : " + titleFlightType],'Fontsize',17)
 		end
@@ -527,6 +567,8 @@ classdef Eval < handle
 				w = nan(length(obj.flightList),1);
 				bias = nan(length(obj.flightList),1);
 				std = nan(length(obj.flightList),1);
+				refErrBias = nan(length(obj.flightList),1);
+                refErrStd = nan(length(obj.flightList),1);
 
 				for j = 1:length(obj.flightList)
 					if ~ismember(obj.perf{j}.Properties.CustomProperties.FlightType, flightType)
@@ -536,13 +578,17 @@ classdef Eval < handle
 					bias(j) = tmp{obj.methodList(i), "windVertNoFiltBias"};
 					std(j) = tmp{obj.methodList(i), "windVertNoFiltStd"};
 					w(j) = tmp.Properties.CustomProperties.meanWindHMag;
+					refErrBias(j) = tmp{obj.methodList(i), 'refErrBiasVert'};
+					refErrStd(j) = tmp{obj.methodList(i), 'refErrStdVert'};
 				end
 				
 				bias = rmmissing(bias);
 				std = rmmissing(std);
 				w = rmmissing(w);
+				refErrBias = rmmissing(refErrBias);
+				refErrStd = rmmissing(refErrStd);
 
-				t = table(w, bias, std);
+				t = table(w, bias, std, refErrBias, refErrStd);
 				t = sortrows(t);
 
 				
@@ -554,15 +600,19 @@ classdef Eval < handle
 				ylabel("Wind speed [m/s]")
 				grid on
 
-				plot(t.w, t.bias,'-o','Color', '#0072BD')
-				plot(t.w, t.bias + t.std, '--', 'Color', '#0072BD')
+				hb = plot(t.w, t.bias,'-o','Color', '#0072BD')
+				hstd = plot(t.w, t.bias + t.std, '--', 'Color', '#0072BD')
 				plot(t.w, t.bias - t.std, '--', 'Color', '#0072BD')
 				patch([t.w; flip(t.w)], [t.bias + t.std; flip(t.bias - t.std)],[0 0.4470 0.7410],'FaceAlpha',0.2, 'EdgeColor','none' )
-		
+
+				hrb = plot(t.w, t.refErrBias,'-o','Color', '#D95319')
+				hrstd = plot(t.w, t.refErrBias + t.refErrStd, '--', 'Color', '#D95319')
+				plot(t.w, t.refErrBias - t.refErrStd, '--', 'Color', '#D95319')
+				patch([t.w; flip(t.w)], [t.refErrBias + t.refErrStd; flip(t.refErrBias - t.refErrStd)],[0.8500 0.3250 0.0980],'FaceAlpha',0.2, 'EdgeColor','none' )
 				
 			end
 			linkaxes(ax,'xy')
-			lgd = legend(["Norm of bias", "1\sigma deviation"], 'location', 'layout');
+			lgd = legend([hb, hstd, hrb, hrstd],["Est. Norm of bias", "Est. 1\sigma deviation","Ref. Norm of bias", "Ref. 1\sigma deviation"], 'location', 'layout');
             lgd.Layout.Tile = 6;
             sgtitle(["Vertical performance over wind speed", "Flight type : " + titleFlightType],'Fontsize',17)
 		end
@@ -589,7 +639,4 @@ classdef Eval < handle
 			disp(t);
 		end
 	end
-end
-
-
-		
+end		

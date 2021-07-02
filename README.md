@@ -1,6 +1,6 @@
 # WEMUAV
 ## Introduction
-Master thesis project work on Wind Estimation with Multirotor UAVs. The best way to understand and use this code is to read the master thesis present in this folder and to navigate the software documation using the "doc" commande 
+Master thesis project work on Wind Estimation with Multirotor UAVs. The best way to understand and use this code is to read the master thesis (Master_Thesis_KilianMeier.pdf) present in this folder and to navigate the software documation using the "doc" commande 
 
 ## Folder structure 
 - **outData** : destination of processed data
