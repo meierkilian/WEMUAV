@@ -72,7 +72,7 @@ ylabel("East")
 zlabel("Down")
 view(-96, 35)
 axis equal
-lim = 1.5;
+lim = 1.6;
 xlim([-lim;lim])
 ylim([-lim;lim])
 zlim([-lim;lim])
@@ -81,27 +81,40 @@ set(gca,'ydir','reverse')
 
 ha = nan(2,6);
 
+scale = 1.1;
 
 % Tilt frame
 ha(:,1) = arrow3([0 0 0], eTx, '-t');
+text(eTx(1)*scale,eTx(2)*scale,eTx(3)*scale,'u_{Tx}', 'FontWeight','bold')
+
 ha(:,2) = arrow3([0 0 0], eTy, '--t');
+text(eTy(1)*scale+0.2,eTy(2)*scale+0.1,eTy(3)*scale,'u_{Ty}', 'FontWeight','bold')
+
 ha(:,3) = arrow3([0 0 0], eTz, ':t');
+text(eTz(1)*scale,eTz(2)*scale,eTz(3)*scale,'u_{Tz}', 'FontWeight','bold')
 
 % Drag vector
 global LineWidthOrder
 LineWidthOrder = 2;
 ha(:,4) = arrow3([0 0 0], dNED, '-e/');
-ha(:,5) = arrow3([0 0 0], dTxzNED, '-.e');
-ha(:,6) = arrow3([0 0 0], dTyNED, ':e');
-arrow3([0 0 0], dmTxzNED, '-.e',0);
-hgamma = plot3(gammaArcNED(:,1), gammaArcNED(:,2), gammaArcNED(:,3),'m', 'LineWidth',2);
+text(dNED(1)*scale,dNED(2)*scale,dNED(3)*scale,'F_D', 'FontWeight','bold')
 
+ha(:,5) = arrow3([0 0 0], dTxzNED, '-.e');
+text(dTxzNED(1)*scale,dTxzNED(2)*scale+0.1,dTxzNED(3)*scale-0.3,'F_{D,TxTz}', 'FontWeight','bold')
+
+ha(:,6) = arrow3([0 0 0], dTyNED, ':e');
+text(dTyNED(1)*scale,dTyNED(2)*scale,dTyNED(3)*scale,'F_{D,Ty}', 'FontWeight','bold')
+
+arrow3([0 0 0], dmTxzNED, '-.e',0);
+
+hgamma = plot3(gammaArcNED(:,1), gammaArcNED(:,2), gammaArcNED(:,3),'m', 'LineWidth',2);
+text(gammaArcNED(16,1)*scale,gammaArcNED(16,2)*scale,gammaArcNED(16,3)*scale,'\gamma', 'FontWeight','bold')
 
 
 C = (drone(:,:,3)- min(min(min(drone(:,:,3)))))*1.3;
 surf(drone(:,:,1),drone(:,:,2),drone(:,:,3), C,'EdgeColor','none','FaceColor','interp','FaceAlpha',0.8)
 
-legend([ha(1,:), hgamma],{"u_{Tx}","u_{Ty}","u_{Tz}","F_D","F_{D,TxTz}","F_{D,Ty}","\gamma_{txtz}"},'location','northwest','orientation','horizontal')
+% legend([ha(1,:), hgamma],{"u_{Tx}","u_{Ty}","u_{Tz}","F_D","F_{D,TxTz}","F_{D,Ty}","\gamma_{txtz}"},'location','northwest','orientation','horizontal')
 
 %% TxTz view
 subplot(1,3,2)
@@ -124,12 +137,19 @@ surf([x;x],[y;y],[z;z], [c;c],'EdgeColor','interp','FaceColor','interp','LineWid
 
 % Tilt frame
 arrow3([0 0], ux([1 3]), '-t');
-arrow3([0 0], uz([1 3]), ':t');
+text(ux(1)*scale,ux(3)*scale,'u_{Tx}', 'FontWeight','bold')
+
+arrow3([0 0], uz([1 3])*scale, ':t');
+text(uz(1)*scale + 0.05,uz(3)*scale,'u_{Tz}', 'FontWeight','bold')
+
 
 % Drag vector
-arrow3([0 0], dTxz([1 3]), '-.e');
+arrow3([0 0], dTxz([1 3])*scale, '-.e');
+text(dTxz(1)*scale + 0.2,dTxz(3)*scale+0.1,'F_{D,TxTz}', 'FontWeight','bold')
+
 arrow3([0 0], -dTxz([1 3]), '-.e',0);
 plot(gammaArcTilt(:,1), gammaArcTilt(:,3),'m', 'LineWidth',2)
+text(gammaArcTilt(16, 1)*scale,gammaArcTilt(16, 3)*scale,'\gamma', 'FontWeight','bold')
 
 %% Ty view
 subplot(1,3,3)
@@ -153,9 +173,13 @@ surf([x;x],[y;y],[z;z], [c;c],'EdgeColor','interp','FaceColor','interp','LineWid
 
 subplot(1,3,3)
 arrow3([0 0], uy([2 3]), '--t');
+text(uy(2)-0.05,uy(3)+0.15,'u_{Ty}', 'FontWeight','bold')
+
 arrow3([0 0], uz([2 3]), ':t');
+text(uz(2)-0.1,uz(3),'u_{Tz}', 'FontWeight','bold')
 
 % Drag vector
 arrow3([0 0], dTy([2 3]), '-.e');
+text(dTy(2)+0.1,dTy(3)-0.2,'F_{D,Ty}', 'FontWeight','bold')
 
 exportgraphics(gcf,"C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\dragProjection.pdf",'ContentType','vector');

@@ -18,8 +18,8 @@ exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisRe
 
 
 function plotFlightType(name, data, idxGeo, idxAlti)
-    latLim = [46.52105, 46.52172];
-    longLim = [6.56695, 6.56781];
+    latLim = [46.521030, 46.521700];
+    longLim = [6.567056, 6.567626];
     subplot(2,4,idxGeo)
     geoplot(data.totalTT.lati, data.totalTT.long,'r','LineWidth',2.5)
     grid off

@@ -1,4 +1,4 @@
-function main_Estimate(paraPath)
+function main_Eval(paraPath)
     arguments
         paraPath = fullfile(".","para","default.xml");
     end
@@ -11,15 +11,16 @@ function main_Estimate(paraPath)
 
     outFolder = "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\results\";
     ext = ".pdf";
+
+%     eval.plotValueOverFlight_SIOS("FLY134__20210419_093107__Hover");
+    % eval.plotValueOverFlight_SIOS("FLY139__20210420_092926__Hover");
+    % eval.plotValueOverFlight_SIOS("FLY167__20210503_141433__Hover");
+    % eval.plotValueOverFlight_SIOS("FLY172__20210525_111835__Hover");
+    % eval.plotValueOverFlight_SIOS("FLY178__20210603_061155__Hover");
+    % eval.plotValueOverFlight_SIOS("FLY181__20210607_125356__Hover");
+%     exportgraphics(gcf, outFolder + "plotSIOS" + ext, 'ContentType', 'vector');
     
-    % eval.plotValueOverFlight_pretty("FLY139__20210420_092926__Hover");
-    % exportgraphics(gcf, outFolder + "flight_Hover" + ext, 'ContentType', 'vector');
-
-    % eval.plotValueOverFlight_pretty("FLY139__20210420_093827__Square");
-    % exportgraphics(gcf, outFolder + "flight_Square" + ext, 'ContentType', 'vector');
-
-    % eval.plotValueOverFlight_pretty("FLY168__20210503_143909__Vertical3ms");
-    % exportgraphics(gcf, outFolder + "flight_Vert" + ext, 'ContentType', 'vector');
+    plotSingleFlights(eval, outFolder, ext)
 
 
     % t = eval.singleFlightPerf("FLY139__20210420_092926__Hover");
@@ -44,8 +45,8 @@ function main_Estimate(paraPath)
 
 
 
-    % eval.singleFlightPerf("FLY168__20210503_143909__Vertical3ms");
-
-    eval.plotErrorOverWind_totalVert("all")
-    exportgraphics(gcf, outFolder + "windVert_all" + ext, 'ContentType', 'vector');
+%     eval.singleFlightPerf("FLY168__20210503_143909__Vertical3ms");
+% 
+    % eval.plotErrorOverWind_totalVert("all")
+    % exportgraphics(gcf, outFolder + "windVert_all" + ext, 'ContentType', 'vector');
 end

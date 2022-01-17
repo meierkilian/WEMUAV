@@ -1,9 +1,9 @@
 % Parameters
 outGifFilename = ".\src\UtilsScript\plots\svalbard.gif";
 outImgFilename = "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\tiltFrame.pdf";
-outType = "Gif"; % Can be either "Img" or "Gif"
-% load('C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_062423__Square.mat')
-load('C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\2020-07-18_FLY121_profile__20200718_154000__Hover.mat')
+outType = "Img"; % Can be either "Img" or "Gif"
+load('C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY178__20210603_062423__Square.mat')
+% load('C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY167__20210503_141433__Hover.mat')
 frameDelay = 0.3;
 % latLim = [46.52105, 46.52172];
 % longLim = [6.56695, 6.56781];
@@ -91,39 +91,60 @@ for idx = timeRange
     set(gca,'ydir','reverse')
     
     ha = nan(2,9);
+    scale = 1.1;
+    global LineWidthOrder
+    LineWidthOrder = [1.2];
     % Local frame
-    ha(:,1) = arrow3([0 0 0], en, '-k');
-    ha(:,2) = arrow3([0 0 0], ee, '--k');
-    ha(:,3) = arrow3([0 0 0], ed, ':k');
+    ha(:,1) = arrow3([0 0 0], en, '-k/');
+    text(en(1)*scale,en(2)*scale,en(3)*scale,'u_n', 'FontWeight','bold')
+    ha(:,2) = arrow3([0 0 0], ee, '--k/');
+    text(ee(1)*scale,ee(2)*scale,ee(3)*scale,'u_e', 'FontWeight','bold')
+    ha(:,3) = arrow3([0 0 0], ed, ':k/');
+    text(ed(1)*scale,ed(2)*scale,ed(3)*scale,'u_d', 'FontWeight','bold')
 
     % Body frame
-    ha(:,4) = arrow3([0 0 0], ex, '-m');
-    ha(:,5) = arrow3([0 0 0], ey, '--m');
-    ha(:,6) = arrow3([0 0 0], ez, ':m');
+    ha(:,4) = arrow3([0 0 0], ex, '-m/');
+    text(ex(1)*scale,ex(2)*scale,ex(3)*scale,'u_x', 'FontWeight','bold')
+    ha(:,5) = arrow3([0 0 0], ey, '--m/');
+    text(ey(1)*scale^2,ey(2)*scale^2,ey(3)*scale^2,'u_y', 'FontWeight','bold')
+    ha(:,6) = arrow3([0 0 0], ez, ':m/');
+    % text(ez(1)*scale,ez(2)*scale,ez(3)*scale,'u_z', 'FontWeight','bold')
 
     % Tilt frame
-    ha(:,7) = arrow3([0 0 0], eTx, '-t');
-    ha(:,8) = arrow3([0 0 0], eTy, '--t');
-    ha(:,9) = arrow3([0 0 0], eTz, ':t');
+    ha(:,7) = arrow3([0 0 0], eTx, '-n/');
+    text(eTx(1)*scale,eTx(2)*scale,eTx(3)*scale,'u_{Tx}', 'FontWeight','bold')
+    ha(:,8) = arrow3([0 0 0], eTy, '--n/');
+    text(eTy(1)*scale,eTy(2)*scale,eTy(3)*scale,'u_{Ty}', 'FontWeight','bold')
+    ha(:,9) = arrow3([0 0 0], eTz, ':n/');
+    text(eTz(1)*scale,eTz(2)*scale,eTz(3)*scale,'u_{Tz} = u_z', 'FontWeight','bold', 'HorizontalAlignment', 'right')
 
 
     C = (drone(:,:,3)- min(min(min(drone(:,:,3)))))*1.3;
     surf(drone(:,:,1),drone(:,:,2),drone(:,:,3), C,'EdgeColor','none','FaceColor','interp','FaceAlpha',0.8)
 
-    legend(ha(1,:),["u_n","u_e","u_d","u_x","u_y","u_z","u_{Tx}","u_{Ty}","u_{Tz}"],'location','northeast')
+    % legend(ha(1,:),["u_n","u_e","u_d","u_x","u_y","u_z","u_{Tx}","u_{Ty}","u_{Tz}"],'location','northeast')
     
     % Geoplot
     subplot(1,2,2)
-    geoplot(totalTT.lati(1:idx), totalTT.long(1:idx),'r','LineWidth',2.5)
-%     geolimits(latLim, longLim)
+    h(1) = geoplot(totalTT.lati(1:idx), totalTT.long(1:idx),'r', 'LineWidth',4, 'DisplayName', 'Flight Path');
+    latLim = [46.521030, 46.521700];
+    longLim = [6.567006, 6.567676];
+    geolimits(latLim, longLim)
     geobasemap satellite
     title("Flight path")
     hold on
-    geoplot(totalTT.lati(idx), totalTT.long(idx), 'og','LineWidth',2.5)
+    h(2) = geoplot(totalTT.lati(idx), totalTT.long(idx), 'pc','LineWidth',8,'MarkerSize', 13, 'DisplayName', 'Drone');
+    
+    hCopy = copyobj(h, gca); 
+    set(hCopy(1),'XData', NaN', 'YData', NaN)
+    set(hCopy(2),'XData', NaN', 'YData', NaN)
+    hCopy(2).MarkerSize = 6; 
+    legend(hCopy)
+    
 
     
     if outType == "Img"
-        exportgraphics(gcf, outImgFilename,'ContentType','vector');
+%         exportgraphics(gcf, outImgFilename,'ContentType','vector');
     elseif outType == "Gif"
          % Capture the plot as an image 
         frame = getframe(h); 

@@ -33,8 +33,7 @@ classdef Eval < handle
 			obj.flightTypeList = unique(obj.flightTypeList);
 			obj.perf = {};
 			obj.legMap = containers.Map({'directdynamicmodel_linVert',   'directdynamicmodel_linNoVert',    'directdynamicmodel_quadVert', 'directdynamicmodel_quadNoVert', 'garreausimple'}, ...
-									{'DM, Linear and Vertical Drag', 'DM, Linear and No Vertical Drag', 'DM, Quadratic and Vertical Drag', 'DM, Quadratic and No Vertical Drag', 'Tilt'}) ;			
-
+									{'DM, Linear and Vertical Drag', 'DM, Linear and No Vertical Drag', 'DM, Quadratic and Vertical Drag', 'DM, Quadratic and No Vertical Drag', 'Tilt'}) ;
 		end
 
 		function plotValueOverFlight(obj, flightName)
@@ -138,8 +137,8 @@ classdef Eval < handle
 
 				if flightName == "FLY139__20210420_092926__Hover"
 					tmp = obj.data{i};
-					startIdx = find(tmp.Time > datetime(2021,04,20,09,31,0),1)
-					endIdx = find(tmp.Time > datetime(2021,04,20,09,34,0),1)-1
+					startIdx = find(tmp.Time > datetime(2021,04,20,09,31,0),1);
+					endIdx = find(tmp.Time > datetime(2021,04,20,09,34,0),1)-1;
 					obj.data{i} = tmp(startIdx:endIdx, :);
 				end
 
@@ -185,6 +184,77 @@ classdef Eval < handle
 			subplot(3,1,1), ylabel("Wind Mag [m/s]"), xlabel("Time"), legend(legend_windHMag,'location','eastoutside'), grid on
 			subplot(3,1,2), ylabel("Wind Dir [deg]"), xlabel("Time"), legend(legend_windHDir,'location','eastoutside'), grid on
 			subplot(3,1,3), ylabel("Wind Vert [m/s]"), xlabel("Time"), legend(legend_windVert,'location','eastoutside'), grid on
+			hold off
+		end
+
+		function plotValueOverFlight_SIOS(obj, flightName)
+			legend_windHMag = [];
+			legend_windHDir = [];
+			legend_windVert = [];
+			desiredMethods = {'directdynamicmodel_linVert', 'garreausimple'};
+			desiredLegMap = containers.Map({'directdynamicmodel_linVert', 'garreausimple'}, ...
+									{'Method 1', 'Method 2'}) ;
+
+			
+			figure(obj.figIdx)
+			% set(gcf, 'Units', 'centimeters');
+			set(gcf, 'Position', [100 100 640 480]);
+			obj.figIdx = obj.figIdx + 1;
+			clf
+			hold on
+
+			firstRef = true;
+			for i = 1:length(obj.data)
+				if obj.data{i}.Properties.CustomProperties.FlightName ~= flightName
+					continue;
+				end
+
+				if ~ismember(obj.data{i}.Properties.CustomProperties.Method, desiredMethods) 
+					continue;
+				end
+
+				if flightName == "FLY134__20210419_093107__Hover"
+					tmp = obj.data{i};
+					startIdx = find(tmp.Time > datetime(2021,04,19,09,33,0),1);
+					endIdx = find(tmp.Time > datetime(2021,04,19,09,38,0),1)-1;
+					obj.data{i} = tmp(startIdx:endIdx, :);
+				end
+
+				timeSpace = minutes(obj.data{i}.Time - obj.data{i}.Time(1));
+
+				if firstRef
+					firstRef = false;
+					lw = 2.5;
+					% Plot windHMag ref
+					subplot(2,1,1), hold on
+					plot(timeSpace, mean([obj.data{i}.windHMag_2130cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windHMag_1470cm], 2), 'LineWidth',lw)
+					legend_windHMag = [legend_windHMag, "Reference"];
+					
+					subplot(2,1,2), hold on 
+					plot(timeSpace, mean([obj.data{i}.windHDir_2130cm, obj.data{i}.windHDir_1800cm, obj.data{i}.windHDir_1470cm], 2), 'LineWidth',lw)
+					legend_windHDir = [legend_windHDir, "Reference"];
+                end
+
+                lw = 0.9;
+				% Plot windHMag
+				subplot(2,1,1), hold on
+				plot(timeSpace, obj.data{i}.windHMag_est, 'LineWidth',lw)
+				legend_windHMag = [legend_windHMag, desiredLegMap(obj.data{i}.Properties.CustomProperties.Method)];
+
+
+				% Plot windHDir
+				subplot(2,1,2), hold on
+				plot(timeSpace, obj.data{i}.windHDir_est, 'LineWidth',lw)
+				legend_windHDir = [legend_windHDir, desiredLegMap(obj.data{i}.Properties.CustomProperties.Method)];
+			end
+			
+			sgtitle('Wind estimation','FontSize',20);
+			subplot(2,1,1), ylabel("Wind Mag [m/s]"), xlabel("Time [minutes]"), legend(legend_windHDir,'location','northeast'), grid on
+			ax = gca;
+			ax.FontSize = 12;
+			subplot(2,1,2), ylabel("Wind Dir [deg]"), xlabel("Time [minutes]"), grid on
+			ax = gca;
+			ax.FontSize = 12;
 			hold off
 		end
 
@@ -471,7 +541,7 @@ classdef Eval < handle
 			obj.figIdx = obj.figIdx + 1;
 			clf
 			ax = [];
-			tiledlayout(3,2)
+			tiledlayout(2,2)
 
 			titleFlightType = flightType;
 
@@ -482,6 +552,9 @@ classdef Eval < handle
 			end
 
 			for i = 1:length(obj.methodList)
+                if obj.methodList(i) == "garreausimple"
+                    continue
+                end
 				w = nan(length(obj.flightList),1);
 				bias = nan(length(obj.flightList),1);
 				std = nan(length(obj.flightList),1);
@@ -535,9 +608,20 @@ classdef Eval < handle
 				
 			end
 			linkaxes(ax,'xy')
-			lgd = legend([hb, hstd, hrb, hrstd],["Est. Norm of bias", "Est. 1\sigma deviation","Ref. Norm of bias", "Ref. 1\sigma deviation"], 'location', 'layout');
-            lgd.Layout.Tile = 6;
+			lgd = legend([hb, hstd, hrb, hrstd],["Est. Norm of bias", "Est. 1\sigma deviation","Ref. Norm of bias", "Ref. 1\sigma deviation"], 'location', 'EastOutside');
+%             lgd.Layout.Tile = 6;
             sgtitle(["Horizontal performance over wind speed", "Flight type : " + titleFlightType],'Fontsize',17)
+            
+            
+%             figure, hold on
+%             hrb = plot(t.w, t.refErrBias,'-o','Color', '#D95319');
+%             hrstd = plot(t.w, t.refErrBias + t.refErrStd, '--', 'Color', '#D95319');
+%             plot(t.w, t.refErrBias - t.refErrStd, '--', 'Color', '#D95319')
+%             patch([t.w; flip(t.w)], [t.refErrBias + t.refErrStd; flip(t.refErrBias - t.refErrStd)],[0.8500 0.3250 0.0980],'FaceAlpha',0.2, 'EdgeColor','none' )
+%             lgd = legend([hrb, hrstd],["Ref. Norm of bias", "Ref. Norm of 1\sigma deviation"]);
+%             xlabel("Ref Mean wind speed [m/s]")
+%             ylabel("Wind speed [m/s]")
+%             grid on
 		end
 
 		function plotErrorOverWind_totalVert(obj, flightType)
@@ -553,7 +637,7 @@ classdef Eval < handle
 			obj.figIdx = obj.figIdx + 1;
 			clf
 			ax = [];
-			tiledlayout(3,2)
+			tiledlayout(2,2)
 
 			titleFlightType = flightType;
 
@@ -564,6 +648,10 @@ classdef Eval < handle
 			end
 
 			for i = 1:length(obj.methodList)
+                if obj.methodList(i) == "garreausimple"
+                    continue
+                end
+                
 				w = nan(length(obj.flightList),1);
 				bias = nan(length(obj.flightList),1);
 				std = nan(length(obj.flightList),1);
@@ -612,8 +700,8 @@ classdef Eval < handle
 				
 			end
 			linkaxes(ax,'xy')
-			lgd = legend([hb, hstd, hrb, hrstd],["Est. Norm of bias", "Est. 1\sigma deviation","Ref. Norm of bias", "Ref. 1\sigma deviation"], 'location', 'layout');
-            lgd.Layout.Tile = 6;
+			lgd = legend([hb, hstd, hrb, hrstd],["Est. Norm of bias", "Est. 1\sigma deviation","Ref. Norm of bias", "Ref. 1\sigma deviation"], 'location', 'EastOutside');
+%             lgd.Layout.Tile = 6;
             sgtitle(["Vertical performance over wind speed", "Flight type : " + titleFlightType],'Fontsize',17)
 		end
 
