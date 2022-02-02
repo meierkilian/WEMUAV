@@ -19,18 +19,22 @@ function main_Eval(paraPath)
     % eval.plotValueOverFlight_SIOS("FLY178__20210603_061155__Hover");
     % eval.plotValueOverFlight_SIOS("FLY181__20210607_125356__Hover");
 %     exportgraphics(gcf, outFolder + "plotSIOS" + ext, 'ContentType', 'vector');
-    
-    plotSingleFlights(eval, outFolder, ext)
+        
+%     plotSingleFlights(eval, outFolder, ext)
+%     plotGroundTruth(eval, outFolder, ext)
+%     eval.plotGroundTruthOverFlight_pretty("FLY173__20210525_115544__Square") 
 
-
+%     t = eval.groundTruthPerf("FLY139__20210420_092926__Hover");
+%     writetable(t, outFolder + "perf_groundTruth_Hover.csv", 'WriteRowNames', true)
+%     
     % t = eval.singleFlightPerf("FLY139__20210420_092926__Hover");
     % writetable(t, outFolder + "perf_Hover.csv", 'WriteRowNames', true)
 
     % t = eval.singleFlightPerf("FLY139__20210420_093827__Square");
     % writetable(t, outFolder + "perf_Square.csv", 'WriteRowNames', true)
 
-    % t = eval.singleFlightPerf("FLY168__20210503_143909__Vertical3ms");
-    % writetable(t, outFolder + "perf_Vertical3ms.csv", 'WriteRowNames', true)
+    t = eval.singleFlightPerf("FLY168__20210503_143909__Vertical3ms");
+    writetable(t, outFolder + "perf_Vertical3ms.csv", 'WriteRowNames', true)
 
 
 

@@ -185,6 +185,58 @@ classdef Eval < handle
 			subplot(3,1,2), ylabel("Wind Dir [deg]"), xlabel("Time"), legend(legend_windHDir,'location','eastoutside'), grid on
 			subplot(3,1,3), ylabel("Wind Vert [m/s]"), xlabel("Time"), legend(legend_windVert,'location','eastoutside'), grid on
 			hold off
+        end
+        
+        
+        function plotGroundTruthOverFlight_pretty(obj, flightName)
+			figure(obj.figIdx)
+			obj.figIdx = obj.figIdx + 1;
+			clf
+			hold on
+
+            for i = 1:length(obj.data)
+				if obj.data{i}.Properties.CustomProperties.FlightName ~= flightName
+					continue;
+				end
+
+				if flightName == "FLY139__20210420_092926__Hover"
+					tmp = obj.data{i};
+					startIdx = find(tmp.Time > datetime(2021,04,20,09,31,0),1);
+					endIdx = find(tmp.Time > datetime(2021,04,20,09,34,0),1)-1;
+					obj.data{i} = tmp(startIdx:endIdx, :);
+				end
+
+                lw = 3;
+                
+                
+                subplot(3,1,1), hold on
+                plot(obj.data{i}.Time, mean([obj.data{i}.windHMag_2130cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windHMag_1470cm], 2), 'LineWidth',lw)
+                plot(obj.data{i}.Time, obj.data{i}.windHMag_2130cm)
+                plot(obj.data{i}.Time, obj.data{i}.windHMag_1800cm)
+                plot(obj.data{i}.Time, obj.data{i}.windHMag_1470cm)
+                
+
+                subplot(3,1,2), hold on 
+                plot(obj.data{i}.Time, mean([obj.data{i}.windHDir_2130cm, obj.data{i}.windHDir_1800cm, obj.data{i}.windHDir_1470cm], 2), 'LineWidth',lw)
+                plot(obj.data{i}.Time, obj.data{i}.windHDir_2130cm)
+                plot(obj.data{i}.Time, obj.data{i}.windHDir_1800cm)
+                plot(obj.data{i}.Time, obj.data{i}.windHDir_1470cm)
+                
+                subplot(3,1,3), hold on 
+                plot(obj.data{i}.Time, mean([obj.data{i}.windVert_2130cm, obj.data{i}.windVert_1800cm, obj.data{i}.windVert_1470cm], 2), 'LineWidth',lw)
+                plot(obj.data{i}.Time, obj.data{i}.windVert_2130cm)
+                plot(obj.data{i}.Time, obj.data{i}.windVert_1800cm)
+                plot(obj.data{i}.Time, obj.data{i}.windVert_1470cm)
+                break
+            end
+			
+            legend_data = ["Mean","Sensor @ 21.3 [m]","Sensor @ 18.0 [m]","Sensor @ 14.7 [m]"];
+            
+			sgtitle({'Ground truth flight :', strrep(flightName, '_', '\_')});
+			subplot(3,1,1), ylabel("Wind Mag [m/s]"), xlabel("Time"), legend(legend_data,'location','eastoutside'), grid on
+			subplot(3,1,2), ylabel("Wind Dir [deg]"), xlabel("Time"), legend(legend_data,'location','eastoutside'), grid on
+			subplot(3,1,3), ylabel("Wind Vert [m/s]"), xlabel("Time"), legend(legend_data,'location','eastoutside'), grid on
+			hold off
 		end
 
 		function plotValueOverFlight_SIOS(obj, flightName)
@@ -356,9 +408,9 @@ classdef Eval < handle
 			d = designfilt('lowpassfir','FilterOrder',50,'CutoffFrequency',0.1,'SampleRate',10); % TODO: magic number here !
 
 			for i = 1:length(obj.data)
-				if obj.data{i}.Properties.CustomProperties.FlightName ~= flightName
+                if obj.data{i}.Properties.CustomProperties.FlightName ~= flightName
 					continue;
-				end
+                end
 				flightType = obj.data{i}.Properties.CustomProperties.FlightType;
                 if ~ismember("windHDir_2130cm",obj.data{i}.Properties.VariableNames) % TODO: quick and dirty, check for alti of drone to choose correct reference ? 
                     meanRefDir = mean([obj.data{i}.windHDir_1140cm, obj.data{i}.windHDir_0150cm],2);
@@ -375,12 +427,20 @@ classdef Eval < handle
 				refNED = uf.getNEDWind(meanRefDir, meanRefMag, meanRefVert);
 
 				errorNED = refNED - obj.data{i}.ws;
-				biasAzi = mean(errorNED(:,1:2),1);
+				errorNEDFilt = filtfilt(d, refNED) - filtfilt(d, obj.data{i}.ws);
+                
+                if obj.data{i}.Properties.CustomProperties.FlightName == "FLY168__20210503_143909__Vertical3ms"
+                    tmp = removeDescentPhase(timetable(obj.data{i}.Time,errorNED,errorNEDFilt,'VariableNames',["errorNED","errorNEDFilt"]));
+                    errorNED = tmp.errorNED;
+                    errorNEDFilt = tmp.errorNEDFilt;
+                end
+                
+                biasAzi = mean(errorNED(:,1:2),1);
 				biasVert = mean(errorNED(:,3));
 				stdAzi = norm([std(errorNED(:,1)), std(errorNED(:,2))]);
 				stdVert = std(errorNED(:,3));
 				
-				errorNEDFilt = filtfilt(d, refNED) - filtfilt(d, obj.data{i}.ws);
+				
 				biasAziFilt = mean(errorNEDFilt(:,1:2),1);
 				biasVertFilt = mean(errorNEDFilt(:,3));
 				stdAziFilt = norm([std(errorNEDFilt(:,1)), std(errorNEDFilt(:,2))]);
@@ -427,6 +487,88 @@ classdef Eval < handle
 			Tperf = addprop(Tperf, {'meanWindHMag', 'FlightType'}, {'table', 'table'});
 			Tperf.Properties.CustomProperties.meanWindHMag = mean(meanRefMag);
 			Tperf.Properties.CustomProperties.FlightType = flightType;
+        end
+
+        function Tperf = groundTruthPerf(obj, flightName)
+			windAziNoFiltBias = [];
+			windAziNoFiltStd = [];
+			windAziFiltBias = [];
+			windAziFiltStd = [];
+			windVertNoFiltBias = [];
+			windVertNoFiltStd = [];
+			windVertFiltBias = [];
+			windVertFiltStd = [];
+			refErrBias = [];
+			refErrStd = [];
+            refErrBiasVert = [];
+			refErrStdVert = [];
+			methods = [];
+			uf = Util_Frame();
+			d = designfilt('lowpassfir','FilterOrder',50,'CutoffFrequency',0.1,'SampleRate',10); % TODO: magic number here !
+
+			for i = 1:length(obj.data)
+				if obj.data{i}.Properties.CustomProperties.FlightName ~= flightName
+					continue;
+				end
+% 				flightType = obj.data{i}.Properties.CustomProperties.FlightType;
+                if ~ismember("windHDir_2130cm",obj.data{i}.Properties.VariableNames) % TODO: quick and dirty, check for alti of drone to choose correct reference ? 
+                    meanRefDir = mean([obj.data{i}.windHDir_1140cm, obj.data{i}.windHDir_0150cm],2);
+                    meanRefMag = mean([obj.data{i}.windHMag_1140cm, obj.data{i}.windHMag_0150cm],2);
+                    meanRefVert = zeros(size(meanRefMag));
+                else   
+                    meanRefDir = mean([obj.data{i}.windHDir_2130cm, obj.data{i}.windHDir_1800cm, obj.data{i}.windHDir_1470cm],2);
+                    meanRefMag = mean([obj.data{i}.windHMag_2130cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windHMag_1470cm],2);
+                    meanRefVert = mean([obj.data{i}.windVert_2130cm, obj.data{i}.windVert_1800cm, obj.data{i}.windVert_1470cm],2);
+                end
+				refNED_2130 = uf.getNEDWind(obj.data{i}.windHDir_2130cm, obj.data{i}.windHMag_2130cm, obj.data{i}.windVert_2130cm);
+				refNED_1800 = uf.getNEDWind(obj.data{i}.windHDir_1800cm, obj.data{i}.windHMag_1800cm, obj.data{i}.windVert_1800cm);
+				refNED_1470 = uf.getNEDWind(obj.data{i}.windHDir_1470cm, obj.data{i}.windHMag_1470cm, obj.data{i}.windVert_1470cm);
+				refNED = uf.getNEDWind(meanRefDir, meanRefMag, meanRefVert);
+
+                refs = {refNED_2130, refNED_1800, refNED_1470};
+                sensors = ["Sensor @ 21.3 [m]","Sensor @ 18.0 [m]","Sensor @ 14.7 [m]"];
+                for k = 1:length(refs)
+                    errorNED = refNED - refs{k};
+                    biasAzi = mean(errorNED(:,1:2),1);
+                    biasVert = mean(errorNED(:,3));
+                    stdAzi = norm([std(errorNED(:,1)), std(errorNED(:,2))]);
+                    stdVert = std(errorNED(:,3));
+
+                    errorNEDFilt = filtfilt(d, refNED) - filtfilt(d, refs{k});
+                    biasAziFilt = mean(errorNEDFilt(:,1:2),1);
+                    biasVertFilt = mean(errorNEDFilt(:,3));
+                    stdAziFilt = norm([std(errorNEDFilt(:,1)), std(errorNEDFilt(:,2))]);
+                    stdVertFilt = std(errorNEDFilt(:,3));
+
+
+                    windAziNoFiltBias 	= [windAziNoFiltBias; norm(biasAzi)];
+                    windAziNoFiltStd 	= [windAziNoFiltStd; stdAzi];
+
+                    windVertNoFiltBias 	= [windVertNoFiltBias; abs(biasVert)];
+                    windVertNoFiltStd 	= [windVertNoFiltStd; stdVert];
+
+
+                    windAziFiltBias 		= [windAziFiltBias; norm(biasAziFilt)];
+                    windAziFiltStd 		= [windAziFiltStd; stdAziFilt];
+                    windVertFiltBias 		= [windVertFiltBias; norm(biasVertFilt)];
+                    windVertFiltStd 		= [windVertFiltStd; stdVertFilt];
+                end
+                break
+			end
+
+			Tperf = table(windAziNoFiltBias, ...
+						  windAziNoFiltStd, ...
+						  windAziFiltBias, ...
+						  windAziFiltStd, ...
+						  windVertNoFiltBias, ...
+						  windVertNoFiltStd, ...
+						  windVertFiltBias, ...
+						  windVertFiltStd, ...
+						  'RowNames', sensors ...
+						  );
+
+			Tperf = addprop(Tperf, {'meanWindHMag'}, {'table'});
+			Tperf.Properties.CustomProperties.meanWindHMag = mean(meanRefMag);
 		end
 
 

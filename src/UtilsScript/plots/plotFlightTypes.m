@@ -5,15 +5,33 @@ vert = load('C:\Users\Kilian\Documents\EPFL\PDM\SW\WEMUAV\outData\prepro\FLY182_
 
 
 
-figure(1), clf
-sgtitle("Flight type")
+% figure(1), clf
+% % sgtitle("Flight type")
+% 
+% plotFlightType("Hover", hover, 1,5)
+% plotFlightType("Square", square, 2,6)
+% plotFlightType("CstSpeed", horiz, 3,7)
+% plotFlightType("Vertical", vert, 4,8)
+% 
+% exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\flightType.pdf",'ContentType','vector')
+
+
+
+figure(2), clf
+% sgtitle("Flight type")
 
 plotFlightType("Hover", hover, 1,5)
-plotFlightType("Square", square, 2,6)
-plotFlightType("CstSpeed", horiz, 3,7)
-plotFlightType("Vertical", vert, 4,8)
+exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\flightType_hover.pdf",'ContentType','vector')
+clf
+plotFlightType("Square", square, 1,5)
+exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\flightType_square.pdf",'ContentType','vector')
+clf
+plotFlightType("CstSpeed", horiz, 1,5)
+exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\flightType_cstSpeed.pdf",'ContentType','vector')
+clf
+plotFlightType("Vertical", vert, 1,5)
+exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\flightType_vertical.pdf",'ContentType','vector')
 
-exportgraphics(gcf, "C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\flightType.pdf",'ContentType','vector')
 
 
 
