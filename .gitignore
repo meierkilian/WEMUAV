@@ -1,5 +1,4 @@
 *.asv
 outData/estimator
 outData/prepro
-resources/*
 squareFlight.gif
