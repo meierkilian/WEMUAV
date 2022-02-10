@@ -201,8 +201,8 @@ classdef Eval < handle
 
 				if flightName == "FLY139__20210420_092926__Hover"
 					tmp = obj.data{i};
-					startIdx = find(tmp.Time > datetime(2021,04,20,09,31,0),1);
-					endIdx = find(tmp.Time > datetime(2021,04,20,09,34,0),1)-1;
+					startIdx = find(tmp.Time >= datetime(2021,04,20,09,31,0),1);
+					endIdx = find(tmp.Time >= datetime(2021,04,20,09,34,0),1)-1;
 					obj.data{i} = tmp(startIdx:endIdx, :);
 				end
 

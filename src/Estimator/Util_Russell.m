@@ -62,23 +62,23 @@ classdef Util_Russell
 			% obj.hoverThrust = @(RPM, rho) sum(RPM.^2, 2) * bHover;
 			obj.hoverThrust = @(RPM, rho) rho ./ meanAirDensity .* sum(RPM.^2, 2) * bHover;
 
-% 			Rsq = 1 - sum((obj.tHover.Fz - obj.hoverThrust(obj.tHover.RPM, meanAirDensity)).^2)/sum((obj.tHover.Fz - mean(obj.tHover.Fz)).^2);
-%             
-%             xlim = [min(obj.tHover.RPM), max(obj.tHover.RPM)];
-%             xspace = linspace(xlim(1),xlim(2),100);
-%             
-%             figure(1)
-%             clf
-%             plot(xspace.^2, obj.hoverThrust(xspace', meanAirDensity))
-%             hold on
-%             plot(obj.tHover.RPM.^2, obj.tHover.Fz, 'o')
-%             grid on
-%             title("Thrust model")
-%             ylabel("F_{T,-z} [N]")
-%             xlabel("\eta_{bar}^2 [RPM^2]")
-%             legend("Model : F_{T,-z} = " + num2str(bHover,2) + " \eta_{bar}^2, R^2 = " + num2str(Rsq,4), "Samples",'location','best')
-%             exportgraphics(gcf, 'C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\thurstModel.pdf','ContentType','vector');
-			% disp("[Util_Russell] Hover Thrust goodness of fit : R^2 = " + num2str(Rsq))
+			Rsq = 1 - sum((obj.tHover.Fz - obj.hoverThrust(obj.tHover.RPM, meanAirDensity)).^2)/sum((obj.tHover.Fz - mean(obj.tHover.Fz)).^2);
+            
+            xlim = [min(obj.tHover.RPM), max(obj.tHover.RPM)];
+            xspace = linspace(xlim(1),xlim(2),100);
+            
+            if isempty(figure(2).Children)
+                clf
+                plot(xspace.^2, obj.hoverThrust(xspace', meanAirDensity))
+                hold on
+                plot(obj.tHover.RPM.^2, obj.tHover.Fz, 'o')
+                grid on
+                ylabel("F_{T,-z} [N]")
+                xlabel("\eta_{bar}^2 [RPM^2]")
+                legend("Model : F_{T,-z} = " + num2str(bHover,2) + " \eta_{bar}^2, R^2 = " + num2str(Rsq,4), "Samples",'location','best')
+%                 exportgraphics(gcf, 'C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\thurstModel.pdf','ContentType','vector');
+                disp("[Util_Russell] Hover Thrust goodness of fit : R^2 = " + num2str(Rsq))
+            end
 		end
 
 		function obj = initTASEstimation(obj)
@@ -95,30 +95,24 @@ classdef Util_Russell
             xSpace = unique(-obj.tDrag.Pitch);
             ySpace = unique(obj.tDrag.RPM);
 %             
-            figure(1)
-            clf
-%             [xMesh, yMesh] = meshgrid(xSpace, ySpace);
-%             mesh(xMesh,yMesh,obj.FDragRussell(xMesh,yMesh),'FaceColor','interp', 'FaceAlpha',0.5)
-%             xlabel("$\gamma$ [rad]", 'Interpreter','latex')
-%             ylabel("$\bar{\eta}$ [RPM]", 'Interpreter','latex')
-%             zlabel("$D_R$ [N]", 'Interpreter','latex')
-            hold on
-            colorTable = ["#0072BD","#D95319","#EDB120","#7E2F8E","#77AC30","#4DBEEE"];
-            for i = 1:length(ySpace)
-                z = obj.FDragRussell(xSpace,ySpace(i)*ones(size(xSpace)));
-                plot(xSpace,z,'-o')
-                text(xSpace(2)+0.7,z(2),"\eta_{bar} = " + ySpace(i) + " [RPM]",...
-                    'HorizontalAlignment', 'left', ...
-                    'Color', colorTable(i))
+            if isempty(figure(1).Children)
+                clf
+                hold on
+                colorTable = ["#0072BD","#D95319","#EDB120","#7E2F8E","#77AC30","#4DBEEE"];
+                for i = 1:length(ySpace)
+                    z = obj.FDragRussell(xSpace,ySpace(i)*ones(size(xSpace)));
+                    plot(xSpace,z,'-o')
+                    text(xSpace(2)+0.7,z(2),"\eta_{bar} = " + ySpace(i) + " [RPM]",...
+                        'HorizontalAlignment', 'left', ...
+                        'Color', colorTable(i))
+                end
+                xlabel("\gamma [rad]")
+                ylabel("D_R [N]")
+                grid on
+                box on
+                xlim([-0.1 1.2])
+%                 exportgraphics(gcf, 'C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\windTunnelModel.pdf','ContentType','vector');
             end
-            xlabel("\gamma [rad]")
-            ylabel("D_R [N]")
-%             legend("\eta_{bar} = " + ySpace')
-            grid on
-            xlim([-0.1 1.2])
-            
-            title("Wind tunnel drag model")
-            exportgraphics(gcf, 'C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\windTunnelModel.pdf','ContentType','vector');
 		end
 
 		function thrust = getMotorThrust(obj, RPM, rho)

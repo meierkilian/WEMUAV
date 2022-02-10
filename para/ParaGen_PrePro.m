@@ -3,6 +3,9 @@ function para = ParaGen_PrePro()
 
     %%%%%%%%%%%%%%%%% GENERAL PARAMETERS %%%%%%%%%%%%%%%%%
     
+    % Path to Root of data folder
+    para.datasetRoot = fullfile(".","sampleData");
+    
     % Path to table containing the dataset overview, it is 
     % assumed that the table has at least the following columns :
     %  - DataStartTimeString : flight start time as a datetime string "dd-MMM-yyy hh:mm:ss"
@@ -13,14 +16,14 @@ function para = ParaGen_PrePro()
     %  - REF : path to the wind reference file, expected to be in "WEATHER\"
     %  - REFMETEO : path to the meteo reference file, expected to be in "WEATHER\
     %  - FlightType : string containing flight type
-    para.datasetOverviewPath = fullfile("S:","ProjectMaster","2021_KilianMeier","datasetOverview.xlsx");
+    para.datasetOverviewPath = fullfile(para.datasetRoot, "datasetOverview.xlsx");
     
     % Dataset overview table
     t = readtable(para.datasetOverviewPath);
 
     % ID of slected flight for preprocessing 
-    para.selectedIdx = 1:6;
-    % para.selectedIdx = 1:56;
+    para.selectedIdx = 1:3;
+    
     if all(size(para.selectedIdx) == size(t.ID))
         disp("[ParaGen_Prepro] Selected ALL available files in dataset overview.")
     else
@@ -39,21 +42,21 @@ function para = ParaGen_PrePro()
 
     % Path to reference data, can be a vector of paths, must match size of flightInputpath
     % If the reference is of type "motus", then a folder is expected containing the different anemometer data.
-    para.refInput.path = string(fullfile(t.FOLDER(ismember(t.ID,para.selectedIdx)), "WEATHER", t.REF(ismember(t.ID,para.selectedIdx))));
+    para.refInput.path = string(fullfile(para.datasetRoot, t.FOLDER(ismember(t.ID,para.selectedIdx)), "WEATHER", t.REF(ismember(t.ID,para.selectedIdx))));
 
     % Type of reference (describes the file formatting), available types are:
     % {'motus', 'unisaws', 'topoaws'}
     para.refInput.type = string(t.REFDATATYPE(ismember(t.ID,para.selectedIdx)));
 
     % Path to flight data, can be a vector of paths, must match size of refInputpath
-    para.flightInput.path = string(fullfile(t.FOLDER(ismember(t.ID,para.selectedIdx)), "FLIGHT", t.FLIGHT(ismember(t.ID,para.selectedIdx))));
+    para.flightInput.path = string(fullfile(para.datasetRoot, t.FOLDER(ismember(t.ID,para.selectedIdx)), "FLIGHT", t.FLIGHT(ismember(t.ID,para.selectedIdx))));
 
     % Type of reference (describes the file formatting), available types are:
     % {'datconv3', 'datconv4'}
     para.flightInput.type = string(t.FLIGHTDATATYPE(ismember(t.ID,para.selectedIdx)));;
 
     % Path to meteo reference data (secondary reference), can be a vector of paths, must match size of flightInputpath
-    para.refMeteoInput.path = string(fullfile(t.FOLDER(ismember(t.ID,para.selectedIdx)), "WEATHER", t.REFMETEO(ismember(t.ID,para.selectedIdx))));
+    para.refMeteoInput.path = string(fullfile(para.datasetRoot, t.FOLDER(ismember(t.ID,para.selectedIdx)), "WEATHER", t.REFMETEO(ismember(t.ID,para.selectedIdx))));
 
     % Type of reference (describes the file formatting), available types are:
     % {'motus', 'unisaws', 'topoaws'}

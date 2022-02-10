@@ -1,4 +1,3 @@
-dev/*
 *.asv
 outData/estimator
 outData/prepro
