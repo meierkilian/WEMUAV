@@ -31,7 +31,7 @@ function main_Eval(paraPath)
     t = eval.singleFlightPerf(selectedVerticalFlight);
     writetable(t, fullfile(outFolder, "perf_Vertical3ms.csv"), 'WriteRowNames', true)
     eval.plotValueOverFlight_pretty(selectedVerticalFlight);
-    exportgraphics(gcf, fullfile(outFolder, "perf_Square" + ext), 'ContentType', 'vector');
+    exportgraphics(gcf, fullfile(outFolder, "perf_Vertical3ms" + ext), 'ContentType', 'vector');
     
     % Performance GROUNDTRUTH (during slectedHover)
     t = eval.groundTruthPerf(selectedHoverFlight);

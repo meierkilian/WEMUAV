@@ -32,8 +32,14 @@ classdef Util_Russell
 				pathSingleMotor = fullfile(".","para","Russell_singleMotor.csv");
 				pathDrag = fullfile(".","para","Russell_drag_6ms.csv");
 				pathHover = fullfile(".","para","Russell_hover.csv");
-			end
-
+            end
+            
+            if isempty(figure(1).Children) || isempty(figure(2).Children)
+                set(groot, 'defaulttextInterpreter','latex');
+                set(groot, 'defaultLegendInterpreter','latex');
+                set(groot, 'defaultAxesTickLabelInterpreter','latex');
+            end
+            
 			obj.tSingleMotor = readtable(pathSingleMotor);
 			obj.tDrag = readtable(pathDrag);
 			obj.tHover = readtable(pathHover);
@@ -73,10 +79,10 @@ classdef Util_Russell
                 hold on
                 plot(obj.tHover.RPM.^2, obj.tHover.Fz, 'o')
                 grid on
-                ylabel("F_{T,-z} [N]")
-                xlabel("\eta_{bar}^2 [RPM^2]")
-                legend("Model : F_{T,-z} = " + num2str(bHover,2) + " \eta_{bar}^2, R^2 = " + num2str(Rsq,4), "Samples",'location','best')
-%                 exportgraphics(gcf, 'C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\thurstModel.pdf','ContentType','vector');
+                ylabel("$F_{T,-z}$ [N]")
+                xlabel("$\eta_{bar}^2$ [RPM$^2$]")
+                legend("Model : $F_{T,-z} = (" + num2str(bHover,2) + ")\cdot\eta_{bar}^2,\ R^2 = " + num2str(Rsq,4) + "$", "Samples",'location','best')
+                exportgraphics(gcf, '.\outData\thurstModel.pdf','ContentType','vector');
                 disp("[Util_Russell] Hover Thrust goodness of fit : R^2 = " + num2str(Rsq))
             end
 		end
@@ -102,16 +108,16 @@ classdef Util_Russell
                 for i = 1:length(ySpace)
                     z = obj.FDragRussell(xSpace,ySpace(i)*ones(size(xSpace)));
                     plot(xSpace,z,'-o')
-                    text(xSpace(2)+0.7,z(2),"\eta_{bar} = " + ySpace(i) + " [RPM]",...
+                    text(xSpace(2)+0.7,z(2),"$\eta_{bar} = " + ySpace(i) + "$ [RPM]",...
                         'HorizontalAlignment', 'left', ...
                         'Color', colorTable(i))
                 end
-                xlabel("\gamma [rad]")
-                ylabel("D_R [N]")
+                xlabel("$\gamma$ [rad]")
+                ylabel("$D_R$ [N]")
                 grid on
                 box on
                 xlim([-0.1 1.2])
-%                 exportgraphics(gcf, 'C:\Users\Kilian\Documents\EPFL\PDM\Reporting\MasterThesisReport\figures\windTunnelModel.pdf','ContentType','vector');
+                exportgraphics(gcf, '.\outData\windTunnelModel.pdf','ContentType','vector');
             end
 		end
 

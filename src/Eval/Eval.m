@@ -10,13 +10,15 @@ classdef Eval < handle
 		figFlightList
 		perf
 		legMap
+        figIdxStart
 	end
 	
 	methods
 		% Constructor
 		function obj = Eval(para)
 			obj.para = para;
-			obj.figIdx = 100;
+            obj.figIdxStart = 100;
+			obj.figIdx = obj.figIdxStart;
 			obj.flightList = "";
 			obj.methodList = "";
             obj.flightTypeList = "";
@@ -34,7 +36,14 @@ classdef Eval < handle
 			obj.perf = {};
 			obj.legMap = containers.Map({'directdynamicmodel_linVert',   'directdynamicmodel_linNoVert',    'directdynamicmodel_quadVert', 'directdynamicmodel_quadNoVert', 'garreausimple'}, ...
 									{'DM, Linear and Vertical Drag', 'DM, Linear and No Vertical Drag', 'DM, Quadratic and Vertical Drag', 'DM, Quadratic and No Vertical Drag', 'Tilt'}) ;
-		end
+            set(groot, 'defaulttextInterpreter','latex');
+            set(groot, 'defaultLegendInterpreter','latex');
+            set(groot, 'defaultAxesTickLabelInterpreter','latex');
+        end
+        
+        function correctHyphenToMinus(obj, ca)
+            yticklabels(ca, strrep(yticklabels(ca),'-','$-$'));
+        end
 
 		function plotValueOverFlight(obj, flightName)
 			legend_windHMag = [];
@@ -185,6 +194,7 @@ classdef Eval < handle
 			subplot(3,1,2), ylabel("Wind Dir [deg]"), xlabel("Time"), legend(legend_windHDir,'location','eastoutside'), grid on
 			subplot(3,1,3), ylabel("Wind Vert [m/s]"), xlabel("Time"), legend(legend_windVert,'location','eastoutside'), grid on
 			hold off
+            obj.correctHyphenToMinus(gca);
         end
         
         
@@ -230,13 +240,14 @@ classdef Eval < handle
                 break
             end
 			
-            legend_data = ["Mean","Sensor @ 21.3 [m]","Sensor @ 18.0 [m]","Sensor @ 14.7 [m]"];
+            legend_data = ["Mean","Sensor at 21.3 [m]","Sensor at 18.0 [m]","Sensor at 14.7 [m]"];
             
 			sgtitle({'Ground truth flight :', strrep(flightName, '_', '\_')});
 			subplot(3,1,1), ylabel("Wind Mag [m/s]"), xlabel("Time"), legend(legend_data,'location','eastoutside'), grid on
 			subplot(3,1,2), ylabel("Wind Dir [deg]"), xlabel("Time"), legend(legend_data,'location','eastoutside'), grid on
 			subplot(3,1,3), ylabel("Wind Vert [m/s]"), xlabel("Time"), legend(legend_data,'location','eastoutside'), grid on
 			hold off
+            obj.correctHyphenToMinus(gca);
 		end
 
 		function plotValueOverFlight_SIOS(obj, flightName)
